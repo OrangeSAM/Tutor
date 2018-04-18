@@ -12,26 +12,22 @@ namespace Tutor.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class courses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public courses()
         {
-            this.Comment = new HashSet<Comment>();
             this.indent = new HashSet<indent>();
-            this.Task = new HashSet<Task>();
         }
     
-        public int Student_id { get; set; }
-        public string Suser_name { get; set; }
-        public string Spwd { get; set; }
-        public string Sphone { get; set; }
+        public int Course_id { get; set; }
+        public string price { get; set; }
+        public string intro { get; set; }
+        public string Ccontent { get; set; }
+        public int Grade_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual grade grade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<indent> indent { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Task { get; set; }
     }
 }

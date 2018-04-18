@@ -5,15 +5,35 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="TutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="appointment">
+          <Key>
+            <PropertyRef Name="appoint_id" />
+          </Key>
+          <Property Name="appoint_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Teacher_id" Type="int" Nullable="false" />
+          <Property Name="Task_id" Type="int" Nullable="false" />
+          <Property Name="Atime" Type="datetime" Nullable="false" />
+          <Property Name="Astate" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="Comment_id" />
           </Key>
-          <Property Name="Comment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Student_id" Type="int" Nullable="false" />
+          <Property Name="Comment_id" Type="int" Nullable="false" />
+          <Property Name="Student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Detail" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Comment_time" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Teacher_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="Course_id" />
+          </Key>
+          <Property Name="Course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="price" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="intro" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Ccontent" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grade_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Exhibition">
           <Key>
@@ -22,6 +42,24 @@
           <Property Name="Snip_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Photo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Teacher_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grade">
+          <Key>
+            <PropertyRef Name="Grade_id" />
+          </Key>
+          <Property Name="Grade_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grade" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Subj_included" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="indent">
+          <Key>
+            <PropertyRef Name="Indent_id" />
+          </Key>
+          <Property Name="Indent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Course_id" Type="int" Nullable="false" />
+          <Property Name="Student_id" Type="int" Nullable="false" />
+          <Property Name="Buy_time" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="Sample">
           <Key>
@@ -57,13 +95,16 @@
           <Property Name="Task_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Student_id" Type="int" Nullable="false" />
           <Property Name="Grade" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Subject" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Demand" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Location" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="State" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Upload_time" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Upload_time" Type="datetime" Nullable="false" />
+          <Property Name="Tel" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Payment" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Timedemend" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Teacher_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -81,6 +122,7 @@
             <PropertyRef Name="Detail_id" />
           </Key>
           <Property Name="Detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ident_photo" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Studyat" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Major" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Available_subject" Type="varchar" MaxLength="20" Nullable="false" />
@@ -92,6 +134,30 @@
           <Property Name="Experience" Type="varchar" MaxLength="200" />
           <Property Name="Teaher_id" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_appointment_appointment">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Task_id" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="Task_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_appointment_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Teacher_id" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comment_Comment">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
@@ -116,6 +182,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_courses_courses">
+          <End Role="grade" Type="Self.grade" Multiplicity="1" />
+          <End Role="courses" Type="Self.courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grade">
+              <PropertyRef Name="Grade_id" />
+            </Principal>
+            <Dependent Role="courses">
+              <PropertyRef Name="Grade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Exhibition_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
           <End Role="Exhibition" Type="Self.Exhibition" Multiplicity="*" />
@@ -125,6 +203,30 @@
             </Principal>
             <Dependent Role="Exhibition">
               <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indent_indent">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="indent" Type="Self.indent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Course_id" />
+            </Principal>
+            <Dependent Role="indent">
+              <PropertyRef Name="Course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indent_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="indent" Type="Self.indent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_id" />
+            </Principal>
+            <Dependent Role="indent">
+              <PropertyRef Name="Student_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -152,6 +254,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Task_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Teacher_id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TeacherInfo_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
           <End Role="TeacherInfo" Type="Self.TeacherInfo" Multiplicity="*" />
@@ -165,14 +279,26 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TutorModelStoreContainer">
+          <EntitySet Name="appointment" EntityType="Self.appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exhibition" EntityType="Self.Exhibition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grade" EntityType="Self.grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="indent" EntityType="Self.indent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sample" EntityType="Self.Sample" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherInfo" EntityType="Self.TeacherInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_appointment_appointment" Association="Self.FK_appointment_appointment">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_appointment_Teacher" Association="Self.FK_appointment_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comment_Comment" Association="Self.FK_Comment_Comment">
             <End Role="Student" EntitySet="Student" />
             <End Role="Comment" EntitySet="Comment" />
@@ -181,9 +307,21 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
+          <AssociationSet Name="FK_courses_courses" Association="Self.FK_courses_courses">
+            <End Role="grade" EntitySet="grade" />
+            <End Role="courses" EntitySet="courses" />
+          </AssociationSet>
           <AssociationSet Name="FK_Exhibition_Teacher" Association="Self.FK_Exhibition_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Exhibition" EntitySet="Exhibition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indent_indent" Association="Self.FK_indent_indent">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="indent" EntitySet="indent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indent_Student" Association="Self.FK_indent_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="indent" EntitySet="indent" />
           </AssociationSet>
           <AssociationSet Name="FK_Sample_Teacher" Association="Self.FK_Sample_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
@@ -191,6 +329,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Task_Student" Association="Self.FK_Task_Student">
             <End Role="Student" EntitySet="Student" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Teacher" Association="Self.FK_Task_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_TeacherInfo_Teacher" Association="Self.FK_TeacherInfo_Teacher">
@@ -203,17 +345,41 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TutorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="appointment">
+          <Key>
+            <PropertyRef Name="appoint_id" />
+          </Key>
+          <Property Name="appoint_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="Task_id" Type="Int32" Nullable="false" />
+          <Property Name="Atime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Astate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_appointment_appointment" FromRole="appointment" ToRole="Task" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_appointment_Teacher" FromRole="appointment" ToRole="Teacher" />
+        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="Comment_id" />
           </Key>
-          <Property Name="Comment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Student_id" Type="Int32" Nullable="false" />
+          <Property Name="Comment_id" Type="Int32" Nullable="false" />
+          <Property Name="Student_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comment_time" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Teacher_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Comment_Comment" FromRole="Comment" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Comment_Teacher" FromRole="Comment" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="Course_id" />
+          </Key>
+          <Property Name="Course_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="intro" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ccontent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Grade_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="grade" Relationship="Self.FK_courses_courses" FromRole="courses" ToRole="grade" />
+          <NavigationProperty Name="indent" Relationship="Self.FK_indent_indent" FromRole="courses" ToRole="indent" />
         </EntityType>
         <EntityType Name="Exhibition">
           <Key>
@@ -223,6 +389,27 @@
           <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Teacher_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Exhibition_Teacher" FromRole="Exhibition" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="grade">
+          <Key>
+            <PropertyRef Name="Grade_id" />
+          </Key>
+          <Property Name="Grade_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grade1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subj_included" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="courses" Relationship="Self.FK_courses_courses" FromRole="grade" ToRole="courses" />
+        </EntityType>
+        <EntityType Name="indent">
+          <Key>
+            <PropertyRef Name="Indent_id" />
+          </Key>
+          <Property Name="Indent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Course_id" Type="Int32" Nullable="false" />
+          <Property Name="Student_id" Type="Int32" Nullable="false" />
+          <Property Name="Buy_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="courses" Relationship="Self.FK_indent_indent" FromRole="indent" ToRole="courses" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_indent_Student" FromRole="indent" ToRole="Student" />
         </EntityType>
         <EntityType Name="Sample">
           <Key>
@@ -242,6 +429,7 @@
           <Property Name="Spwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Sphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Comment" FromRole="Student" ToRole="Comment" />
+          <NavigationProperty Name="indent" Relationship="Self.FK_indent_Student" FromRole="Student" ToRole="indent" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_Student" FromRole="Student" ToRole="Task" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -261,14 +449,19 @@
           <Property Name="Task_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Student_id" Type="Int32" Nullable="false" />
           <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Demand" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Upload_time" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Upload_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Payment" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Timedemend" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Teacher_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="appointment" Relationship="Self.FK_appointment_appointment" FromRole="Task" ToRole="appointment" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Task_Student" FromRole="Task" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Task_Teacher" FromRole="Task" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -280,9 +473,11 @@
           <Property Name="Tmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tsex" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="appointment" Relationship="Self.FK_appointment_Teacher" FromRole="Teacher" ToRole="appointment" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Teacher" FromRole="Teacher" ToRole="Comment" />
           <NavigationProperty Name="Exhibition" Relationship="Self.FK_Exhibition_Teacher" FromRole="Teacher" ToRole="Exhibition" />
           <NavigationProperty Name="Sample" Relationship="Self.FK_Sample_Teacher" FromRole="Teacher" ToRole="Sample" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Teacher" FromRole="Teacher" ToRole="Task" />
           <NavigationProperty Name="TeacherInfo" Relationship="Self.FK_TeacherInfo_Teacher" FromRole="Teacher" ToRole="TeacherInfo" />
         </EntityType>
         <EntityType Name="TeacherInfo">
@@ -290,6 +485,7 @@
             <PropertyRef Name="Detail_id" />
           </Key>
           <Property Name="Detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ident_photo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Studyat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Major" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Available_subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -302,6 +498,30 @@
           <Property Name="Teaher_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_TeacherInfo_Teacher" FromRole="TeacherInfo" ToRole="Teacher" />
         </EntityType>
+        <Association Name="FK_appointment_appointment">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Task_id" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="Task_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_appointment_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Teacher_id" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comment_Comment">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
@@ -326,6 +546,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_courses_courses">
+          <End Role="grade" Type="Self.grade" Multiplicity="1" />
+          <End Role="courses" Type="Self.courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grade">
+              <PropertyRef Name="Grade_id" />
+            </Principal>
+            <Dependent Role="courses">
+              <PropertyRef Name="Grade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indent_indent">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="indent" Type="Self.indent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Course_id" />
+            </Principal>
+            <Dependent Role="indent">
+              <PropertyRef Name="Course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Exhibition_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
           <End Role="Exhibition" Type="Self.Exhibition" Multiplicity="*" />
@@ -335,6 +579,18 @@
             </Principal>
             <Dependent Role="Exhibition">
               <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indent_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="indent" Type="Self.indent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_id" />
+            </Principal>
+            <Dependent Role="indent">
+              <PropertyRef Name="Student_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -362,6 +618,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Task_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Teacher_id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TeacherInfo_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
           <End Role="TeacherInfo" Type="Self.TeacherInfo" Multiplicity="*" />
@@ -374,15 +642,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TutorEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TutorEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="appointment" EntityType="Self.appointment" />
           <EntitySet Name="Comment" EntityType="Self.Comment" />
+          <EntitySet Name="courses" EntityType="Self.courses" />
           <EntitySet Name="Exhibition" EntityType="Self.Exhibition" />
+          <EntitySet Name="grade" EntityType="Self.grade" />
+          <EntitySet Name="indent" EntityType="Self.indent" />
           <EntitySet Name="Sample" EntityType="Self.Sample" />
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Task" EntityType="Self.Task" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
           <EntitySet Name="TeacherInfo" EntityType="Self.TeacherInfo" />
+          <AssociationSet Name="FK_appointment_appointment" Association="Self.FK_appointment_appointment">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_appointment_Teacher" Association="Self.FK_appointment_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comment_Comment" Association="Self.FK_Comment_Comment">
             <End Role="Student" EntitySet="Student" />
             <End Role="Comment" EntitySet="Comment" />
@@ -391,9 +671,21 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
+          <AssociationSet Name="FK_courses_courses" Association="Self.FK_courses_courses">
+            <End Role="grade" EntitySet="grade" />
+            <End Role="courses" EntitySet="courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indent_indent" Association="Self.FK_indent_indent">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="indent" EntitySet="indent" />
+          </AssociationSet>
           <AssociationSet Name="FK_Exhibition_Teacher" Association="Self.FK_Exhibition_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Exhibition" EntitySet="Exhibition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indent_Student" Association="Self.FK_indent_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="indent" EntitySet="indent" />
           </AssociationSet>
           <AssociationSet Name="FK_Sample_Teacher" Association="Self.FK_Sample_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
@@ -401,6 +693,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Task_Student" Association="Self.FK_Task_Student">
             <End Role="Student" EntitySet="Student" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Teacher" Association="Self.FK_Task_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_TeacherInfo_Teacher" Association="Self.FK_TeacherInfo_Teacher">
@@ -413,7 +709,18 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TutorModelStoreContainer" CdmEntityContainer="TutorEntities">
+        <EntityContainerMapping StorageEntityContainer="TutorModelStoreContainer" CdmEntityContainer="TutorEntities1">
+          <EntitySetMapping Name="appointment">
+            <EntityTypeMapping TypeName="TutorModel.appointment">
+              <MappingFragment StoreEntitySet="appointment">
+                <ScalarProperty Name="appoint_id" ColumnName="appoint_id" />
+                <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+                <ScalarProperty Name="Task_id" ColumnName="Task_id" />
+                <ScalarProperty Name="Atime" ColumnName="Atime" />
+                <ScalarProperty Name="Astate" ColumnName="Astate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Comment">
             <EntityTypeMapping TypeName="TutorModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
@@ -425,12 +732,43 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="TutorModel.courses">
+              <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="intro" ColumnName="intro" />
+                <ScalarProperty Name="Ccontent" ColumnName="Ccontent" />
+                <ScalarProperty Name="Grade_id" ColumnName="Grade_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Exhibition">
             <EntityTypeMapping TypeName="TutorModel.Exhibition">
               <MappingFragment StoreEntitySet="Exhibition">
                 <ScalarProperty Name="Snip_id" ColumnName="Snip_id" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grade">
+            <EntityTypeMapping TypeName="TutorModel.grade">
+              <MappingFragment StoreEntitySet="grade">
+                <ScalarProperty Name="Grade_id" ColumnName="Grade_id" />
+                <ScalarProperty Name="Grade1" ColumnName="Grade" />
+                <ScalarProperty Name="Subj_included" ColumnName="Subj_included" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="indent">
+            <EntityTypeMapping TypeName="TutorModel.indent">
+              <MappingFragment StoreEntitySet="indent">
+                <ScalarProperty Name="Indent_id" ColumnName="Indent_id" />
+                <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+                <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+                <ScalarProperty Name="Buy_time" ColumnName="Buy_time" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -470,13 +808,16 @@
                 <ScalarProperty Name="Task_id" ColumnName="Task_id" />
                 <ScalarProperty Name="Student_id" ColumnName="Student_id" />
                 <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="Demand" ColumnName="Demand" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Upload_time" ColumnName="Upload_time" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
                 <ScalarProperty Name="Payment" ColumnName="Payment" />
                 <ScalarProperty Name="Timedemend" ColumnName="Timedemend" />
+                <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -496,6 +837,7 @@
             <EntityTypeMapping TypeName="TutorModel.TeacherInfo">
               <MappingFragment StoreEntitySet="TeacherInfo">
                 <ScalarProperty Name="Detail_id" ColumnName="Detail_id" />
+                <ScalarProperty Name="Ident_photo" ColumnName="Ident_photo" />
                 <ScalarProperty Name="Studyat" ColumnName="Studyat" />
                 <ScalarProperty Name="Major" ColumnName="Major" />
                 <ScalarProperty Name="Available_subject" ColumnName="Available_subject" />

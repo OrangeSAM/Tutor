@@ -15,6 +15,7 @@ namespace Tutor.Models
     public partial class TeacherInfo
     {
         public int Detail_id { get; set; }
+        public string Ident_photo { get; set; }
         public string Studyat { get; set; }
         public string Major { get; set; }
         public string Available_subject { get; set; }

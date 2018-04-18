@@ -13,10 +13,10 @@ namespace Tutor.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TutorEntities : DbContext
+    public partial class TutorEntities1 : DbContext
     {
-        public TutorEntities()
-            : base("name=TutorEntities")
+        public TutorEntities1()
+            : base("name=TutorEntities1")
         {
         }
     
@@ -25,8 +25,12 @@ namespace Tutor.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<appointment> appointment { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
+        public virtual DbSet<courses> courses { get; set; }
         public virtual DbSet<Exhibition> Exhibition { get; set; }
+        public virtual DbSet<grade> grade { get; set; }
+        public virtual DbSet<indent> indent { get; set; }
         public virtual DbSet<Sample> Sample { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
