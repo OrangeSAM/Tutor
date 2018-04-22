@@ -7,7 +7,7 @@ using Model;
 
 namespace IDAL
 {
-    public partial interface IAppiontmentBaseDAL : IBaseDAL<appointment>
+    public partial interface IAppiontmentDAL : IBaseDAL<appointment>
     {
 
     }

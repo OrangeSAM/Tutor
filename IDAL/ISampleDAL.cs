@@ -7,7 +7,7 @@ using Model;
 
 namespace IDAL
 {
-    interface ISampleDAL:IBaseDAL<Sample>
+    public partial interface ISampleDAL:IBaseDAL<Sample>
     {
     }
 }

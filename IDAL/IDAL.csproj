@@ -51,7 +51,7 @@
     <Compile Include="IStudentDAL.cs" />
     <Compile Include="ITaskDAL.cs" />
     <Compile Include="ITeacherDAL.cs" />
-    <Compile Include="ITeacherInfo.cs" />
+    <Compile Include="ITeacherInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

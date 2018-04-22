@@ -7,7 +7,7 @@ using Model;
 
 namespace IDAL
 {
-    interface ITaskDAL:IBaseDAL<Model.Task>
+    public partial interface ITaskDAL:IBaseDAL<Model.Task>
     {
 
     }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IDAL;
 using Model;
 
-namespace IDAL
+namespace DAL
 {
-    interface ITeacherInfo:IBaseDAL<TeacherInfo>
+    public partial class ExhibitionDAL:BaseDAL<Exhibition>,IExhibitionDAL
     {
-
     }
 }

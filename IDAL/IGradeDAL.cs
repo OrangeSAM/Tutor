@@ -7,7 +7,7 @@ using Model;
 
 namespace IDAL
 {
-    interface IGradeDAL:IBaseDAL<grade>
+    public partial interface IGradeDAL:IBaseDAL<grade>
     {
     }
 }

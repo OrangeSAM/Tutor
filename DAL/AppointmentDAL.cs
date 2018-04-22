@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IDAL;
 using Model;
 
-namespace IDAL
+namespace DAL
 {
-    public partial interface ITeacherDAL:IBaseDAL<Teacher>
+    public partial class AppointmentDAL:BaseDAL<appointment>,IAppiontmentDAL
     {
+
     }
 }

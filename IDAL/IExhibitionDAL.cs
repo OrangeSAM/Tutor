@@ -7,7 +7,7 @@ using Model;
 
 namespace IDAL
 {
-    interface IExhibitionDAL:IBaseDAL<Exhibition>
+    public partial interface IExhibitionDAL:IBaseDAL<Exhibition>
     {
     }
 }

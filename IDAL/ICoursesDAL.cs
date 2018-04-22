@@ -7,7 +7,7 @@ using Model;
 
 namespace IDAL
 {
-    interface ICoursesDAL:IBaseDAL<courses>
+    public partial interface ICoursesDAL:IBaseDAL<courses>
     {
 
     }

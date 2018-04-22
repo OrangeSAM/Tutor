@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Model;
 namespace IDAL
 {
-    interface IIndentDAL:IBaseDAL<indent>
+    public partial interface IIndentDAL:IBaseDAL<indent>
     {
 
     }

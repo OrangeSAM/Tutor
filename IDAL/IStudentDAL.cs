@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Model;
 namespace IDAL
 {
-    interface IStudentDAL:IBaseDAL<Student>
+    public partial interface IStudentDAL:IBaseDAL<Student>
     {
     }
 }
