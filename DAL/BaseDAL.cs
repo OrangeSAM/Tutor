@@ -21,6 +21,10 @@ namespace DAL
         {
             dbcontext.Set<T>().Remove(t);
         }
+        public void Update(T t)
+        {
+            dbcontext.Set<T>().AddOrUpdate(t);
+        }
         public IQueryable<T> GetModels(Expression<Func<T,bool>> whereLambda)
         {
             return dbcontext.Set<T>().Where(whereLambda);
