@@ -42,6 +42,16 @@
   <ItemGroup>
     <Compile Include="IAppointmentService.cs" />
     <Compile Include="IBaseService.cs" />
+    <Compile Include="ICommentService.cs" />
+    <Compile Include="ICoursesService.cs" />
+    <Compile Include="IExhibitionService.cs" />
+    <Compile Include="IGradeService.cs" />
+    <Compile Include="IIndentService.cs" />
+    <Compile Include="ISampleService.cs" />
+    <Compile Include="IStudentService.cs" />
+    <Compile Include="ITaskService.cs" />
+    <Compile Include="ITeacherInfoService.cs" />
+    <Compile Include="ITeacherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,11 +14,8 @@ namespace BLL
         {
             SetDal();
         }
-
         public IBaseDAL<T> Dal { get; set; }
-
         public abstract void SetDal();
-
         public bool Add(T t)
         {
             Dal.Add(t);
@@ -38,11 +35,10 @@ namespace BLL
         {
             return Dal.GetModels(whereLambda);
         }
-
-        public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
-            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
+        public IQueryable<T> GetModelsBypage<Type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, Type>>
+            OrderByLambda, Expression<Func<T, bool>> whereLambda)
         {
-            return Dal.GetModelsByPage(pageSize, pageIndex, isAsc, OrderByLambda, WhereLambda);
+            return Dal.GetModelsByPage(pageSize, pageIndex, isAsc, OrderByLambda, whereLambda);
         }
     }
 }
