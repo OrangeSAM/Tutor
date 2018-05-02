@@ -29,8 +29,6 @@ namespace Model
         public string Tuser_name { get; set; }
         public string Tpwd { get; set; }
         public string Tmail { get; set; }
-        public string Tsex { get; set; }
-        public string Tphone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<appointment> appointment { get; set; }

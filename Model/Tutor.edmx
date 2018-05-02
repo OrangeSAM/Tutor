@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="appointment">
           <Key>
             <PropertyRef Name="appoint_id" />
@@ -114,8 +114,6 @@
           <Property Name="Tuser_name" Type="varchar" MaxLength="20" />
           <Property Name="Tpwd" Type="varchar" MaxLength="20" />
           <Property Name="Tmail" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Tsex" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="Tphone" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="TeacherInfo">
           <Key>
@@ -123,14 +121,16 @@
           </Key>
           <Property Name="Detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ident_photo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sex" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="Studyat" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Major" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Available_subject" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Available_time" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Area" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
           <Property Name="Award" Type="varchar" MaxLength="100" />
           <Property Name="Salary" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Experience" Type="varchar" MaxLength="200" />
           <Property Name="Teaher_id" Type="int" Nullable="false" />
         </EntityType>
@@ -340,8 +340,7 @@
             <End Role="TeacherInfo" EntitySet="TeacherInfo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TutorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -471,8 +470,6 @@
           <Property Name="Tuser_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Tpwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Tmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tsex" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="appointment" Relationship="Self.FK_appointment_Teacher" FromRole="Teacher" ToRole="appointment" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Teacher" FromRole="Teacher" ToRole="Comment" />
           <NavigationProperty Name="Exhibition" Relationship="Self.FK_Exhibition_Teacher" FromRole="Teacher" ToRole="Exhibition" />
@@ -491,12 +488,14 @@
           <Property Name="Available_subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Available_time" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Area" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Award" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Experience" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Teaher_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_TeacherInfo_Teacher" FromRole="TeacherInfo" ToRole="Teacher" />
+          <Property Name="sex" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_appointment_appointment">
           <End Role="Task" Type="Self.Task" Multiplicity="1" />
@@ -828,14 +827,14 @@
                 <ScalarProperty Name="Tuser_name" ColumnName="Tuser_name" />
                 <ScalarProperty Name="Tpwd" ColumnName="Tpwd" />
                 <ScalarProperty Name="Tmail" ColumnName="Tmail" />
-                <ScalarProperty Name="Tsex" ColumnName="Tsex" />
-                <ScalarProperty Name="Tphone" ColumnName="Tphone" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherInfo">
             <EntityTypeMapping TypeName="TutorModel.TeacherInfo">
               <MappingFragment StoreEntitySet="TeacherInfo">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
                 <ScalarProperty Name="Detail_id" ColumnName="Detail_id" />
                 <ScalarProperty Name="Ident_photo" ColumnName="Ident_photo" />
                 <ScalarProperty Name="Studyat" ColumnName="Studyat" />

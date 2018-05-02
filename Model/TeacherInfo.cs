@@ -26,6 +26,8 @@ namespace Model
         public string Salary { get; set; }
         public string Experience { get; set; }
         public int Teaher_id { get; set; }
+        public string sex { get; set; }
+        public string phone { get; set; }
     
         public virtual Teacher Teacher { get; set; }
     }

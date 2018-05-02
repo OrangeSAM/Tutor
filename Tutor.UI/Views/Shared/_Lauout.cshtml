@@ -1,0 +1,59 @@
+﻿@using Model;
+@using BLL;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Lauout</title>
+    <style type="text/css">
+        a{
+            text-decoration:none;
+            color:black;
+        }
+        body{
+            margin:0;
+        }
+        nav{
+            position:fixed;
+            top:0px;
+            background-color:lightcyan;
+        }
+        .nav{
+            display:inline-block;
+        }
+        .nav li{
+            list-style:none;
+            float:left;
+        }
+        .nav-form{
+            padding-top:1%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="~/Img/登录注册/plane.png"/>
+        <ul class="nav">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">家教</a></li>
+            <li><a href="#">教员</a></li>
+            <li><a href="#">课程</a></li>
+        </ul>
+        <form class="nav-form">
+            <span>家教</span>
+            <input type="text" value="请输入关键字"/>
+            <input type="submit" value=""/>
+        </form>
+    </nav>
+    <div>
+        @RenderBody() 
+    </div>
+    <footer>
+        <div>&copy; Sam </div>
+    </footer>
+</body>
+</html>

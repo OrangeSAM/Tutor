@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+
 namespace IDAL
 {
-    public partial interface IStudentDAL:IBaseDAL<Student>
+    public interface IStudentDAL:IBaseDAL<Student>
     {
+        void insertstudent(Student student);
     }
 }

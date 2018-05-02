@@ -34,7 +34,6 @@ namespace BLLContainer
             {
                 throw new System.Exception("IOC实例化出错!" + ex.Message);
             }
-
             return container.Resolve<T>();
         }
 
@@ -46,6 +45,16 @@ namespace BLLContainer
             var builder = new ContainerBuilder();
             //格式：builder.RegisterType<xxxx>().As<Ixxxx>().InstancePerLifetimeScope();
             builder.RegisterType<AppointmentService>().As<IAppointmentService>().InstancePerLifetimeScope();
+            builder.RegisterType<CommentService>().As<ICommentService>().InstancePerLifetimeScope();
+            builder.RegisterType<CoursesService>().As<ICoursesService>().InstancePerLifetimeScope();
+            builder.RegisterType<ExhibitionService>().As<IExhibitionService>().InstancePerLifetimeScope();
+            builder.RegisterType<GradeService>().As<IGradeService>().InstancePerLifetimeScope();
+            builder.RegisterType<IndentService>().As<IIndentService>().InstancePerLifetimeScope();
+            builder.RegisterType<SampleService>().As<ISampleService>().InstancePerLifetimeScope();
+            builder.RegisterType<StudentService>().As<IStudentService>().InstancePerLifetimeScope();
+            builder.RegisterType<TaskService>().As<ITaskService>().InstancePerLifetimeScope();
+            builder.RegisterType<TeacherService>().As<ITeacherService>().InstancePerLifetimeScope();
+            builder.RegisterType<TeacherInfoService>().As<ITeacherInfoService>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

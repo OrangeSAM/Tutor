@@ -1,0 +1,102 @@
+﻿@model Model.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <style type="text/css">
+        body{
+            margin:0;
+        }
+        .bgimg{
+            height:637px;
+            overflow:hidden;
+            filter:blur(20px);
+        }
+        .wrap{
+            position:absolute;
+            left:17%;
+            top:20%;
+            box-shadow:0 0 5px 0;
+        }
+        .wrap>:first-child {
+            float:left;
+            width:44%;
+        }
+        .wrap>:first-child img{
+            width:100%;
+        }
+        .logo{
+            width:48px;
+            margin:12px auto
+        }
+        .form-input{
+            float:left;
+            width:40%;
+            background-color:white;
+        }
+        .input-box{
+            width:90%;
+            margin:0 auto;
+        }
+        .input-box div{
+            margin:10px;
+            width:90%;
+        }
+        .input-box div input{
+            outline:none;
+            border:none;
+            border-bottom:2px solid lightgray;
+            width:100%;
+            line-height:2em;
+            font-size:1.1em;
+            font-family:serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="bgimg">
+        <img src="~/Img/登录注册/rg.jpg" />
+    </div>
+    <div class="wrap">
+        <div class="wrapper">
+            <div>
+                <img src="~/Img/登录注册/rg.jpg" />
+            </div>
+            <div class="form-input">
+                <div class="logo">
+                    <img src="~/Img/登录注册/plane.png" />
+                </div>
+                @using (Html.BeginForm("register", "Account", FormMethod.Post, new { @class = "input-box" }))
+            {
+
+                    <div class="user-name">
+                        @Html.TextBoxFor(Student=>Student.Suser_name, new { placeholder = "请输入用户名，注册后不可更改" })
+                        @Html.ValidationMessageFor(Student => Student.Suser_name, "")
+                    </div>
+                    <div class="pwd">
+                        @Html.TextBoxFor(Student=>Student.Spwd, new { placeholder = "请输入密码" })
+                        @Html.ValidationMessageFor(Student => Student.Spwd, "")
+                    </div>
+                    <div class="confirmpwd">
+                        @Html.TextBoxFor(Student =>Student.Spwds, new { placeholder = "请再次输入密码" })
+                        @Html.ValidationMessageFor(Student =>Student.Spwds, "")
+                    </div>
+                    <div class="email">
+                        @Html.TextBoxFor(Student =>Student.Sphone, new { placeholder = "请输入接受验证码的邮箱" })
+                        @Html.ValidationMessageFor(Student =>Student.Sphone, "")
+                    </div>
+                    <div class="submit">
+                        <button>立即注册</button>
+                    </div>
+            }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
