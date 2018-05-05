@@ -1,8 +1,91 @@
-﻿
+﻿@using Model;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
-
-<h2>Index</h2>
-
+<div>
+    <ul>
+        <li>
+            <div>
+                <span>选择年级</span>
+                <ul>
+                    @foreach (var item in Model.Grade)
+                    {
+                        <li><span>@item.Grade</span></li>
+                    }
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span>选择学科</span>
+                <ul>
+                    @foreach(var item in Model.subject)
+                    {
+                        <li><span>@item.subject</span></li>
+                    }
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+<div>
+    <div>
+        <div>
+            <span>学员登录</span>
+            <span>教员登录</span>
+        </div>
+        <div class="inputbox">
+            <div class="loginbox">
+                <form>
+                    <ul>
+                        <li>
+                            <label>用户名</label>
+                            <input type="text" placeholder="请输入用户名"/>
+                        </li>
+                        <li>
+                            <label>密 &nbsp; 码</label>
+                            <input type="password" placeholder="请输入密码"/>
+                        </li>
+                        <li>
+                            <a href="#">忘记密码</a>
+                        </li>
+                        <li>
+                            <input type="checkbox" />记住我的登录状态
+                        </li>
+                        <li>
+                            <input type="submit" value="登录"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="regbox">
+                <form>
+                    <ul>
+                        <li>
+                            <label>用户名</label>
+                            <input type="text" placeholder="请输入用户名" />
+                        </li>
+                        <li>
+                            <label>密 &nbsp; 码</label>
+                            <input type="password" placeholder="请输入密码" />
+                        </li>
+                        <li>
+                            <a href="#">忘记密码</a>
+                        </li>
+                        <li>
+                            <input type="checkbox" />记住我的登录状态
+                        </li>
+                        <li>
+                            <input type="submit" value="登录" />
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div zhucelianjie>
+            <a href="#">学员注册</a>
+            <a href="#">教员注册</a>
+        </div>
+    </div>
+</div>

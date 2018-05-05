@@ -16,11 +16,18 @@
         }
         body{
             margin:0;
+            background-color:#f6f6f6;
         }
         nav{
             position:fixed;
             top:0px;
-            background-color:lightcyan;
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            background-color:white;
+        }
+        nav img{
+            height:100%;
         }
         .nav{
             display:inline-block;
@@ -31,6 +38,11 @@
         }
         .nav-form{
             padding-top:1%;
+        }
+        footer{
+            background-color:white;
+            display:flex;
+            justify-content:center;
         }
     </style>
 </head>
@@ -44,7 +56,13 @@
             <li><a href="#">课程</a></li>
         </ul>
         <form class="nav-form">
-            <span>家教</span>
+            <div>
+                <span>家教</span>
+                <ul style="display:none">
+                    <li>家教</li>
+                    <li>学员</li>
+                </ul>
+            </div>
             <input type="text" value="请输入关键字"/>
             <input type="submit" value=""/>
         </form>

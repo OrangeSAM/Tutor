@@ -239,6 +239,8 @@
     <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
     <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
     <Content Include="Css\bootstrap.css" />
+    <Content Include="Css\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Img\登录注册\plane.png" />
     <Content Include="Img\登录注册\rg.jpg" />
@@ -247,6 +249,7 @@
     <Content Include="obj\Debug\Tutor.UI.pdb" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\bootstrap.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +286,11 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tutor.UI.csprojResolveAssemblyReference.cache" />
     <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
