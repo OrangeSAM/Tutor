@@ -9,6 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Register</title>
+    <link href="~/Css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
         body{
             margin:0;
@@ -28,7 +29,7 @@
             float:left;
             width:44%;
         }
-        .wrap>:first-child img{
+        .wrap .leftimg img{
             width:100%;
         }
         .logo{
@@ -47,6 +48,12 @@
         .input-box div{
             margin:10px;
             width:90%;
+            position:relative;
+        }
+        .input-box div span{
+            position:absolute;
+            top:35%;
+            left:95%;
         }
         .input-box div input{
             outline:none;
@@ -57,6 +64,15 @@
             font-size:1.1em;
             font-family:serif;
         }
+        .submit{
+            display:flex;
+            justify-content:center;
+        }
+        .submit button{
+            border:none;
+            background-color:#11bb30;
+            padding :10px 30px;
+        }
     </style>
 </head>
 <body>
@@ -64,8 +80,7 @@
         <img src="~/Img/登录注册/rg.jpg" />
     </div>
     <div class="wrap">
-        <div class="wrapper">
-            <div>
+            <div class="leftimg">
                 <img src="~/Img/登录注册/rg.jpg" />
             </div>
             <div class="form-input">
@@ -77,26 +92,29 @@
 
                     <div class="user-name">
                         @Html.TextBoxFor(Student=>Student.Suser_name, new { placeholder = "请输入用户名，注册后不可更改" })
+                        <span class="fa fa-user"></span>
                         @Html.ValidationMessageFor(Student => Student.Suser_name, "")
                     </div>
                     <div class="pwd">
                         @Html.TextBoxFor(Student=>Student.Spwd, new { placeholder = "请输入密码" })
+                        <span class="fa fa-key"></span>
                         @Html.ValidationMessageFor(Student => Student.Spwd, "")
                     </div>
                     <div class="confirmpwd">
                         @Html.TextBoxFor(Student =>Student.Spwds, new { placeholder = "请再次输入密码" })
+                        <span class="fa fa-key"></span>
                         @Html.ValidationMessageFor(Student =>Student.Spwds, "")
                     </div>
                     <div class="email">
                         @Html.TextBoxFor(Student =>Student.Sphone, new { placeholder = "请输入接受验证码的邮箱" })
                         @Html.ValidationMessageFor(Student =>Student.Sphone, "")
+                        <span class="fa fa-envelope-o"></span>
                     </div>
                     <div class="submit">
                         <button>立即注册</button>
                     </div>
             }
             </div>
-        </div>
     </div>
 </body>
 </html>

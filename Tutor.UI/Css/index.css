@@ -1,0 +1,23 @@
+﻿.firstdiv:after{
+    content:".";
+    height:0;
+    visibility:hidden;
+    display:block;
+    clear:both;
+}
+.firstdiv{
+    display:flex;
+    justify-content:center;
+}
+.selectdiv{
+    float:left;
+    width:60%;
+    background-color:beige;
+    height:330px;
+}
+.logindiv{
+    float:left;
+    width:30%;
+    background-color:lightpink;
+}
+

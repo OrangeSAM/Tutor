@@ -1,0 +1,42 @@
+﻿body {
+    margin:0;
+    background-color:#f6f6f6;
+}
+li{
+    list-style:none;
+}
+.content{
+    margin-top:59px;
+}
+a{
+    text-decoration:none;
+    color:black;
+}
+nav{
+    position:fixed;
+    top:0px;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    background-color:white;
+}
+nav img{
+    height:100%;
+}
+.nav{
+    display:inline-block;
+}
+.nav li{
+    list-style:none;
+    float:left;
+    margin:5px 40px;
+}
+.nav-form{
+    padding-top:1.5%;
+    margin-right:8%;
+}
+footer{
+    background-color:white;
+    display:flex;
+    justify-content:center;
+}

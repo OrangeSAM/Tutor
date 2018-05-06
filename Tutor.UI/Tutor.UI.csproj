@@ -240,6 +240,8 @@
     <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
     <Content Include="Css\bootstrap.css" />
     <Content Include="Css\font-awesome.min.css" />
+    <Content Include="Css\index.css" />
+    <Content Include="Css\layout.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Img\登录注册\plane.png" />
