@@ -16,10 +16,8 @@ namespace Model
     {
         public int sub_id { get; set; }
         public string subject1 { get; set; }
-        public int grade_id { get; set; }
         public int Grade_id { get; set; }
     
         public virtual grade grade { get; set; }
-        public virtual grade grade1 { get; set; }
     }
 }

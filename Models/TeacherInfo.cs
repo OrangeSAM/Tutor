@@ -16,6 +16,7 @@ namespace Model
     {
         public int Detail_id { get; set; }
         public string Ident_photo { get; set; }
+        public string sex { get; set; }
         public string Studyat { get; set; }
         public string Major { get; set; }
         public string Available_subject { get; set; }
@@ -24,10 +25,9 @@ namespace Model
         public string Description { get; set; }
         public string Award { get; set; }
         public string Salary { get; set; }
+        public string phone { get; set; }
         public string Experience { get; set; }
         public int Teaher_id { get; set; }
-        public string sex { get; set; }
-        public string phone { get; set; }
     
         public virtual Teacher Teacher { get; set; }
     }

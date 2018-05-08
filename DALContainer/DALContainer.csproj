@@ -59,6 +59,10 @@
       <Project>{0c35388b-33c1-4334-b253-79882efb4281}</Project>
       <Name>IDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Models\Model.csproj">
+      <Project>{9d97ab5f-7559-46bc-b1e2-e736d6d9aaed}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

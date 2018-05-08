@@ -33,10 +33,10 @@ namespace Model
         public virtual DbSet<indent> indent { get; set; }
         public virtual DbSet<Sample> Sample { get; set; }
         public virtual DbSet<Student> Student { get; set; }
+        public virtual DbSet<subject> subject { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Task> Task { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<TeacherInfo> TeacherInfo { get; set; }
-        public virtual DbSet<subject> subject { get; set; }
     }
 }

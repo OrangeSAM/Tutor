@@ -252,6 +252,7 @@
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\jquery-3.3.1.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +330,10 @@
     <ProjectReference Include="..\IDAL\IDAL.csproj">
       <Project>{0c35388b-33c1-4334-b253-79882efb4281}</Project>
       <Name>IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Model.csproj">
+      <Project>{9d97ab5f-7559-46bc-b1e2-e736d6d9aaed}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -7,29 +7,25 @@
 <link href="~/Css/index.css" rel="stylesheet"/>
 <link href="~/Css/font-awesome.min.css" rel="stylesheet" />
 <script src="~/scripts/jquery-3.3.1.js"></script>
-<script>
-    $(".choose>span").hover(function () {
-        $(".choose>ul").css({ "display": "block" });
-    });
-</script>
+
 <div class="firstdiv">
     <div class="selectdiv">
         <ul>
             <li>
-                <div class="choose">
+                <div class="choose" id="choosegrade">
                     <span>选择年级</span>
                     <span class="fa fa-sort-desc fa-2x triangle"></span>
                     <ul>
                         <li>学前教育</li>
-                        @*@foreach (var item in Model.Grade)
+                        @*@foreach (var item in Model.grade)
                             {
-                                <li><span>@item.Grade</span></li>
+                                <li><span>@item.Grade1</span></li>
                             }*@
                     </ul>
                 </div>
             </li>
             <li>
-                <div class="choose">
+                <div class="choose" id="choosesub">
                     <span>选择学科</span>
                     <span class="fa fa-sort-desc fa-2x triangle"></span>
                     <ul>
@@ -50,18 +46,18 @@
                 <span>教员登录</span>
             </div>
             <div class="inputbox">
-                <div class="loginbox">
+                <div class="teacherbox">
                     <form>
                         <ul>
                             <li>
                                 <label>用户名</label>
-                                <input type="text" placeholder="请输入用户名" />
+                                <input class="pad" type="text" placeholder="请输入用户名" />
                             </li>
                             <li>
                                 <label>密 &nbsp; 码</label>
-                                <input type="password" placeholder="请输入密码" />
+                                <input class="pad" type="password" placeholder="请输入密码" />
                             </li>
-                            <li>
+                            <li style="display:none;">
                                 <a href="#">忘记密码</a>
                             </li>
                             <li>
@@ -73,7 +69,7 @@
                         </ul>
                     </form>
                 </div>
-                <div class="regbox">
+                <div class="studentbox" style="display:none;">
                     <form>
                         <ul>
                             <li>
@@ -97,7 +93,7 @@
                     </form>
                 </div>
             </div>
-            <div zhucelianjie>
+            <div>
                 <a href="#">学员注册</a>
                 <a href="#">教员注册</a>
             </div>
@@ -128,3 +124,13 @@
 
     </div>
 </div>
+<script>
+    $("#choosegrade>span").hover(function () {
+        $("#choosegrade>ul").fadeIn(700).css("display", "block");
+    }).mouseleave(function () {
+        $("#choosegrade>ul").fadeOut(700).css("display", "none");
+    });
+    //$("#choosegrade>span").hover(function () {
+    //    $("#choosegrade>ul").show(800);
+    //});
+</script>

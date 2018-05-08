@@ -19,18 +19,14 @@ namespace Model
         {
             this.courses = new HashSet<courses>();
             this.subject = new HashSet<subject>();
-            this.subject1 = new HashSet<subject>();
         }
     
         public int Grade_id { get; set; }
         public string Grade1 { get; set; }
-        public string Subj_included { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<courses> courses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<subject> subject { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<subject> subject1 { get; set; }
     }
 }

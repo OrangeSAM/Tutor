@@ -54,7 +54,23 @@
     width:30%;
     background-color:lightpink;
 }
-.choosebar span{
-    padding:0px 69px;
+.choosebar{
+    font-weight:bold;
+    font-size:20px;
+    padding:10px 0;
+    display:flex;
+    justify-content:space-evenly;
+}
+.inputbox form {
+    text-align:center;
+}
+.inputbox form ul{
+    padding:0;
+}
+.inputbox form ul li{
+    margin:20px 0;
+}
+.inputbox form ul .pad{
+    padding:8px;
 }
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="appointment">
           <Key>
             <PropertyRef Name="appoint_id" />
@@ -364,7 +364,8 @@
             <End Role="TeacherInfo" EntitySet="TeacherInfo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TutorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -419,10 +420,8 @@
           </Key>
           <Property Name="Grade_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Grade1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Subj_included" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="courses" Relationship="Self.FK_courses_courses" FromRole="grade" ToRole="courses" />
-          <NavigationProperty Name="subject" Relationship="TutorModel.FK_subject_grade" FromRole="grade" ToRole="subject" />
-          <NavigationProperty Name="subject1" Relationship="TutorModel.FK_subject_grade1" FromRole="grade" ToRole="subject" />
+          <NavigationProperty Name="subject" Relationship="Self.FK_subject_grade" FromRole="grade" ToRole="subject" />
         </EntityType>
         <EntityType Name="indent">
           <Key>
@@ -456,6 +455,15 @@
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Comment" FromRole="Student" ToRole="Comment" />
           <NavigationProperty Name="indent" Relationship="Self.FK_indent_Student" FromRole="Student" ToRole="indent" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_Student" FromRole="Student" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="subject">
+          <Key>
+            <PropertyRef Name="sub_id" />
+          </Key>
+          <Property Name="sub_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subject1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Grade_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="grade" Relationship="Self.FK_subject_grade" FromRole="subject" ToRole="grade" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -509,6 +517,7 @@
           </Key>
           <Property Name="Detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ident_photo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Studyat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Major" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Available_subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -517,11 +526,10 @@
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Award" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Experience" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Teaher_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_TeacherInfo_Teacher" FromRole="TeacherInfo" ToRole="Teacher" />
-          <Property Name="sex" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_appointment_appointment">
           <End Role="Task" Type="Self.Task" Multiplicity="1" />
@@ -607,6 +615,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_subject_grade">
+          <End Role="grade" Type="Self.grade" Multiplicity="1" />
+          <End Role="subject" Type="Self.subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grade">
+              <PropertyRef Name="Grade_id" />
+            </Principal>
+            <Dependent Role="subject">
+              <PropertyRef Name="Grade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_indent_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="indent" Type="Self.indent" Multiplicity="*" />
@@ -676,6 +696,7 @@
           <EntitySet Name="indent" EntityType="Self.indent" />
           <EntitySet Name="Sample" EntityType="Self.Sample" />
           <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="subject" EntityType="Self.subject" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Task" EntityType="Self.Task" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
@@ -708,6 +729,10 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Exhibition" EntitySet="Exhibition" />
           </AssociationSet>
+          <AssociationSet Name="FK_subject_grade" Association="Self.FK_subject_grade">
+            <End Role="grade" EntitySet="grade" />
+            <End Role="subject" EntitySet="subject" />
+          </AssociationSet>
           <AssociationSet Name="FK_indent_Student" Association="Self.FK_indent_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="indent" EntitySet="indent" />
@@ -728,51 +753,7 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeacherInfo" EntitySet="TeacherInfo" />
           </AssociationSet>
-          <EntitySet Name="subject" EntityType="TutorModel.subject" />
-          <AssociationSet Name="FK_subject_grade" Association="TutorModel.FK_subject_grade">
-            <End Role="grade" EntitySet="grade" />
-            <End Role="subject" EntitySet="subject" />
-          </AssociationSet>
-          <AssociationSet Name="FK_subject_grade1" Association="TutorModel.FK_subject_grade1">
-            <End Role="grade" EntitySet="grade" />
-            <End Role="subject" EntitySet="subject" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="subject">
-          <Key>
-            <PropertyRef Name="sub_id" />
-          </Key>
-          <Property Name="sub_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="subject1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="grade_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="grade" Relationship="TutorModel.FK_subject_grade" FromRole="subject" ToRole="grade" />
-          <Property Name="Grade_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="grade1" Relationship="TutorModel.FK_subject_grade1" FromRole="subject" ToRole="grade" />
-        </EntityType>
-        <Association Name="FK_subject_grade">
-          <End Type="TutorModel.grade" Role="grade" Multiplicity="1" />
-          <End Type="TutorModel.subject" Role="subject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="grade">
-              <PropertyRef Name="Grade_id" />
-            </Principal>
-            <Dependent Role="subject">
-              <PropertyRef Name="grade_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_subject_grade1">
-          <End Type="TutorModel.grade" Role="grade" Multiplicity="1" />
-          <End Type="TutorModel.subject" Role="subject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="grade">
-              <PropertyRef Name="Grade_id" />
-            </Principal>
-            <Dependent Role="subject">
-              <PropertyRef Name="Grade_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -859,6 +840,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="subject">
+            <EntityTypeMapping TypeName="TutorModel.subject">
+              <MappingFragment StoreEntitySet="subject">
+                <ScalarProperty Name="sub_id" ColumnName="sub_id" />
+                <ScalarProperty Name="subject1" ColumnName="subject" />
+                <ScalarProperty Name="Grade_id" ColumnName="Grade_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="TutorModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -896,16 +886,15 @@
                 <ScalarProperty Name="Tuser_name" ColumnName="Tuser_name" />
                 <ScalarProperty Name="Tpwd" ColumnName="Tpwd" />
                 <ScalarProperty Name="Tmail" ColumnName="Tmail" />
-                </MappingFragment>
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherInfo">
             <EntityTypeMapping TypeName="TutorModel.TeacherInfo">
               <MappingFragment StoreEntitySet="TeacherInfo">
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="sex" ColumnName="sex" />
                 <ScalarProperty Name="Detail_id" ColumnName="Detail_id" />
                 <ScalarProperty Name="Ident_photo" ColumnName="Ident_photo" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
                 <ScalarProperty Name="Studyat" ColumnName="Studyat" />
                 <ScalarProperty Name="Major" ColumnName="Major" />
                 <ScalarProperty Name="Available_subject" ColumnName="Available_subject" />
@@ -914,17 +903,9 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Award" ColumnName="Award" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="Experience" ColumnName="Experience" />
                 <ScalarProperty Name="Teaher_id" ColumnName="Teaher_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="subject">
-            <EntityTypeMapping TypeName="TutorModel.subject">
-              <MappingFragment StoreEntitySet="subject">
-                <ScalarProperty Name="Grade_id" ColumnName="Grade_id" />
-                <ScalarProperty Name="subject1" ColumnName="subject" />
-                <ScalarProperty Name="sub_id" ColumnName="sub_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
