@@ -76,6 +76,9 @@
     <Compile Include="Student.cs">
       <DependentUpon>Tutor.tt</DependentUpon>
     </Compile>
+    <Compile Include="subject.cs">
+      <DependentUpon>Tutor.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Tutor.tt</DependentUpon>
     </Compile>

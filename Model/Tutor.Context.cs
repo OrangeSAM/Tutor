@@ -37,5 +37,6 @@ namespace Model
         public virtual DbSet<Task> Task { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<TeacherInfo> TeacherInfo { get; set; }
+        public virtual DbSet<subject> subject { get; set; }
     }
 }
