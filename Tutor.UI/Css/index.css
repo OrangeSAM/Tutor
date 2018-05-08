@@ -14,10 +14,47 @@
     width:60%;
     background-color:beige;
     height:330px;
+    position:relative;
+}
+.selectdiv>ul{
+    position:absolute;
+    top:8%;
+    left:8%;
+}
+.selectdiv>ul li{
+    margin-bottom:18px;
+}
+.choose{
+    position:relative;
+}
+.choose>ul{
+    display:none;
+}
+.choose>span:hover{
+    /*如何用hover写当hover别的选择器怎样的*/
+}
+.choose span:first-child{
+    border:1px solid;
+    padding:5px 30px 5px 5px;
+    font-size:1.1em;
+}
+.triangle{
+    position:absolute;
+    left:80px;
+    top:-10px;
+}
+.choose ul{
+    font-size:1.1em;
+    position:absolute;
+    top:27px;
+    left:-34px;
 }
 .logindiv{
     float:left;
     width:30%;
     background-color:lightpink;
+}
+.choosebar span{
+    padding:0px 69px;
 }
 

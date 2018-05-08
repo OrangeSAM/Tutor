@@ -29,6 +29,9 @@
         <AssociationConnector Association="TutorModel.FK_Task_Student" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_Task_Teacher" ManuallyRouted="false" />
         <AssociationConnector Association="TutorModel.FK_TeacherInfo_Teacher" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TutorModel.subject" Width="1.5" PointX="3.75" PointY="18.875" />
+        <AssociationConnector Association="TutorModel.FK_subject_grade" />
+        <AssociationConnector Association="TutorModel.FK_subject_grade1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
