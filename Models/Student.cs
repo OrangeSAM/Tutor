@@ -25,6 +25,7 @@ namespace Model
         public int Student_id { get; set; }
         public string Suser_name { get; set; }
         public string Spwd { get; set; }
+        public string Spwds { get; set; }
         public string Sphone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

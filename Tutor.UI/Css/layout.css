@@ -6,7 +6,7 @@ li{
     list-style:none;
 }
 .content{
-    margin-top:64px;
+    margin-top:69px;
 }
 a{
     text-decoration:none;
@@ -33,13 +33,27 @@ nav img{
 }
 .nav-form{
     padding-top:1.5%;
-    margin-right:8%;
+    margin-right:5%;
     position:relative;
 }
-.nav-form input:nth-child(2){
-    position:absolute;
-
+.nav-form input[type=text]{
+    padding:5px;
 }
+.nav-form input[type=submit]{
+    position:absolute;
+    left:196px;
+    top:27px;
+    background-image:url(../Img/登录注册/search.png);
+    background-color:transparent;
+    border:none;
+    padding:8px;
+    background-repeat:no-repeat;
+    cursor:pointer;
+}
+input{
+    outline:none;
+}
+
 .nav-form div{
     display:inline;
 }

@@ -246,6 +246,7 @@
     <Content Include="Global.asax" />
     <Content Include="Img\登录注册\plane.png" />
     <Content Include="Img\登录注册\rg.jpg" />
+    <Content Include="Img\登录注册\search.png" />
     <Content Include="obj\Debug\Tutor.UI.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Tutor.UI.dll" />
     <Content Include="obj\Debug\Tutor.UI.pdb" />
@@ -253,7 +254,9 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\jquery-3.3.1.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

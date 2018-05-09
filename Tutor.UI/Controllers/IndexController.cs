@@ -11,7 +11,6 @@ namespace Tutor.UI.Controllers
 {
     public class IndexController : Controller
     {
-        TutorEntities db = new TutorEntities();
         TeacherService teacherSer = new TeacherService();
         TeacherInfoService teacherinfoSer = new TeacherInfoService();
         TaskService taskSer = new TaskService();
@@ -19,8 +18,10 @@ namespace Tutor.UI.Controllers
         // GET: Index
         public ActionResult Index()
         {
-            //var teacher=TeacherService.
-            return View();
+            var teacher =teacherSer.GetModels(b => b.Teacher_id!=0);
+            IndexVM indexvm = new ViewModels.IndexVM();
+            indexvm.teacher = teacher;
+            return View(indexvm);
         }
     }
 }

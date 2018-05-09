@@ -93,7 +93,7 @@
                     </form>
                 </div>
             </div>
-            <div>
+            <div class="regbox">
                 <a href="#">学员注册</a>
                 <a href="#">教员注册</a>
             </div>
@@ -124,13 +124,21 @@
 
     </div>
 </div>
+<div>
+    @foreach(var item in Model.teacher)
+    {
+        <div>@item.Teacher_id</div>
+    }
+</div>
 <script>
-    $("#choosegrade>span").hover(function () {
-        $("#choosegrade>ul").fadeIn(700).css("display", "block");
+    //choosegrade
+    $("#choosegrade").hover(function () {
+        $("#choosegrade>ul").css({"display":"block","background-color":"white","z-index":"100","cursor":"pointer"});
     }).mouseleave(function () {
-        $("#choosegrade>ul").fadeOut(700).css("display", "none");
+        $("#choosegrade>ul").css("display", "none");
     });
-    //$("#choosegrade>span").hover(function () {
-    //    $("#choosegrade>ul").show(800);
-    //});
+    //loginbox
+    $("#choosebar:nth-child(1)").hover(function () {
+        $
+    })
 </script>
