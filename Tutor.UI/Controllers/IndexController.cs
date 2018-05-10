@@ -14,14 +14,15 @@ namespace Tutor.UI.Controllers
         TeacherService teacherSer = new TeacherService();
         TeacherInfoService teacherinfoSer = new TeacherInfoService();
         TaskService taskSer = new TaskService();
+        GradeService gradeSer = new GradeService();
 
         // GET: Index
         public ActionResult Index()
         {
-            var teacher =teacherSer.GetModels(b => b.Teacher_id!=0);
-            IndexVM indexvm = new ViewModels.IndexVM();
-            indexvm.teacher = teacher;
-            return View(indexvm);
+            ////var grade =gradeSer.GetModels(b => b.Grade1!=);
+            //IndexVM indexvm = new ViewModels.IndexVM();
+            //indexvm.grade = grade;
+            return View();
         }
     }
 }
