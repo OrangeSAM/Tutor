@@ -53,9 +53,15 @@
 .choosebar{
     font-weight:bold;
     font-size:20px;
-    padding:10px 0;
     display:flex;
     justify-content:space-evenly;
+}
+.choosebar span{
+    padding:10px 37px;
+}
+.choosebar span:nth-child(2){
+    border-bottom:1px solid;
+    border-left:1px solid;
 }
 .inputbox form {
     text-align:center;
@@ -68,6 +74,9 @@
 }
 .inputbox form ul .pad{
     padding:8px;
+}
+.inputbox form ul:last-child{
+
 }
 .regbox{
     display:flex;

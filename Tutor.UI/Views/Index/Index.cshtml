@@ -42,8 +42,8 @@
     <div class="logindiv">
         <div>
             <div class="choosebar">
-                <span>学员登录</span>
                 <span>教员登录</span>
+                <span>学员登录</span>
             </div>
             <div class="inputbox">
                 <div class="teacherbox">
@@ -51,7 +51,7 @@
                         <ul>
                             <li>
                                 <label>用户名</label>
-                                <input class="pad" type="text" placeholder="请输入用户名" />
+                                <input class="pad" type="text" placeholder="请输入教员账号" />
                             </li>
                             <li>
                                 <label>密 &nbsp; 码</label>
@@ -74,13 +74,13 @@
                         <ul>
                             <li>
                                 <label>用户名</label>
-                                <input type="text" placeholder="请输入用户名" />
+                                <input class="pad" type="text" placeholder="请输入学员账号" />
                             </li>
                             <li>
                                 <label>密 &nbsp; 码</label>
-                                <input type="password" placeholder="请输入密码" />
+                                <input class="pad" type="password" placeholder="请输入密码" />
                             </li>
-                            <li>
+                            <li style="display:none;">
                                 <a href="#">忘记密码</a>
                             </li>
                             <li>
@@ -137,8 +137,19 @@
     }).mouseleave(function () {
         $("#choosegrade>ul").css("display", "none");
     });
+
     //loginbox
-    $("#choosebar:nth-child(1)").hover(function () {
-        $
+    $(".choosebar span:nth-child(1)").hover(function () {
+        $(".teacherbox").css("display", "block");
+        $(".studentbox").css("display", "none");
+        $(".choosebar span:nth-child(1)").css("border", "none");
+        $(".choosebar span:nth-child(2)").css({ "border-bottom": "1px solid", "border-left": "1px solid" });
+    });
+    $(".choosebar span:nth-child(2)").hover(function () {
+        $(".studentbox").css("display", "block");
+        $(".teacherbox").css("display", "none");
+        $(".choosebar span:nth-child(2)").css("border", "none");
+        $(".choosebar span:nth-child(1)").css({"border-bottom":"1px solid","border-right":"1px solid"})
     })
+    //这个的逻辑应该是怎样的
 </script>

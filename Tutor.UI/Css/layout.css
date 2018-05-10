@@ -1,16 +1,16 @@
 ﻿body {
     margin:0;
-    background-color:#f6f6f6;
+    background-color:white;
 }
 li{
     list-style:none;
 }
 .content{
-    margin-top:69px;
+    margin-top:100px;
 }
 a{
     text-decoration:none;
-    color:black;
+    color:white;
 }
 nav{
     position:fixed;
@@ -18,7 +18,11 @@ nav{
     width:100%;
     display:flex;
     justify-content:space-between;
-    background-color:white;
+    background-color:black;
+    z-index:100;
+}
+nav a{
+    text-shadow:4px 4px 5px white;
 }
 nav img{
     height:100%;
