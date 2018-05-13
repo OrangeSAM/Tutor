@@ -144,6 +144,7 @@
     <Content Include="Css\index.css" />
     <Content Include="Css\layout.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Img\登录注册\plane.png" />
     <Content Include="Img\登录注册\rg.jpg" />
@@ -160,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\TeacherdetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +182,9 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Views\Shared\_Lauout.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

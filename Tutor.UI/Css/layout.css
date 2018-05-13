@@ -21,6 +21,9 @@ nav{
     background-color:black;
     z-index:100;
 }
+nav div:first-child{
+    margin-left:2%;
+}
 nav a{
     text-shadow:4px 4px 5px white;
 }

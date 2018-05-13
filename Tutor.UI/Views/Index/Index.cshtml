@@ -1,5 +1,6 @@
 ﻿@model Tutor.UI.ViewModels.IndexVM
 @using Model;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Lauout.cshtml";
@@ -16,11 +17,10 @@
                     <span>选择年级</span>
                     <span class="fa fa-sort-desc fa-2x triangle"></span>
                     <ul>
-                        <li>学前教育</li>
-                        @*@foreach (var item in Model.grade)
-                            {
+                        @foreach (var item in Model.grade)
+                        {
                                 <li><span>@item.Grade1</span></li>
-                            }*@
+                        }
                     </ul>
                 </div>
             </li>
@@ -47,10 +47,12 @@
             </div>
             <div class="inputbox">
                 <div class="teacherbox">
-                    <form>
+                    @using (Html.BeginForm("teacherlogin", "Index", FormMethod.Post))
+                    {
                         <ul>
                             <li>
                                 <label>用户名</label>
+                                @*@Html.TextBoxFor(T => T.teacher., new { placeholder = "请输入教员账号" ,@class="pad",type="text"})*@
                                 <input class="pad" type="text" placeholder="请输入教员账号" />
                             </li>
                             <li>
@@ -64,7 +66,7 @@
                                 <input type="submit" value="登录" />
                             </li>
                         </ul>
-                    </form>
+                    }
                 </div>
                 <div class="studentbox" style="display:none;">
                     <form>
@@ -97,7 +99,7 @@
 <div>
     <div>
         <div>
-            <div title=""><h2>新注册的家教</h2></div>
+            <div title=""><h2>教员推荐</h2></div>
             <div class="nextpage">
                 <span>
                     <span>1</span>/<span>8</span>
@@ -119,10 +121,23 @@
     </div>
 </div>
 <div>
-    @*@foreach(var item in Model.teacher)
+    @foreach(var item in Model.task)
     {
-        <div>@item.Teacher_id</div>
-    }*@
+        <div>
+            <div class="Ttop">
+                <span>王先生急需家教</span>
+                <span>辅导高中英语，高中数学</span>
+                <div>
+                    <strong>面议</strong>
+                </div>
+            </div>
+            <div class="Tbottom">
+                <span>奥体中心地铁站</span>
+                <span>等待您来应聘</span>
+                <a href="#">我要应聘</a>
+            </div>
+        </div>
+    }
 </div>
 <script>
     //choosegrade
@@ -137,13 +152,13 @@
         $(".teacherbox").css("display", "block");
         $(".studentbox").css("display", "none");
         $(".choosebar span:nth-child(1)").css("border", "none");
-        $(".choosebar span:nth-child(2)").css({ "border-bottom": "1px solid", "border-left": "1px solid" });
+        $(".choosebar span:nth-child(2)").css({ "border-bottom": "1px solid lightgray", "border-left": "1px solid lightgray" });
     });
     $(".choosebar span:nth-child(2)").hover(function () {
         $(".studentbox").css("display", "block");
         $(".teacherbox").css("display", "none");
         $(".choosebar span:nth-child(2)").css("border", "none");
-        $(".choosebar span:nth-child(1)").css({"border-bottom":"1px solid","border-right":"1px solid"})
+        $(".choosebar span:nth-child(1)").css({"border-bottom":"1px solid lightgray","border-right":"1px solid lightgray"})
     })
     //这个的逻辑应该是怎样的
 </script>

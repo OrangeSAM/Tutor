@@ -15,6 +15,8 @@
     background-color:beige;
     height:330px;
     position:relative;
+    margin-right:2%;
+    border:1px solid lightgray;
 }
 .selectdiv>ul{
     position:absolute;
@@ -35,7 +37,7 @@
     left:-1px;
     padding:0 19px;
 }
-.choose span:first-child{
+.choose>span:first-child{
     border:1px solid;
     padding:5px 30px 5px 5px;
     font-size:1.1em;
@@ -48,7 +50,8 @@
 .logindiv{
     float:left;
     width:23%;
-    background-color:lightpink;
+    background-color:beige;
+    border:1px solid lightgray;
 }
 .choosebar{
     font-weight:bold;
@@ -60,8 +63,8 @@
     padding:10px 37px;
 }
 .choosebar span:nth-child(2){
-    border-bottom:1px solid;
-    border-left:1px solid;
+    border-bottom:1px solid lightgray;
+    border-left:1px solid lightgray;
 }
 .inputbox form {
     text-align:center;
@@ -111,6 +114,6 @@
 }
 .regbox a{
     padding:9px 17px;
-    background-color:lightgreen;
+    background-color:#db5733;
     border-radius:5px;
 }
