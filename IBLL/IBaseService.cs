@@ -14,6 +14,7 @@ namespace IBLL
         bool Update(T t);
         IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda);
         IQueryable<T> GetModelsBypage<Type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, Type>>
-            OrderByLambda, Expression<Func<T, bool>> whereLambda); 
+            OrderByLambda, Expression<Func<T, bool>> whereLambda);
+        IQueryable<T> GetAll();
     }
 }

@@ -40,5 +40,9 @@ namespace BLL
         {
             return Dal.GetModelsByPage(pageSize, pageIndex, isAsc, OrderByLambda, whereLambda);
         }
+        public IQueryable<T> GetAll()
+        {
+            return Dal.GetAll();
+        }
     }
 }

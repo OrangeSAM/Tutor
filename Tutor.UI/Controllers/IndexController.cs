@@ -20,7 +20,7 @@ namespace Tutor.UI.Controllers
         public ActionResult Index()
         {
             var grade = gradeSer.GetModels(b => b.Grade_id !=0);
-            //var teache=teacherSer
+            var task = taskSer.GetAll().Take(3);
             IndexVM indexvm = new ViewModels.IndexVM();
             indexvm.grade = grade;
             return View(indexvm);

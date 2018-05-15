@@ -29,11 +29,10 @@
                     <span>选择学科</span>
                     <span class="fa fa-sort-desc fa-2x triangle"></span>
                     <ul>
-                        <li>小学语文</li>
                         @*@foreach(var item in Model.subject)
-                            {
-                                <li><span>@item.subject</span></li>
-                            }*@
+                        {
+                                <li><span>@item.subject1</span></li>
+                        }*@
                     </ul>
                 </div>
             </li>
@@ -52,7 +51,7 @@
                         <ul>
                             <li>
                                 <label>用户名</label>
-                                @*@Html.TextBoxFor(T => T.teacher., new { placeholder = "请输入教员账号" ,@class="pad",type="text"})*@
+                                @*@Html.TextBoxFor(Teacher =>Teacher.Tuser_name, new { placeholder = "请输入教员账号" ,@class="pad",type="text"})*@
                                 <input class="pad" type="text" placeholder="请输入教员账号" />
                             </li>
                             <li>
@@ -96,7 +95,7 @@
         </div>
     </div>
 </div>
-<div>
+<div style="width:81%;margin:0 auto;background-color:beige;">
     <div>
         <div>
             <div title=""><h2>教员推荐</h2></div>
@@ -120,20 +119,21 @@
 
     </div>
 </div>
-<div>
+<div class="task">
     @foreach(var item in Model.task)
     {
-        <div>
+        <div class="singlecase">
             <div class="Ttop">
-                <span>王先生急需家教</span>
-                <span>辅导高中英语，高中数学</span>
+                <div>@item.Student.Suser_name +"急需家教"</div>
+                <div>"辅导" + @item.Subject</div>
                 <div>
                     <strong>面议</strong>
                 </div>
             </div>
             <div class="Tbottom">
-                <span>奥体中心地铁站</span>
-                <span>等待您来应聘</span>
+                <span class="fa fa-location-arrow"></span>
+                <span>@item.Location</span>
+                <div>等待您来应聘</div>
                 <a href="#">我要应聘</a>
             </div>
         </div>
@@ -160,5 +160,4 @@
         $(".choosebar span:nth-child(2)").css("border", "none");
         $(".choosebar span:nth-child(1)").css({"border-bottom":"1px solid lightgray","border-right":"1px solid lightgray"})
     })
-    //这个的逻辑应该是怎样的
 </script>

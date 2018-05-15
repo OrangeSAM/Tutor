@@ -117,3 +117,36 @@
     background-color:#db5733;
     border-radius:5px;
 }
+.task{
+    width:80%;
+    margin:0 auto;
+    display:flex;
+    justify-content:center;
+}
+.task .singlecase{
+    border:1px solid lightgray;
+    text-align:center;
+    width:20%;
+}
+.task .singlecase .Ttop{
+    background-color:lightgray;
+    position:relative;
+    padding-bottom:20px;
+}
+.task .singlecase .Ttop div:nth-child(3){
+    position:absolute;
+    left:40%;
+    background-color:orange;
+    border-radius:50%;
+    height:32px;
+    padding:10px;
+}
+.task .singlecase .Ttop div:nth-child(3) strong{
+    vertical-align:sub;
+}
+.task .singlecase .Tbottom{
+    padding-top:45px;
+}
+.task .singlecase .Tbottom a{
+    background-color:#db5733;
+}

@@ -30,6 +30,7 @@
             <PropertyRef Name="Course_id" />
           </Key>
           <Property Name="Course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cname" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="price" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="intro" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Ccontent" Type="varchar" MaxLength="50" Nullable="false" />
@@ -100,6 +101,7 @@
             <PropertyRef Name="Task_id" />
           </Key>
           <Property Name="Task_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Task_name" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Student_id" Type="int" Nullable="false" />
           <Property Name="Grade" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
@@ -403,6 +405,7 @@
           <Property Name="Grade_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="grade" Relationship="Self.FK_courses_courses" FromRole="courses" ToRole="grade" />
           <NavigationProperty Name="indent" Relationship="Self.FK_indent_indent" FromRole="courses" ToRole="indent" />
+          <Property Name="Cname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Exhibition">
           <Key>
@@ -494,6 +497,7 @@
           <NavigationProperty Name="appointment" Relationship="Self.FK_appointment_appointment" FromRole="Task" ToRole="appointment" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Task_Student" FromRole="Task" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Task_Teacher" FromRole="Task" ToRole="Teacher" />
+          <Property Name="Task_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -784,6 +788,7 @@
           <EntitySetMapping Name="courses">
             <EntityTypeMapping TypeName="TutorModel.courses">
               <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="Cname" ColumnName="Cname" />
                 <ScalarProperty Name="Course_id" ColumnName="Course_id" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="intro" ColumnName="intro" />
@@ -862,6 +867,7 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="TutorModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Task_name" ColumnName="Task_name" />
                 <ScalarProperty Name="Task_id" ColumnName="Task_id" />
                 <ScalarProperty Name="Student_id" ColumnName="Student_id" />
                 <ScalarProperty Name="Grade" ColumnName="Grade" />

@@ -42,7 +42,10 @@ namespace DAL
                 return dbcontext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
-
+        public IQueryable<T> GetAll()
+        {
+            return dbcontext.Set<T>();
+        }
         public bool SaveChanges()
         {
             return dbcontext.SaveChanges() > 0;

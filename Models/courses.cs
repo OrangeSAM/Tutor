@@ -37,6 +37,8 @@ public partial class courses
 
     public int Grade_id { get; set; }
 
+    public string Cname { get; set; }
+
 
 
     public virtual grade grade { get; set; }

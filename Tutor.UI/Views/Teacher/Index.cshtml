@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Lauout.cshtml";
+}
+
+<div>
+    <div>
+        <img src=""/>
+        <h1>刘大爷</h1>
+        <ul>
+            <li>账户资料</li>
+            <li>我的课程</li>
+            <li>我的家教</li>
+            <li>我的预约</li>
+        </ul>
+    </div>
+    <div>
+        <div class="account">
+            <div>账户资料</div>
+            <div>
+                <img src="#" />
+                <span>修改头像</span>
+                <div>上传头像</div>
+                <ul>
+                    <li>
+                        <strong>字段名</strong>
+                        <div>字段内容</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="courses">
+            @*在这里用foreach遍历*@
+            <div>
+                <div>课程名</div>
+                <div>intro 图片还是文字介绍？</div>
+                <div>购买时间</div>
+            </div>
+        </div>
+        <div class="task">
+            <div>
+                <div>家教单名</div>
+                <div>科目</div>
+            </div>
+        </div>
+    </div>
+</div>

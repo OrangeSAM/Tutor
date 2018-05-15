@@ -9,6 +9,5 @@ namespace IDAL
 {
     public partial interface ITaskDAL:IBaseDAL<Model.Task>
     {
-
     }
 }

@@ -53,6 +53,8 @@ public partial class Task
 
     public int Teacher_id { get; set; }
 
+    public string Task_name { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
