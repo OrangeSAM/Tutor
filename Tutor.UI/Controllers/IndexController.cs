@@ -19,10 +19,11 @@ namespace Tutor.UI.Controllers
         // GET: Index
         public ActionResult Index()
         {
-            var grade = gradeSer.GetModels(b => b.Grade_id !=0);
-            var task = taskSer.GetAll().Take(3);
+            var grades = gradeSer.GetModels(b => b.Grade_id !=0);
+            var tasks = taskSer.GetAll().Take(5);
             IndexVM indexvm = new ViewModels.IndexVM();
-            indexvm.grade = grade;
+            indexvm.grade = grades;
+            indexvm.task = tasks;
             return View(indexvm);
         }
         //[HttpPost]

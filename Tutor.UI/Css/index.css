@@ -17,6 +17,7 @@
     position:relative;
     margin-right:2%;
     border:1px solid lightgray;
+    background-image:url(../Img/index.jpg);
 }
 .selectdiv>ul{
     position:absolute;
@@ -110,7 +111,7 @@
 .regbox{
     display:flex;
     justify-content:space-around;
-    margin-top:30px;
+    margin-top:40px;
 }
 .regbox a{
     padding:9px 17px;
@@ -118,10 +119,10 @@
     border-radius:5px;
 }
 .task{
-    width:80%;
+    width:81%;
     margin:0 auto;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
 }
 .task .singlecase{
     border:1px solid lightgray;
