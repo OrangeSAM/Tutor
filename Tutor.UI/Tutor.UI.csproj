@@ -146,6 +146,8 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Img\Icon\S.png" />
+    <Content Include="Img\Icon\T.png" />
     <Content Include="Img\index.jpg" />
     <Content Include="Img\登录注册\plane.png" />
     <Content Include="Img\登录注册\rg.jpg" />

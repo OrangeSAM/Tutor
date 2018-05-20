@@ -14,6 +14,7 @@ namespace Tutor.UI.Controllers
         TeacherService teacherSer = new TeacherService();
         TeacherInfoService teacherinfoSer = new TeacherInfoService();
         TaskService taskSer = new TaskService();
+        SubjectService subjectSer = new SubjectService();
         GradeService gradeSer = new GradeService();
 
         // GET: Index
@@ -26,18 +27,27 @@ namespace Tutor.UI.Controllers
             indexvm.task = tasks;
             return View(indexvm);
         }
-        //[HttpPost]
-        //public ActionResult teacherlogin()
-        //{
-        //    try
-        //    {
-        //        teacherSer.Add()
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
+        [HttpPost]
+        public ActionResult teacherlogin(Teacher T)
+        {
+            int u = teacherSer.login(T);
+            if (u>0)
+            {
+                Session["Tuser_name"] = T.Tuser_name;
+                Teacher teacher = teacherSer.GetModels(b => b.Tuser_name == Session["Tuser_name"].ToString()).FirstOrDefault();
+                Session["Tuser_id"] = teacher.Teacher_id;
+                return Content("<script>alert('登录成功！')");
+            }
+            else
+            {
+                return Content("<script>alert('用户名或密码错误！')");
+            }
+        }
+        public ActionResult getsubject(int id)
+        {
+            
+            var sub= subjectSer.getsubject(id);
+            return Json(sub,JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -49,6 +49,7 @@
     <Compile Include="IIndentDAL.cs" />
     <Compile Include="ISampleDAL.cs" />
     <Compile Include="IStudentDAL.cs" />
+    <Compile Include="ISubjectDAL.cs" />
     <Compile Include="ITaskDAL.cs" />
     <Compile Include="ITeacherDAL.cs" />
     <Compile Include="ITeacherInfoDAL.cs" />

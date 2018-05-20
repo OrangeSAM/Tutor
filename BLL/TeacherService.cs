@@ -12,6 +12,13 @@ namespace BLL
     public partial class TeacherService:BaseService<Teacher>,ITeacherService
     {
         private ITeacherDAL teacherDAL = DALContainer.Container.Resolve<ITeacherDAL>();
+
+        public int login(Teacher T)
+        {
+            var log = teacherDAL.login(T);
+            return log;
+        }
+
         public override void SetDal()
         {
             Dal = teacherDAL;

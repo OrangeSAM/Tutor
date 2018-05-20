@@ -49,6 +49,7 @@
     <Compile Include="IIndentService.cs" />
     <Compile Include="ISampleService.cs" />
     <Compile Include="IStudentService.cs" />
+    <Compile Include="ISubjectService.cs" />
     <Compile Include="ITaskService.cs" />
     <Compile Include="ITeacherInfoService.cs" />
     <Compile Include="ITeacherService.cs" />

@@ -55,6 +55,7 @@ namespace BLLContainer
             builder.RegisterType<TaskService>().As<ITaskService>().InstancePerLifetimeScope();
             builder.RegisterType<TeacherService>().As<ITeacherService>().InstancePerLifetimeScope();
             builder.RegisterType<TeacherInfoService>().As<ITeacherInfoService>().InstancePerLifetimeScope();
+            builder.RegisterType<SubjectService>().As<ISubjectService>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

@@ -39,6 +39,8 @@ public partial class Student
 
     public string Sphone { get; set; }
 
+    public string Sphoto { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

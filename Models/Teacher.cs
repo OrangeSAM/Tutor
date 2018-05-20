@@ -45,6 +45,8 @@ public partial class Teacher
 
     public string Tmail { get; set; }
 
+    public string Tphoto { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

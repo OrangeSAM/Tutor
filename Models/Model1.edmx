@@ -77,6 +77,7 @@
           <Property Name="Suser_name" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Spwd" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Sphone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sphoto" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="subject">
           <Key>
@@ -101,7 +102,7 @@
             <PropertyRef Name="Task_id" />
           </Key>
           <Property Name="Task_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Task_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Task_name" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Student_id" Type="int" Nullable="false" />
           <Property Name="Grade" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
@@ -120,9 +121,10 @@
             <PropertyRef Name="Teacher_id" />
           </Key>
           <Property Name="Teacher_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tuser_name" Type="varchar" MaxLength="20" />
-          <Property Name="Tpwd" Type="varchar" MaxLength="20" />
+          <Property Name="Tuser_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tpwd" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Tmail" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tphoto" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="TeacherInfo">
           <Key>
@@ -457,6 +459,7 @@
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Comment" FromRole="Student" ToRole="Comment" />
           <NavigationProperty Name="indent" Relationship="Self.FK_indent_Student" FromRole="Student" ToRole="indent" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_Student" FromRole="Student" ToRole="Task" />
+          <Property Name="Sphoto" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="subject">
           <Key>
@@ -497,15 +500,15 @@
           <NavigationProperty Name="appointment" Relationship="Self.FK_appointment_appointment" FromRole="Task" ToRole="appointment" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Task_Student" FromRole="Task" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Task_Teacher" FromRole="Task" ToRole="Teacher" />
-          <Property Name="Task_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Task_name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="Teacher_id" />
           </Key>
           <Property Name="Teacher_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tuser_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Tpwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tuser_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tpwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="appointment" Relationship="Self.FK_appointment_Teacher" FromRole="Teacher" ToRole="appointment" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Teacher" FromRole="Teacher" ToRole="Comment" />
@@ -513,6 +516,7 @@
           <NavigationProperty Name="Sample" Relationship="Self.FK_Sample_Teacher" FromRole="Teacher" ToRole="Sample" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_Teacher" FromRole="Teacher" ToRole="Task" />
           <NavigationProperty Name="TeacherInfo" Relationship="Self.FK_TeacherInfo_Teacher" FromRole="Teacher" ToRole="TeacherInfo" />
+          <Property Name="Tphoto" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TeacherInfo">
           <Key>
@@ -837,6 +841,7 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="TutorModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Sphoto" ColumnName="Sphoto" />
                 <ScalarProperty Name="Student_id" ColumnName="Student_id" />
                 <ScalarProperty Name="Suser_name" ColumnName="Suser_name" />
                 <ScalarProperty Name="Spwd" ColumnName="Spwd" />
@@ -887,6 +892,7 @@
           <EntitySetMapping Name="Teacher">
             <EntityTypeMapping TypeName="TutorModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="Tphoto" ColumnName="Tphoto" />
                 <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
                 <ScalarProperty Name="Tuser_name" ColumnName="Tuser_name" />
                 <ScalarProperty Name="Tpwd" ColumnName="Tpwd" />

@@ -7,8 +7,8 @@ using Model;
 
 namespace IDAL
 {
-    public partial interface IGradeDAL:IBaseDAL<grade>
+    public partial  interface ISubjectDAL:IBaseDAL<subject>
     {
-
+        IEnumerable<subject> getsubject(int grade_id);
     }
 }

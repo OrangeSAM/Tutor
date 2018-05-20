@@ -118,6 +118,13 @@
     background-color:#db5733;
     border-radius:5px;
 }
+.after{
+    display:none;
+}
+.after ul li span:nth-child(2){
+    float:right;
+    margin-right:14px;
+}
 .task{
     width:81%;
     margin:0 auto;
@@ -127,7 +134,7 @@
 .task .singlecase{
     border:1px solid lightgray;
     text-align:center;
-    width:20%;
+    width:19%;
 }
 .task .singlecase .Ttop{
     background-color:lightgray;
@@ -136,7 +143,7 @@
 }
 .task .singlecase .Ttop div:nth-child(3){
     position:absolute;
-    left:40%;
+    left:39%;
     background-color:orange;
     border-radius:50%;
     height:32px;

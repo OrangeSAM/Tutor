@@ -16,7 +16,7 @@ namespace Tutor.UI.ViewModels
         {
             get; set;
         }
-        public IEnumerable<Teacher> teacher
+        public Teacher teacher
         {
             get; set;
         }

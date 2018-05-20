@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 
-namespace IDAL
+namespace IBLL
 {
-    public partial interface IGradeDAL:IBaseDAL<grade>
+    public partial interface ISubjectService
     {
-
+        IEnumerable<subject> getsubject(int grade_id);
     }
 }

@@ -44,6 +44,7 @@ namespace DALContainer
             builder.RegisterType<TaskDAL>().As<ITaskDAL>().InstancePerLifetimeScope();
             builder.RegisterType<TeacherDAL>().As<ITeacherDAL>().InstancePerLifetimeScope();
             builder.RegisterType<TeacherInfoDAL>().As<ITeacherInfoDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<SubjectDAL>().As<ISubjectDAL>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

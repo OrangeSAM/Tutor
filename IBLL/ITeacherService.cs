@@ -9,5 +9,6 @@ namespace IBLL
 {
     public partial interface ITeacherService:IBaseService<Teacher>
     {
+        int login(Teacher T);
     }
 }

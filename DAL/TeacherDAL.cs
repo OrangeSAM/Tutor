@@ -10,5 +10,15 @@ namespace DAL
 {
     public partial class TeacherDAL:BaseDAL<Teacher>,ITeacherDAL
     {
+        TutorEntities db = new TutorEntities();
+        public int login(Teacher T)
+        {
+            
+            var t = from u in db.Teacher
+                    where u.Tuser_name == T.Tuser_name && u.Tpwd == T.Tpwd
+                    select u;
+            int result = t.Count();
+            return result;
+        }
     }
 }
