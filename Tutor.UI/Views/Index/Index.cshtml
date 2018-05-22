@@ -1,9 +1,10 @@
 ﻿@model Tutor.UI.ViewModels.IndexVM
-@using Model;
+@*@using Model;*@
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Lauout.cshtml";
+    ViewBag.loginviewmodel = new Model.Teacher();
 }
 <link href="~/Css/index.css" rel="stylesheet"/>
 <link href="~/Css/font-awesome.min.css" rel="stylesheet" />
@@ -29,100 +30,21 @@
                     <span>选择学科</span>
                     <span class="fa fa-sort-desc fa-2x triangle"></span>
                     <ul>
-                        @*@foreach(var item in Model.subject)
-                        {
-                                <li><span>@item.subject1</span></li>
-                        }*@
                     </ul>
                 </div>
             </li>
         </ul>
     </div>
     <div class="logindiv">
-        <div class="before">
-            <div class="choosebar">
-                <span>教员登录</span>
-                <span>学员登录</span>
-            </div>
-            <div class="inputbox">
-                <div class="teacherbox">
-                    @using (Html.BeginForm("teacherlogin", "Index", FormMethod.Post))
-                    {
-                        <ul>
-                            <li>
-                                <label>用户名</label>
-                                @Html.TextBoxFor(T =>T.teacher.Tuser_name, new { placeholder = "请输入教员账号" ,@class="pad",type="text"})
-                                @*<input class="pad" type="text" placeholder="请输入教员账号" />*@
-                            </li>
-                            <li>
-                                <label>密 &nbsp; 码</label>
-                                @Html.TextBoxFor(T => T.teacher.Tpwd, new { placeholder = "请输入密码", @class = "pad", type = "password"})
-                                @*<input class="pad" type="password" placeholder="请输入密码" />*@
-                            </li>
-                            <li>
-                                <input type="checkbox" />记住我的登录状态
-                            </li>
-                            <li>
-                                <input type="submit" value="登录" />
-                            </li>
-                        </ul>
-                    }
-                </div>
-                <div class="studentbox" style="display:none;">
-                    <form>
-                        <ul>
-                            <li>
-                                <label>用户名</label>
-                                <input class="pad" type="text" placeholder="请输入学员账号" />
-                            </li>
-                            <li>
-                                <label>密 &nbsp; 码</label>
-                                <input class="pad" type="password" placeholder="请输入密码" />
-                            </li>
-                            <li>
-                                <input type="checkbox" />记住我的登录状态
-                            </li>
-                            <li>
-                                <input type="submit" value="登录" />
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
-            <div class="regbox">
-                <a href="#">学员注册</a>
-                <a href="#">教员注册</a>
-            </div>
-        </div>
-        <div class="after">
-            <div>
-                <span>公告</span>
-            </div>
-            <div>
-                <ul>
-                    <li>
-                        <span>常见使用问题</span>
-                        <span>5-18</span>
-                    </li>
-                    <li>
-                        <span>家教价格参考</span>
-                        <span>4-28</span>
-                    </li>
-                    <li>
-                        <span>搜狐网报道提优特</span>
-                        <span>5-15</span>
-                    </li>
-                    <li>
-                        <span>新浪网报道提优特</span>
-                        <span>2-28</span>
-                    </li>
-                    <li>
-                        <span>凤凰网报道提优特</span>
-                        <span>4-21</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        @if (Session["Tuser_id"] == null)
+        {
+            @Html.Partial("_login", Model.teacher)
+        }
+        else
+        {
+            @Html.Partial("notice")
+        }        
+        
     </div>
 </div>
 <div style="width:81%;margin:0 auto;background-color:beige;">
@@ -177,6 +99,12 @@
         $("#choosegrade>ul").css("display", "none");
     });
 
+    //choosesubject
+    $("#choosesub").hover(function () {
+        $("#choosesub>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer"});
+    }).mouseleave(function () {
+        $("#choosesub>ul").css("display", "none");
+    })
     //loginbox
     $(".choosebar span:nth-child(1)").hover(function () {
         $(".teacherbox").css("display", "block");
@@ -192,11 +120,18 @@
     })
 
     //获取年级和科目的数据
-    $("#choosegrade ul li span").click(function(){
-        var grade_id = $("#choosegrade ul li span").attr("data-id");
-        $.get("/Index/getsubject/" + grade_id, function (data, status) {
-            alert(data + status);
+    $("#choosegrade ul li span").click(function (event) {
+        console.log(event);
+        var grade_id = event.currentTarget.dataset.id;
+            //$("#choosegrade ul li span").attr("data-id");
+        $.get("/Index/getsubject/" + grade_id, function (data) {
+            console.log(data);
+            //var name =data[0].subject1;
+            for (var x in data) {
+                console.log(data[x].subject1);
+                var sub = $("<li></li>").text(data[x].subject1);
+                $("#choosesub ul").append(sub);
+            }
         })
     })
-
 </script>
