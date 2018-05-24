@@ -33,6 +33,9 @@
                     </ul>
                 </div>
             </li>
+            <li>
+                <input type="submit" value="搜索家教">
+            </li>
         </ul>
     </div>
     <div class="logindiv">
@@ -95,6 +98,9 @@
     //choosegrade
     $("#choosegrade").hover(function () {
         $("#choosegrade>ul").css({"display":"block","background-color":"white","z-index":"100","cursor":"pointer"});
+    }).click(function (event) {
+        var grade = event.target.innerText;
+        $("#choosegrade>span:first-child").text(grade);
     }).mouseleave(function () {
         $("#choosegrade>ul").css("display", "none");
     });
@@ -102,6 +108,9 @@
     //choosesubject
     $("#choosesub").hover(function () {
         $("#choosesub>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer"});
+    }).click(function (event) {
+        var subject = event.target.innerText;
+        $("#choosesub>span:first-child").text(subject);
     }).mouseleave(function () {
         $("#choosesub>ul").css("display", "none");
     })
@@ -121,15 +130,13 @@
 
     //获取年级和科目的数据
     $("#choosegrade ul li span").click(function (event) {
-        console.log(event);
         var grade_id = event.currentTarget.dataset.id;
-            //$("#choosegrade ul li span").attr("data-id");
         $.get("/Index/getsubject/" + grade_id, function (data) {
-            console.log(data);
-            //var name =data[0].subject1;
+            $("#choosesub ul").empty();
             for (var x in data) {
-                console.log(data[x].subject1);
-                var sub = $("<li></li>").text(data[x].subject1);
+                var sub  = $("<li></li>").text(data[x].subject1);
+                var child=$('#choosesub ul').children().length;
+                console.log(child);
                 $("#choosesub ul").append(sub);
             }
         })

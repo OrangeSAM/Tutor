@@ -1,33 +1,78 @@
-﻿
+﻿@model Tutor.UI.ViewModels.TuserVM
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
-
-<div>
-    <div>
-        <img src=""/>
-        <h1>刘大爷</h1>
-        <ul>
+<link href="~/Css/Teauser.css" rel="stylesheet"/>
+<div class="wrap">
+    <div class="leftnav">
+        <div>
+            <img src="~/Img/登录注册/rg.jpg" />
+            <h2>刘大爷</h2>
+        </div>
+        <ul class="ulmp">
             <li>账户资料</li>
             <li>我的课程</li>
             <li>我的家教</li>
             <li>我的预约</li>
         </ul>
     </div>
-    <div>
+    <div class="rightdetail">
         <div class="account">
             <div>账户资料</div>
             <div>
-                <img src="#" />
-                <span>修改头像</span>
-                <div>上传头像</div>
-                <ul>
-                    <li>
-                        <strong>字段名</strong>
-                        <div>字段内容</div>
-                    </li>
-                </ul>
+                <div class="headpor">
+                    <img src="~/Img/登录注册/rg.jpg" />
+                    <ul class="ulmp">
+                        <li>修改头像</li>
+                        <li>上传头像</li>
+                    </ul>
+                </div>
+                <div class="detail">
+                    <ul class="ulmp">
+                        <li>
+                            <strong>邮&nbsp; &nbsp; &nbsp; &nbsp;箱</strong>
+                            <p></p>
+                        </li>
+                        <li>
+                            <strong>电&nbsp; &nbsp; &nbsp; &nbsp;话</strong>
+                        </li>
+                        <li>
+                            <strong>学&nbsp; &nbsp; &nbsp; &nbsp;校</strong>
+                        </li>
+                        <li>
+                            <strong>专&nbsp; &nbsp; &nbsp; &nbsp;业</strong>
+                        </li>
+                        <li>
+                            <strong>科&nbsp; &nbsp; &nbsp; &nbsp;目</strong>
+                        </li>
+                        <li>
+                            <strong>家教经验</strong>
+                        </li>
+                        <li>
+                            <strong>薪水要求</strong>
+                        </li>
+                    </ul>
+                    <ul class="ulmp">
+                        <li>
+                            <strong>授课区域</strong>
+                        </li>
+                        <li>
+                            <strong>可行时间</strong>
+                        </li>
+                        <li>
+                            <strong>获奖情况</strong>
+                        </li>
+                        <li>
+                            <strong>自我描述</strong>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="courses">

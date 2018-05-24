@@ -143,6 +143,7 @@
     <Content Include="Css\font-awesome.min.css" />
     <Content Include="Css\index.css" />
     <Content Include="Css\layout.css" />
+    <Content Include="Css\Teauser.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -171,6 +172,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\IndexVM.cs" />
+    <Compile Include="ViewModels\TuserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

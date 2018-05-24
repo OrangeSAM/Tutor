@@ -21,11 +21,18 @@
 }
 .selectdiv>ul{
     position:absolute;
-    top:8%;
+    top:13%;
     left:8%;
 }
 .selectdiv>ul>li{
     margin-bottom:18px;
+}
+.selectdiv>ul li:nth-child(3) input{
+    border:none;
+    width:100%;
+    padding:8px;
+    background-color:#db5833;
+    color:white;
 }
 .choose{
     position:relative;
@@ -64,7 +71,7 @@
     justify-content:space-evenly;
 }
 .choosebar span{
-    padding:10px 37px;
+    padding:10px 36px;
 }
 .choosebar span:nth-child(2){
     border-bottom:1px solid lightgray;
@@ -121,9 +128,6 @@
     background-color:#db5733;
     border-radius:5px;
 }
-.after{
-    display:none;
-}
 .after ul li span:nth-child(2){
     float:right;
     margin-right:14px;
@@ -142,11 +146,13 @@
 .task .singlecase .Ttop{
     background-color:lightgray;
     position:relative;
-    padding-bottom:20px;
+    padding-bottom:35px;   
+    padding-top:10px;
 }
 .task .singlecase .Ttop div:nth-child(3){
     position:absolute;
     left:39%;
+    top:68%;
     background-color:orange;
     border-radius:50%;
     height:32px;
@@ -157,7 +163,11 @@
 }
 .task .singlecase .Tbottom{
     padding-top:45px;
+    padding-bottom:10px;
 }
 .task .singlecase .Tbottom a{
     background-color:#db5733;
+}
+.task .singlecase .Tbottom div{
+    margin:6px 0;
 }

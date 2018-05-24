@@ -15,12 +15,12 @@
                     <li>
                         <label>用户名</label>
                         @*@Html.TextBoxFor(t => teachervm.Tuser_name, new { placeholder = "请输入教员账号", @class = "pad", type = "text" })*@
-                        <input class="pad" id="teachervm_Tuser_name" name="Tuser_name" type="text" placeholder="请输入教员账号" />
+                        <input class="pad" id="teachervm_Tuser_name" name="Tuser_name" type="text" placeholder="请输入教员账号"/>
                     </li>
                     <li>
                         <label>密 &nbsp; 码</label>
                         @*@Html.TextBoxFor(t => teachervm.Tpwd, new { placeholder = "请输入密码", @class = "pad", type = "password" })*@
-                        <input class="pad" id="teachervm_Tpwd" name="Tpwd" type="password" placeholder="请输入密码" />
+                        <input class="pad" id="teachervm_Tpwd" name="Tpwd" type="password" placeholder="请输入密码" autocomplete="on"/>
                     </li>
                     <li>
                         <input type="checkbox" />记住我的登录状态
@@ -40,7 +40,7 @@
                     </li>
                     <li>
                         <label>密 &nbsp; 码</label>
-                        <input class="pad" type="password" placeholder="请输入密码" />
+                        <input class="pad" type="password" placeholder="请输入密码" autocomplete="on" />
                     </li>
                     <li>
                         <input type="checkbox" />记住我的登录状态
