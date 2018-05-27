@@ -10,5 +10,6 @@ namespace IDAL
     public partial interface ITeacherDAL:IBaseDAL<Teacher>
     {
         int login(Teacher T);
+        Teacher getteacherbyid(int teacher_id);
     }
 }

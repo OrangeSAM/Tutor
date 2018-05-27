@@ -20,5 +20,13 @@ namespace DAL
             int result = t.Count();
             return result;
         }
+
+        public Teacher getteacherbyid(int teacher_id)
+        {
+            var data = (from p in db.Teacher
+                        where p.Teacher_id == teacher_id
+                        select p).FirstOrDefault();
+            return data;
+        }
     }
 }

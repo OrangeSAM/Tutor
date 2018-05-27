@@ -143,13 +143,14 @@
     <Content Include="Css\font-awesome.min.css" />
     <Content Include="Css\index.css" />
     <Content Include="Css\layout.css" />
+    <Content Include="Css\searchresult.css" />
     <Content Include="Css\Teauser.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Img\Icon\S.png" />
     <Content Include="Img\Icon\T.png" />
-    <Content Include="Img\index.jpg" />
+    <Content Include="Img\in.jpg" />
     <Content Include="Img\登录注册\plane.png" />
     <Content Include="Img\登录注册\rg.jpg" />
     <Content Include="Img\登录注册\search.png" />
@@ -194,6 +195,7 @@
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Index\_login.cshtml" />
     <Content Include="Views\Index\notice.cshtml" />
+    <Content Include="Views\Index\searchresult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

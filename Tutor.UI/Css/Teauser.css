@@ -1,5 +1,9 @@
 ﻿body{
     background-color:#ededed;
+
+}
+.content{
+    min-height:500px;
 }
 .wrap{
     display:flex;
@@ -28,13 +32,19 @@
     padding:10px 0;
     border-top:1px solid #ebebeb;
 }
+.leftnav ul li:last-child{
+    border-radius:0 0 10px 10px;
+}
+.leftnav ul li:hover{
+    background-color:lightblue;
+}
 .rightdetail{
     margin-left:1%;
     background-color:white;
     border-radius:10px;
     width:50%;
 }
-.rightdetail .account>div:first-child{
+.topbar{
     padding:10px;
     background:linear-gradient(#fff,#f5f5f5);
     border-radius:10px 10px 0 0;
@@ -59,5 +69,6 @@
 .rightdetail .account .detail ul:nth-child(2){
     margin-left:30%;
 }
-
+.detailth td{
+    padding:10px 20px;
 }

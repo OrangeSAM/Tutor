@@ -1,0 +1,31 @@
+﻿.searchbar{
+    width:78%;
+    margin:0 auto;
+}
+.area>div{
+    display:inline-block;
+    margin-bottom:-4px;
+}
+.area>div ul li{
+    float:left;
+}
+.result{
+    width:78%;
+    margin:0 auto;
+}
+.singleresult{
+    display:flex;
+}
+.singleresult>div:first-child{
+    width:12%;
+    display:flex;
+    align-items:center;
+}
+.singleresult>div:first-child img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+}
+.singleresult>div:nth-child(2){
+    width:30%;
+}

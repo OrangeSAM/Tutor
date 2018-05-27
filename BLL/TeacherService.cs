@@ -18,7 +18,11 @@ namespace BLL
             var log = teacherDAL.login(T);
             return log;
         }
-
+        public Teacher getteacherbyid(int teacher_id)
+        {
+            var log = teacherDAL.getteacherbyid(teacher_id);
+                return log;
+        }
         public override void SetDal()
         {
             Dal = teacherDAL;
