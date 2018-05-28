@@ -145,6 +145,42 @@
           <Property Name="Experience" Type="varchar" MaxLength="200" />
           <Property Name="Teaher_id" Type="int" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Tutor.dbo.Tuser”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Tuser">
+          <Key>
+            <PropertyRef Name="Videos" />
+            <PropertyRef Name="Teacher_id" />
+            <PropertyRef Name="Tuser_name" />
+            <PropertyRef Name="Tmail" />
+            <PropertyRef Name="Ident_photo" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="Studyat" />
+            <PropertyRef Name="Major" />
+            <PropertyRef Name="Available_subject" />
+            <PropertyRef Name="Available_time" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="Photo" />
+          </Key>
+          <Property Name="Videos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Teacher_id" Type="int" Nullable="false" />
+          <Property Name="Tuser_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tmail" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ident_photo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sex" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Studyat" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Major" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Available_subject" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Available_time" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Award" Type="varchar" MaxLength="100" />
+          <Property Name="Salary" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Experience" Type="varchar" MaxLength="200" />
+          <Property Name="Photo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_appointment_appointment">
           <End Role="Task" Type="Self.Task" Multiplicity="1" />
           <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
@@ -315,6 +351,27 @@
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherInfo" EntityType="Self.TeacherInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tuser" EntityType="Self.Tuser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tuser].[Videos] AS [Videos], 
+    [Tuser].[Teacher_id] AS [Teacher_id], 
+    [Tuser].[Tuser_name] AS [Tuser_name], 
+    [Tuser].[Tmail] AS [Tmail], 
+    [Tuser].[Ident_photo] AS [Ident_photo], 
+    [Tuser].[sex] AS [sex], 
+    [Tuser].[Studyat] AS [Studyat], 
+    [Tuser].[Major] AS [Major], 
+    [Tuser].[Available_subject] AS [Available_subject], 
+    [Tuser].[Available_time] AS [Available_time], 
+    [Tuser].[Area] AS [Area], 
+    [Tuser].[Description] AS [Description], 
+    [Tuser].[Award] AS [Award], 
+    [Tuser].[Salary] AS [Salary], 
+    [Tuser].[phone] AS [phone], 
+    [Tuser].[Experience] AS [Experience], 
+    [Tuser].[Photo] AS [Photo]
+    FROM [dbo].[Tuser] AS [Tuser]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_appointment_appointment" Association="Self.FK_appointment_appointment">
             <End Role="Task" EntitySet="Task" />
             <End Role="appointment" EntitySet="appointment" />
@@ -760,7 +817,42 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeacherInfo" EntitySet="TeacherInfo" />
           </AssociationSet>
+          <EntitySet Name="Tuser" EntityType="TutorModel.Tuser" />
         </EntityContainer>
+        <EntityType Name="Tuser">
+          <Key>
+            <PropertyRef Name="Videos" />
+            <PropertyRef Name="Teacher_id" />
+            <PropertyRef Name="Tuser_name" />
+            <PropertyRef Name="Tmail" />
+            <PropertyRef Name="Ident_photo" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="Studyat" />
+            <PropertyRef Name="Major" />
+            <PropertyRef Name="Available_subject" />
+            <PropertyRef Name="Available_time" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="Photo" />
+          </Key>
+          <Property Name="Videos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="Tuser_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tmail" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Ident_photo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Studyat" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Major" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Available_subject" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Available_time" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Award" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Experience" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -917,6 +1009,29 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="Experience" ColumnName="Experience" />
                 <ScalarProperty Name="Teaher_id" ColumnName="Teaher_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tuser">
+            <EntityTypeMapping TypeName="TutorModel.Tuser">
+              <MappingFragment StoreEntitySet="Tuser">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Award" ColumnName="Award" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Available_time" ColumnName="Available_time" />
+                <ScalarProperty Name="Available_subject" ColumnName="Available_subject" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Studyat" ColumnName="Studyat" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="Ident_photo" ColumnName="Ident_photo" />
+                <ScalarProperty Name="Tmail" ColumnName="Tmail" />
+                <ScalarProperty Name="Tuser_name" ColumnName="Tuser_name" />
+                <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+                <ScalarProperty Name="Videos" ColumnName="Videos" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

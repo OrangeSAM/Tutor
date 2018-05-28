@@ -58,6 +58,8 @@ public partial class TutorEntities : DbContext
 
     public virtual DbSet<TeacherInfo> TeacherInfo { get; set; }
 
+    public virtual DbSet<Tuser> Tuser { get; set; }
+
 }
 
 }

@@ -10,6 +10,6 @@ namespace IBLL
     public partial interface ITeacherService:IBaseService<Teacher>
     {
         int login(Teacher T);
-        Teacher getteacherbyid(int teacher_id);
+        Tuser getteacherbyid(int teacher_id);
     }
 }

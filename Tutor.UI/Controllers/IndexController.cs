@@ -49,10 +49,5 @@ namespace Tutor.UI.Controllers
             var sub= subjectSer.getsubject(id);
             return Json(sub,JsonRequestBehavior.AllowGet);
         }
-        public ActionResult searchresult(string keywords)
-        {
-            //var grade = teacherSer.GetModels(b => b)
-            return View();
-        }
     }
 }

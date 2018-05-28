@@ -15,6 +15,7 @@
 }
 .singleresult{
     display:flex;
+    margin-top:50px;
 }
 .singleresult>div:first-child{
     width:12%;

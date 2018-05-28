@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Model;
 using BLL;
-using Tutor.UI.ViewModels;
 
 namespace Tutor.UI.Controllers
 {
@@ -17,11 +16,9 @@ namespace Tutor.UI.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            //    var Tid =(int)Session["Tuser_id"];
-            //    var teacher = teacherSer.getteacherbyid(Tid);
-            //    TuserVM tuservm = new TuserVM();
-            //    tuservm.teacher = teacher;
-            return View();
+            var Tid = (int)Session["Tuser_id"];
+            var tea = teacherSer.getteacherbyid(Tid);
+            return View(tea);
         }
     }
 }

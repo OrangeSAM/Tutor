@@ -21,9 +21,9 @@ namespace DAL
             return result;
         }
 
-        public Teacher getteacherbyid(int teacher_id)
+        public Tuser getteacherbyid(int teacher_id)
         {
-            var data = (from p in db.Teacher
+            var data = (from p in db.Tuser
                         where p.Teacher_id == teacher_id
                         select p).FirstOrDefault();
             return data;

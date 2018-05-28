@@ -36,7 +36,6 @@ public partial class Student
     public string Suser_name { get; set; }
 
     public string Spwd { get; set; }
-    public string Spwds { get; set; }
 
     public string Sphone { get; set; }
 

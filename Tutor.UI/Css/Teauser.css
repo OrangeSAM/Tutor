@@ -66,6 +66,10 @@
     display:flex;
     margin:10px;
 }
+.rightdetail .account .detail p{
+    margin:10px 10px 10px 0px;
+    display:inline-block;
+}
 .rightdetail .account .detail ul:nth-child(2){
     margin-left:30%;
 }

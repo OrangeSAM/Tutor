@@ -1,4 +1,4 @@
-﻿@model Tutor.UI.ViewModels.TuserVM
+﻿@model Model.Tuser
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Lauout.cshtml";
@@ -9,7 +9,7 @@
     <div class="leftnav">
         <div>
             <img src="~/Img/登录注册/rg.jpg" />
-            <h2>刘大爷</h2>
+            <h2>@Model.Tuser_name</h2>
         </div>
         <ul class="ulmp">
             <li>账户资料</li>
@@ -18,7 +18,7 @@
         </ul>
     </div>
     <div class="rightdetail">
-        @*<div class="account">
+        <div class="account">
             <div class="topbar">账户资料</div>
             <div>
                 <div class="headpor">
@@ -32,59 +32,54 @@
                     <ul class="ulmp">
                         <li>
                             <strong>邮&nbsp; &nbsp; &nbsp; &nbsp;箱</strong>
-                            <p>@Model.teacher.Tmail</p>
+                            <p>@Model.Tmail</p>
                         </li>
                         <li>
                             <strong>电&nbsp; &nbsp; &nbsp; &nbsp;话</strong>
-                            <p>@Model.teacherinfo.phone</p>
+                            <p>@Model.phone</p>
                         </li>
                         <li>
                             <strong>学&nbsp; &nbsp; &nbsp; &nbsp;校</strong>
-                            <p>@Model.teacherinfo.Studyat</p>
+                            <p>@Model.Studyat</p>
                         </li>
                         <li>
                             <strong>专&nbsp; &nbsp; &nbsp; &nbsp;业</strong>
-                            <p>@Model.teacherinfo.Major</p>
+                            <p>@Model.Major</p>
                         </li>
                         <li>
                             <strong>科&nbsp; &nbsp; &nbsp; &nbsp;目</strong>
-                            <p>@Model.teacherinfo.Available_subject</p>
+                            <p>@Model.Available_subject</p>
                         </li>
                         <li>
                             <strong>家教经验</strong>
-                            <p>@Model.teacherinfo.Experience</p>
+                            <p>@Model.Experience</p>
                         </li>
                         <li>
                             <strong>薪水要求</strong>
-                            <p>@Model.teacherinfo.Salary</p>
+                            <p>@Model.Salary</p>
                         </li>
                     </ul>
                     <ul class="ulmp">
                         <li>
                             <strong>授课区域</strong>
-                            <p>@Model.teacherinfo.Area</p>
+                            <p>@Model.Area</p>
                         </li>
                         <li>
                             <strong>可行时间</strong>
-                            <p>@Model.teacherinfo.Available_time</p>
+                            <p>@Model.Available_time</p>
                         </li>
                         <li>
                             <strong>获奖情况</strong>
-                            <p>@Model.teacherinfo.Award</p>
+                            <p>@Model.Award</p>
                         </li>
                         <li>
                             <strong>自我描述</strong>
-                            <p>@Model.teacherinfo.Description</p>
-                        </li>
-                        <li>
-                            <div>
-                                <img src="@Model.exhibition.Photo" />
-                            </div>
+                            <p>@Model.Description</p>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>*@
+        </div>
 
         @*家教单*@
         <div class="task">
