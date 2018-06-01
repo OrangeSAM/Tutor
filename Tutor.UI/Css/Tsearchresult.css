@@ -12,13 +12,16 @@
 .result{
     width:78%;
     margin:0 auto;
+    margin-top:50px;
+    display:flex;
+    flex-wrap:wrap;
 }
 .singleresult{
     display:flex;
-    margin-top:50px;
+    margin-bottom:30px;
+    width:500px;
 }
 .singleresult>div:first-child{
-    width:12%;
     display:flex;
     align-items:center;
 }
@@ -28,5 +31,9 @@
     border-radius:50%;
 }
 .singleresult>div:nth-child(2){
-    width:30%;
+    width:60%;
+    margin-left:10px;
+}
+.pagelist{
+    text-align:center;
 }

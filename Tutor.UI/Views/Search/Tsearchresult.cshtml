@@ -1,16 +1,31 @@
-﻿@model Model.Teacher
+﻿@model Tutor.UI.ViewModels.TsearchVM
 @{
     ViewBag.Title = "searchresult";
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
-<link href="~/Css/searchresult.css" rel="stylesheet"/>
+<link href="~/Css/Tsearchresult.css" rel="stylesheet"/>
+<script src="~/scripts/jquery-3.3.1.js"></script>
 <div>
     <div class="searchbar">
+        <div class="area">
+            <strong>求教学科</strong>
+            <div>
+                <ul class="ulmp">
+                    @foreach (var item in Model.grade)
+                    {
+                        <li>@item.Grade1</li>
+                    }
+                </ul>
+            </div>
+        </div>
         <div class="area">
             <strong>所在区域</strong>
             <div>
                 <ul class="ulmp">
-                    <li>从数据库查出所有老师available的区域去重展示</li>
+                    @foreach (var item in Model.area)
+                    {
+                        <li>@item</li>
+                    }
                 </ul>
             </div>
         </div>
@@ -26,35 +41,54 @@
         </div>
     </div>
     <div class="result">
+        @foreach (var item in Model.teacherinfo)
+        {
         <div class="singleresult">
             <div>
                 <img src="~/Img/登录注册/rg.jpg" style="width:120px;height:120px;" />
             </div>
             <div>
-                <p style="margin-top:0;">刘强东</p>
+                <p style="margin-top:0;">@item.Teacher.Tuser_name</p>
                 <div>
                     <span>家教经验</span>
-                    <strong>2年</strong>
+                    <strong>@item.Experience</strong>
                     <span>课时费</span>
-                    <strong>50</strong>
+                    <strong>@item.Salary</strong>
                 </div>
                 <div>
                     <span>学校专业</span>
-                    <strong>江西师范大学</strong>
+                    <strong>@item.Studyat @item.Major</strong>
                 </div>
                 <div>
                     <span>教授科目</span>
-                    <strong>小学语文，高中英语</strong>
+                    <strong>@item.Available_subject</strong>
                 </div>
                 <div>
                     <span>接受区域</span>
-                    <strong>青山湖区</strong>
+                    <strong>@item.Area</strong>
                 </div>
                 <div>
                     <span>个人简介</span>
-                    <strong>大家好，我叫刘强bababab</strong>
+                    <strong>@item.Description</strong>
                 </div>
             </div>
         </div>
+        }
+    </div>
+    <div class="pagelist">
+        @for (int i = 1; i <= ViewBag.count; i++)
+        {
+            <span>@i</span>
+        @*<a href="Tsearchresult?page=@i"></a>*@
+        }
     </div>
 </div>
+<script>
+    $(".pagelist span").click(function (event) {
+        console.log(event);
+        var page = event.target.innerText;
+        $.get("Search/Tsearchresult"/+page,function(data){
+            $(".result").empty();
+        })
+    })
+</script>

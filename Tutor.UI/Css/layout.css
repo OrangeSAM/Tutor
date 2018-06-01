@@ -7,10 +7,13 @@ li{
 }
 .content{
     margin-top:100px;
+    
+}
+.content a{
+    color:black;
 }
 a{
     text-decoration:none;
-    color:white;
 }
 nav{
     position:fixed;
@@ -20,12 +23,14 @@ nav{
     justify-content:space-between;
     background-color:black;
     z-index:100;
+    box-shadow:0 2px 4px rgba(0,0,0,0.4);
 }
 nav div:first-child{
     margin-left:2%;
 }
 nav a{
     text-shadow:4px 4px 5px white;
+    color:white;
 }
 nav img{
     height:100%;

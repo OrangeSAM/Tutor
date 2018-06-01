@@ -130,6 +130,7 @@
 
     //获取年级和科目的数据
     $("#choosegrade ul li span").click(function (event) {
+        console.log(event);
         var grade_id = event.currentTarget.dataset.id;
         $.get("/Index/getsubject/" + grade_id, function (data) {
             $("#choosesub ul").empty();
