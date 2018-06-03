@@ -18,5 +18,15 @@ namespace DAL
             db.Student.Add(student);
             db.SaveChanges();
         }
+
+        public int login(Student T)
+        {
+            var t = from i in db.Student
+                    where i.Suser_name == T.Suser_name && i.Spwd == T.Spwd
+                    select i;
+            int result = t.Count();
+            return result;
+
+        }
     }
 }

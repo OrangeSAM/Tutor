@@ -10,5 +10,6 @@ namespace IDAL
     public interface IStudentDAL:IBaseDAL<Student>
     {
         void insertstudent(Student student);
+        int login(Student T);
     }
 }

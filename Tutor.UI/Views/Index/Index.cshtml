@@ -39,13 +39,46 @@
         </ul>
     </div>
     <div class="logindiv">
-        @if (Session["Tuser_id"] == null)
+        @if (Session["Tuser_id"] == null || Session["Suser_id"]== null)
         {
             @Html.Partial("_login", Model.teacher)
         }
         else
         {
-            @Html.Partial("notice")
+            <section class="userinfo">
+                <div><img src="#"/></div>
+                <div><span>欢迎您，username</span></div>
+                <div><button>进入个人中心</button></div>
+            </section>
+            <div class="after">
+                <div>
+                    <span>公告</span>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <span><a href="#">常见使用问题</a></span>
+                            <span>5-18</span>
+                        </li>
+                        <li>
+                            <span><a href="#">家教价格参考</a></span>
+                            <span>4-28</span>
+                        </li>
+                        <li>
+                            <span><a href="#">搜狐网报道提优特</a></span>
+                            <span>5-15</span>
+                        </li>
+                        <li>
+                            <span><a href="#">新浪网报道提优特</a></span>
+                            <span>2-28</span>
+                        </li>
+                        <li>
+                            <span><a href="#">凤凰网报道提优特</a></span>
+                            <span>4-21</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         }        
         
     </div>

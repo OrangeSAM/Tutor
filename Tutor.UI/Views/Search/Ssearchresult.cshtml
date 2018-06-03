@@ -1,68 +1,81 @@
-﻿
+﻿@model Tutor.UI.ViewModels.SsearchVM
 @{
     ViewBag.Title = "Ssearchresult";
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
+<link href="~/Css/Tsearchresult.css" rel="stylesheet"/>
 <div>
     <div class="searchbar">
-        <div>
+        <div class="area">
             <strong>所在区域</strong>
             <div>
-                <ul>
-                    <li></li>
+                <ul class="ulmp">
+                    @foreach (var item in Model.area)
+                    {
+                        <li>@item</li>
+                    }
                 </ul>
             </div>
         </div>
-        <div>
+        <div class="area">
             <strong>求教学科</strong>
             <div>
-                <ul>
-                    <li></li>
+                <ul class="ulmp">
+                    @foreach (var item in Model.grade)
+                    {
+                        <li>@item.Grade1</li>
+                    }
                 </ul>
             </div>
         </div>
     </div>
-    <div>
-        <div>
-            <div>
-                <span>tsakname</span>
-                <span>pub-time</span>
+    <div class="result">
+        @foreach(var item in Model.task)
+        {
+            <div class="Ssingleresult">
+                <div>
+                    <span>@item.Task_name</span>
+                    <span>@item.Upload_time.ToString("yyyy-MM-dd")</span>
+                </div>
+                <div>
+                    <ul class="ulmp">
+                        <li>
+                            <strong>所在区域</strong>
+                            <span>@item.Location</span>
+                        </li>
+                        <li>
+                            <strong>学员性别</strong>
+                            <span>@item.Gender</span>
+                        </li>
+                        <li>
+                            <strong>求教学科</strong>
+                            <span>@item.Subject</span>
+                        </li>
+                        <li>
+                            <strong>课&nbsp; 时&nbsp;费</strong>
+                            <span>@item.Payment</span>
+                        </li>
+                    </ul>
+                    <ul class="ulmp">
+                        <li>
+                            <strong>备注要求</strong>
+                            <span>@item.Demand</span>
+                        </li>
+                        <li>
+                            <strong>订单状态</strong>
+                            <span>@item.State</span>
+                        </li>
+                        <li>
+                            <strong>预约人数</strong>
+                            <span></span>
+                            <button>点击应聘</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div>
-                <ul>
-                    <li>
-                        <strong>所在区域</strong>
-                        <span></span>
-                    </li>
-                    <li>
-                        <strong>求教学科</strong>
-                        <span></span>
-                    </li>
-                    <li>
-                        <strong>课时费</strong>
-                        <span></span>
-                    </li>
-                    <li>
-                        <strong>订单状态</strong>
-                        <span></span>
-                    </li>
-                    <li>
-                        <strong>学员性别</strong>
-                        <span></span>
-                    </li>
-                    <li>
-                        <strong>备注要求</strong>
-                        <span></span>
-                    </li>
-                    <li>
-                        <strong>预约人数</strong>
-                        <span></span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <button>点击应聘</button>
-            </div>
-        </div>
+        }
+    </div>
+    <div class="pagelist">
+
     </div>
 </div>

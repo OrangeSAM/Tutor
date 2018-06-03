@@ -12,6 +12,13 @@ namespace BLL
     public partial class StudentService : BaseService<Student>, IStudentService
     {
         private IStudentDAL studentDAL = DALContainer.Container.Resolve<IStudentDAL>();
+
+        public int login(Student T)
+        {
+            var log = studentDAL.login(T);
+            return log;
+        }
+
         public override void SetDal()
         {
             Dal = studentDAL;

@@ -179,12 +179,12 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\IndexVM.cs" />
+    <Compile Include="ViewModels\SsearchVM.cs" />
     <Compile Include="ViewModels\TsearchVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,7 +206,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Index\_login.cshtml" />
-    <Content Include="Views\Index\notice.cshtml" />
     <Content Include="Views\Search\Tsearchresult.cshtml" />
     <Content Include="Views\Search\Ssearchresult.cshtml" />
     <None Include="Web.Debug.config">

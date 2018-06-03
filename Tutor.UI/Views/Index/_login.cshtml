@@ -9,7 +9,7 @@
     </div>
     <div class="inputbox">
         <div class="teacherbox">
-            @using (Html.BeginForm("login", "User", FormMethod.Post))
+            @using (Html.BeginForm("teacherlogin", "Index", FormMethod.Post))
             {
                 <ul>
                     <li>
@@ -32,24 +32,25 @@
             }
         </div>
         <div class="studentbox" style="display:none;">
-            <form>
-                <ul>
-                    <li>
-                        <label>用户名</label>
-                        <input class="pad" type="text" placeholder="请输入学员账号" />
-                    </li>
-                    <li>
-                        <label>密 &nbsp; 码</label>
-                        <input class="pad" type="password" placeholder="请输入密码" autocomplete="on" />
-                    </li>
-                    <li>
-                        <input type="checkbox" />记住我的登录状态
-                    </li>
-                    <li>
-                        <input type="submit" value="登录" />
-                    </li>
-                </ul>
-            </form>
+                @using (Html.BeginForm("studentlogin", "Index", FormMethod.Post))
+                {
+                    <ul>
+                        <li>
+                            <label>用户名</label>
+                            <input class="pad" type="text" name="Suser_name" placeholder="请输入学员账号" />
+                        </li>
+                        <li>
+                            <label>密 &nbsp; 码</label>
+                            <input class="pad" type="password" name="Spwd" placeholder="请输入密码" autocomplete="on" />
+                        </li>
+                        <li>
+                            <input type="checkbox" />记住我的登录状态
+                        </li>
+                        <li>
+                            <input type="submit" value="登录" />
+                        </li>
+                    </ul>
+                }
         </div>
     </div>
     <div class="regbox">

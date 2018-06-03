@@ -19,7 +19,20 @@
 .singleresult{
     display:flex;
     margin-bottom:30px;
-    width:500px;
+    width:50%;
+}
+.Ssingleresult{
+    margin-bottom:30px;
+    width:47%;
+}
+.Ssingleresult div:first-child span:nth-child(2){
+    float:right;
+}
+.Ssingleresult div:last-child ul:last-child li:last-child button{
+    float:right;
+}
+.result .Ssingleresult:nth-child(2n+1){
+    margin-right:20px;
 }
 .singleresult>div:first-child{
     display:flex;

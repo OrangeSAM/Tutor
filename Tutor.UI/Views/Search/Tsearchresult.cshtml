@@ -51,8 +51,8 @@
                 <p style="margin-top:0;">@item.Teacher.Tuser_name</p>
                 <div>
                     <span>家教经验</span>
-                    <strong>@item.Experience</strong>
-                    <span>课时费</span>
+                    <strong>@item.Experience</strong><br />
+                    <span>课&nbsp; 时&nbsp;费</span>
                     <strong>@item.Salary</strong>
                 </div>
                 <div>
@@ -84,11 +84,11 @@
     </div>
 </div>
 <script>
-    $(".pagelist span").click(function (event) {
-        console.log(event);
-        var page = event.target.innerText;
-        $.get("Search/Tsearchresult"/+page,function(data){
-            $(".result").empty();
-        })
-    })
+    //$(".pagelist span").click(function (event) {
+    //    console.log(event);
+    //    var page = event.target.innerText;
+    //    $.get("Search/Tsearchresult"/+page,function(data){
+    //        $(".result").empty();
+    //    })
+    //})
 </script>

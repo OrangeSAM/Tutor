@@ -16,6 +16,7 @@ namespace Tutor.UI.Controllers
         TaskService taskSer = new TaskService();
         SubjectService subjectSer = new SubjectService();
         GradeService gradeSer = new GradeService();
+        StudentService studentSer = new StudentService();
 
         // GET: Index
         public ActionResult Index()
@@ -31,16 +32,33 @@ namespace Tutor.UI.Controllers
         public ActionResult teacherlogin(Teacher T)
         {
             int u = teacherSer.login(T);
-            if (u>0)
+            if (u > 0)
             {
                 Session["Tuser_name"] = T.Tuser_name;
-                Teacher teacher = teacherSer.GetModels(b => b.Tuser_name == Session["Tuser_name"].ToString()).FirstOrDefault();
+                string name = Session["Tuser_name"].ToString();
+                Teacher teacher = teacherSer.GetModels(b => b.Tuser_name == name).FirstOrDefault();
                 Session["Tuser_id"] = teacher.Teacher_id;
-                return Content("<script>alert('登录成功！')");
+                return Redirect(Url.Action("index", "index"));
             }
             else
             {
-                return Content("<script>alert('用户名或密码错误！')");
+                return Content("<script>alert('用户名或密码错误！');window.open('" + Url.Content("~/Index/Index") + "', '_self')</script>");
+            }
+        }
+        public ActionResult studentlogin(Student T)
+        {
+            int u = studentSer.login(T);
+            if (u > 0)
+            {
+                Session["Suser_name"] = T.Suser_name;
+                string name = Session["Suser_name"].ToString();
+                Student student = studentSer.GetModels(b => b.Suser_name == name).FirstOrDefault();
+                Session["Suser_id"] = student.Student_id;
+                return Redirect(Url.Action("index", "index"));
+            }
+            else
+            {
+                return Content("<script>alert('用户名或密码错误！');window.open('" + Url.Content("~/Index/Index") + "', '_self')</script>");
             }
         }
         public ActionResult getsubject(int id)

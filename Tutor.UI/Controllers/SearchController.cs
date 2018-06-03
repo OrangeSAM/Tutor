@@ -14,6 +14,7 @@ namespace Tutor.UI.Controllers
     {
         GradeService gradeSer = new GradeService();
         TeacherInfoService teacherinfoSer = new TeacherInfoService();
+        TaskService taskSer = new TaskService();
         // GET: Search
         public ActionResult Tsearchresult(int page = 1)
         {
@@ -33,9 +34,22 @@ namespace Tutor.UI.Controllers
             tsearchvm.area = area;
             return View(tsearchvm);
         }
-        public ActionResult Ssearchresult()
+        public ActionResult Ssearchresult(int page=1)
         {
-            return View();
+            var grade = gradeSer.GetModels(b => b.Grade_id != 0);
+            var reminder = taskSer.GetModels(b => b.Task_id != 0).Count()%10;
+            var count = taskSer.GetModels(b => b.Task_id != 0).Count()/10;
+            if (reminder > 0)
+            {
+                count = count + 1;
+            }
+            var task = taskSer.GetModelsBypage(10,page,true,b=>b.Task_id,b => b.Task_id != 0);
+            SsearchVM ssearchvm = new ViewModels.SsearchVM();
+            var area = task.Select(b => b.Location).Distinct();
+            ssearchvm.area = area;
+            ssearchvm.task = task;
+            ssearchvm.grade = grade;
+            return View(ssearchvm);
         }
     }
 }
