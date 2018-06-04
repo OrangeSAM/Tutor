@@ -1,6 +1,11 @@
 ﻿.searchbar{
     width:78%;
     margin:0 auto;
+    background-color:#f7f5f5;
+    padding:10px;
+}
+.searchbar div{
+    margin-bottom:10px;
 }
 .area>div{
     display:inline-block;
@@ -8,6 +13,21 @@
 }
 .area>div ul li{
     float:left;
+    margin-right:10px;
+    text-align:center;
+    padding:0 10px;
+}
+.area>strong{
+    vertical-align:top;
+}
+.subject{
+    margin-left:61px;
+}
+.area>div ul:first-child li:first-child{
+    background-color:beige;
+}
+.area>div ul li:hover{
+    color:orange;
 }
 .result{
     width:78%;

@@ -7,14 +7,17 @@
 <script src="~/scripts/jquery-3.3.1.js"></script>
 <div>
     <div class="searchbar">
-        <div class="area">
+        <div class="area" id="grades">
             <strong>求教学科</strong>
             <div>
                 <ul class="ulmp">
+                    <li>不限</li>
                     @foreach (var item in Model.grade)
                     {
-                        <li>@item.Grade1</li>
+                        <li data-gradeid="@item.Grade_id">@item.Grade1</li>
                     }
+                </ul>
+                <ul class="ulmp subject">
                 </ul>
             </div>
         </div>
@@ -22,6 +25,7 @@
             <strong>所在区域</strong>
             <div>
                 <ul class="ulmp">
+                    <li>不限</li>
                     @foreach (var item in Model.area)
                     {
                         <li>@item</li>
@@ -78,17 +82,29 @@
     <div class="pagelist">
         @for (int i = 1; i <= ViewBag.count; i++)
         {
-            <span>@i</span>
-        @*<a href="Tsearchresult?page=@i"></a>*@
+
+            <span><a href="Tsearchresult?page=@i">@i</a></span>
         }
     </div>
 </div>
 <script>
-    //$(".pagelist span").click(function (event) {
-    //    console.log(event);
-    //    var page = event.target.innerText;
-    //    $.get("Search/Tsearchresult"/+page,function(data){
-    //        $(".result").empty();
-    //    })
-    //})
+    $("#grades>div ul li").hover(function (event) {
+        var grade_id = event.target.dataset.gradeid;
+        $.get("/Index/getsubject/" + grade_id, function (data) {
+            //$(".subject").empty();
+            var detail='';
+            for (var x in data) {
+                //var sub = $("<li></li>").text(data[x].subject1);
+                //$(".subject").append(sub);
+                //var a = $(".subject li a").attr("href", "/Search/filter" + data[x].subject1);
+                //var con =
+                    $(".subject").html('<li><a href="/Search/filter?sub=' + data[x].subject1 + '">' + data[x].subject1 + '</a></li>');
+                //detail += con;
+                //console.log(detail);
+                //$(".subject").html(detail);
+                //$(".subject").html('<li><a href="/Search/filter?sub=' + data[x].subject1 + '">' + data[x].subject1 + '</a></li>');
+            }
+            
+        })
+    })
 </script>

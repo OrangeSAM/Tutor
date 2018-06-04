@@ -51,5 +51,9 @@ namespace Tutor.UI.Controllers
             ssearchvm.grade = grade;
             return View(ssearchvm);
         }
+        //public ActionResult filter(string sub,string area,string sex)
+        //{
+
+        //}
     }
 }
