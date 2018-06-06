@@ -39,14 +39,14 @@
         </ul>
     </div>
     <div class="logindiv">
-        @if (Session["Tuser_id"] == null || Session["Suser_id"]== null)
+        @if (Session["user_id"] == null)
         {
             @Html.Partial("_login", Model.teacher)
         }
         else
         {
             <section class="userinfo">
-                <div><img src="#"/></div>
+                <div><img src="#" /></div>
                 <div><span>欢迎您，username</span></div>
                 <div><button>进入个人中心</button></div>
             </section>
@@ -85,23 +85,7 @@
 </div>
 <div style="width:81%;margin:0 auto;background-color:beige;">
     <div>
-        <div>
-            <div title=""><h2>教员推荐</h2></div>
-            <div class="nextpage">
-                <span>
-                    <span>1</span>/<span>8</span>
-                </span>
-                <a href="#">上一个</a>
-                <a href="#">下一个</a>
-            </div>
-            <ul>
-                <li>
-                    <div>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
+        
     </div>
     <div>
 

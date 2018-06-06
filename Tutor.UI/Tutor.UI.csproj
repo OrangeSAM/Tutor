@@ -208,6 +208,7 @@
     <Content Include="Views\Index\_login.cshtml" />
     <Content Include="Views\Search\Tsearchresult.cshtml" />
     <Content Include="Views\Search\Ssearchresult.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -217,7 +218,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLLContainer\BLLContainer.csproj">

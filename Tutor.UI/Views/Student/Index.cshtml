@@ -1,0 +1,62 @@
+﻿@model Model.Student
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Lauout.cshtml";
+}
+<link href="~/Css/Teauser.css" rel="stylesheet"/>
+<div class="wrap">
+    <div class="leftnav">
+        <div>
+            <img src="@Model.Sphoto" style="width:150px;"/>
+            <h2>@Model.Suser_name</h2>
+        </div>
+        <ul class="ulmp leftnavbar">
+            <li>家教订单</li>
+            <li>已购课程</li>
+            <li>账户资料</li>
+        </ul>
+    </div>
+    <div class="rightdetail">
+        <div>
+            <div class="topbar">家教订单</div>
+            <div>
+                <table>
+                    <tr>
+                        <th>订单名称</th>
+                        <th>发布日期</th>
+                        <th>订单状态</th>
+                        <th>预约人数</th>
+                    </tr>
+                    @*@foreach (var item in )*@
+                      
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="topbar">已购课程</div>
+            <div>
+                @*@foreach(var item in Model)*@
+                
+                    <span>课程名</span>
+                    <video></video>
+                
+            </div>
+        </div>
+        <div>
+            <div class="topbar">账户资料</div>
+            <div>
+                <ul>
+                    <li>@Model.Suser_name</li>
+                    <li>@Model.Sphone</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

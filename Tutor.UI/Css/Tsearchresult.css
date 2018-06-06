@@ -43,16 +43,20 @@
 }
 .Ssingleresult{
     margin-bottom:30px;
-    width:47%;
+    width:48%;
+}
+.Ssingleresult .titletime{
+    margin-bottom:10px;
+}
+.result .Ssingleresult:nth-child(2n+1){
+    margin-right:40px;
 }
 .Ssingleresult div:first-child span:nth-child(2){
     float:right;
 }
 .Ssingleresult div:last-child ul:last-child li:last-child button{
     float:right;
-}
-.result .Ssingleresult:nth-child(2n+1){
-    margin-right:20px;
+    padding:1px;
 }
 .singleresult>div:first-child{
     display:flex;

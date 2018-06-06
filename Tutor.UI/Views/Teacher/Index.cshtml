@@ -8,7 +8,7 @@
 <div class="wrap">
     <div class="leftnav">
         <div>
-            <img src="~/Img/登录注册/rg.jpg" />
+            <img src="@Model.Photo" />
             <h2>@Model.Tuser_name</h2>
         </div>
         <ul class="ulmp leftnavbar">
@@ -140,20 +140,17 @@
             $(".task").css("display", "none");
             $(".appointment").css("display", "none");
             $(".account").css("display", "block");
-            alert("1");
         }
         else {
             if (event.target.innerText == '我的家教') {
                 $(".account").css("display", "none");
                 $(".appointment").css("display", "none");
                 $(".task").css("display", "block");
-                alert("2");
             }
             else {
                 $(".account").css("display", "none");
                 $(".task").css("display", "none");
                 $(".appointment").css("display", "block");
-                alert("3");
             }
         }
     })

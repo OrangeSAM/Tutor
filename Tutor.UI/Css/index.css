@@ -96,28 +96,7 @@
 .inputbox form ul .pad{
     padding:8px;
 }
-.inputbox form ul li:last-child input{
-    border:none;
-    margin:0 auto;
-    position:relative;
-    color:rgba(255,255,255,1);
-    text-decoration:none;
-    background-color: rgba(219,87,51,1);
-    font-size: 1.2em;
-    display: block;
-    padding: 4px;
-    border-radius: 8px;
-    box-shadow: 0px 5px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
-    width: 90px;
-    text-align: center;
-    transition: all .1s ease;
-    cursor:pointer;
-}
-.inputbox form ul li:last-child input:active{
-    box-shadow: 0px 3px 0px rgba(219, 31, 5, 1),0px 3px 6px rgba(0, 0, 0, .9);
-    position: relative;
-    top:6px;
-}
+
 .regbox{
     display:flex;
     justify-content:space-around;

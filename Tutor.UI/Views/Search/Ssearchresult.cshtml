@@ -10,6 +10,7 @@
             <strong>求教学科</strong>
             <div>
                 <ul class="ulmp">
+                    <li>不限</li>
                     @foreach (var item in Model.grade)
                     {
                         <li>@item.Grade1</li>
@@ -21,6 +22,7 @@
             <strong>所在区域</strong>
             <div>
                 <ul class="ulmp">
+                    <li>不限</li>
                     @foreach (var item in Model.area)
                     {
                         <li>@item</li>
@@ -33,7 +35,7 @@
         @foreach(var item in Model.task)
         {
             <div class="Ssingleresult">
-                <div>
+                <div class="titletime">
                     <span>@item.Task_name</span>
                     <span>@item.Upload_time.ToString("yyyy-MM-dd")</span>
                 </div>
@@ -67,8 +69,7 @@
                         </li>
                         <li>
                             <strong>预约人数</strong>
-                            <span></span>
-                            <button>点击应聘</button>
+                            <button class="tdbutton">点击应聘</button>
                         </li>
                     </ul>
                 </div>

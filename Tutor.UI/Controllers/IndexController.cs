@@ -37,7 +37,7 @@ namespace Tutor.UI.Controllers
                 Session["Tuser_name"] = T.Tuser_name;
                 string name = Session["Tuser_name"].ToString();
                 Teacher teacher = teacherSer.GetModels(b => b.Tuser_name == name).FirstOrDefault();
-                Session["Tuser_id"] = teacher.Teacher_id;
+                Session["user_id"] = teacher.Teacher_id;
                 return Redirect(Url.Action("index", "index"));
             }
             else
@@ -53,7 +53,7 @@ namespace Tutor.UI.Controllers
                 Session["Suser_name"] = T.Suser_name;
                 string name = Session["Suser_name"].ToString();
                 Student student = studentSer.GetModels(b => b.Suser_name == name).FirstOrDefault();
-                Session["Suser_id"] = student.Student_id;
+                Session["user_id"] = student.Student_id;
                 return Redirect(Url.Action("index", "index"));
             }
             else

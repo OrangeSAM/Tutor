@@ -91,14 +91,14 @@
     $("#grades>div ul li").hover(function (event) {
         var grade_id = event.target.dataset.gradeid;
         $.get("/Index/getsubject/" + grade_id, function (data) {
-            //$(".subject").empty();
+            $(".subject").empty();
             var detail='';
             for (var x in data) {
-                //var sub = $("<li></li>").text(data[x].subject1);
-                //$(".subject").append(sub);
+                var sub = $('<li><a href='+data[x].subject1+'></li>').text(data[x].subject1);
+                $(".subject").append(sub);
                 //var a = $(".subject li a").attr("href", "/Search/filter" + data[x].subject1);
                 //var con =
-                    $(".subject").html('<li><a href="/Search/filter?sub=' + data[x].subject1 + '">' + data[x].subject1 + '</a></li>');
+                    //$(".subject").html('<li><a href="/Search/filter?sub=' + data[x].subject1 + '">' + data[x].subject1 + '</a></li>');
                 //detail += con;
                 //console.log(detail);
                 //$(".subject").html(detail);
