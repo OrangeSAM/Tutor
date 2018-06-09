@@ -9,6 +9,6 @@ namespace IBLL
 {
     public partial interface ITeacherInfoService:IBaseService<TeacherInfo>
     {
-
+        IEnumerable<TeacherInfo> getinfobygrade(string grade);
     }
 }

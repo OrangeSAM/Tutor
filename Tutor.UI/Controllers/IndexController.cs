@@ -23,9 +23,17 @@ namespace Tutor.UI.Controllers
         {
             var grades = gradeSer.GetModels(b => b.Grade_id !=0);
             var tasks = taskSer.GetAll().Take(5);
+            var kidtea = teacherinfoSer.getinfobygrade("小学");
+            var pretea = teacherinfoSer.getinfobygrade("初中");
+            var midtea = teacherinfoSer.getinfobygrade("学前");
+            var higtea = teacherinfoSer.getinfobygrade("高中");
             IndexVM indexvm = new ViewModels.IndexVM();
             indexvm.grade = grades;
             indexvm.task = tasks;
+            indexvm.pretea = pretea;
+            indexvm.kidtea = kidtea;
+            indexvm.midtea = midtea;
+            indexvm.higtea = higtea;
             return View(indexvm);
         }
         [HttpPost]
@@ -35,9 +43,11 @@ namespace Tutor.UI.Controllers
             if (u > 0)
             {
                 Session["Tuser_name"] = T.Tuser_name;
+                Session["name"] = T.Tuser_name;
                 string name = Session["Tuser_name"].ToString();
                 Teacher teacher = teacherSer.GetModels(b => b.Tuser_name == name).FirstOrDefault();
                 Session["user_id"] = teacher.Teacher_id;
+                Session["head"] = teacher.Tphoto;
                 return Redirect(Url.Action("index", "index"));
             }
             else
@@ -51,9 +61,11 @@ namespace Tutor.UI.Controllers
             if (u > 0)
             {
                 Session["Suser_name"] = T.Suser_name;
+                Session["name"] = T.Suser_name;
                 string name = Session["Suser_name"].ToString();
                 Student student = studentSer.GetModels(b => b.Suser_name == name).FirstOrDefault();
                 Session["user_id"] = student.Student_id;
+                Session["head"] = student.Sphoto;
                 return Redirect(Url.Action("index", "index"));
             }
             else

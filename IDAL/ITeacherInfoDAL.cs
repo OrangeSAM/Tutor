@@ -9,6 +9,6 @@ namespace IDAL
 {
     public partial interface ITeacherInfoDAL:IBaseDAL<TeacherInfo>
     {
-
+       IEnumerable<TeacherInfo> getinfobygrade(string grade);
     }
 }

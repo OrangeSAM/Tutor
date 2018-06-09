@@ -64,6 +64,9 @@
     background-color:beige;
     border:1px solid lightgray;
 }
+.logindiv .userinfo{
+    text-align:center;
+}
 .choosebar{
     font-weight:bold;
     font-size:20px;
@@ -119,7 +122,6 @@
     padding-left:20px;
     color:black;
 }
-
 .after ul li span:nth-child(2){
     float:right;
     margin-right:14px;
@@ -162,4 +164,51 @@
 }
 .task .singlecase .Tbottom div{
     margin:6px 0;
+}
+.rectea{
+    width:81%;
+    margin:0 auto;
+    background-color:beige;
+    display:flex;
+}
+.grade{
+    width:24%;
+}
+.grade ul{
+    text-align:center;
+}
+.grade ul li:hover{
+    background-color:lightblue;
+}
+.grade ul li{
+    padding:20px;
+}
+.grade ul li.act{
+    background-color:lightblue;
+}
+.teadetail{
+    position:relative;
+    width:100%;
+}
+.teadetail>div{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    width:100%;
+    background-color:lightblue;
+}
+.teadetail>div .singletea{
+    float:left;
+    text-align:center;
+    width:25%;
+}
+.singletea div:first-child{
+    width:200px;
+}
+.singletea div:nth-child(2){
+    width:200px;
+}
+.teadetail .activedetail{
+    z-index:1;
 }

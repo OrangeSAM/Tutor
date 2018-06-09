@@ -4,11 +4,15 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Lauout.cshtml";
-    ViewBag.loginviewmodel = new Model.Teacher();
+    //ViewBag.loginviewmodel = new Model.Teacher();
 }
 <link href="~/Css/index.css" rel="stylesheet"/>
 <link href="~/Css/font-awesome.min.css" rel="stylesheet" />
 <script src="~/scripts/jquery-3.3.1.js"></script>
+
+首页的搜索跳转
+搜索结果页的筛选功能
+家教单页的预约功能
 
 <div class="firstdiv">
     <div class="selectdiv">
@@ -46,9 +50,12 @@
         else
         {
             <section class="userinfo">
-                <div><img src="#" /></div>
-                <div><span>欢迎您，username</span></div>
-                <div><button>进入个人中心</button></div>
+                <div><img src="@Session["head"].ToString()" /></div>
+                <div><span>欢迎您，@Session["name"].ToString()</span></div>
+                <div>
+                    <a href="#">个人中心</a>
+                    <button>退出</button>
+                </div>
             </section>
             <div class="after">
                 <div>
@@ -83,12 +90,93 @@
         
     </div>
 </div>
-<div style="width:81%;margin:0 auto;background-color:beige;">
-    <div>
-        
+<div class="rectea">
+    <div class="grade">
+        <ul class="ulmp">
+            <li class="act">学前教育</li>
+            <li>小学家教</li>
+            <li>初中家教</li>
+            <li>高中家教</li>
+        </ul>
     </div>
-    <div>
+    <div class="teadetail">
+        <div class="activedetail">
+            <div style="width:100%;clear:both;overflow:hidden;">
+                @foreach (var item in Model.kidtea)
+                 {
+                    <div class="singletea">
+                        <div>
+                            <img src="@item.Teacher.Tphoto" />
+                        </div>
+                        <div>
+                            <ul class="ulmp">
+                                <li>@item.Teacher.Tuser_name</li>
+                                <li>@item.Available_subject</li>
+                                <li>@item.Description</li>
+                            </ul>
+                        </div>
+                    </div>
+                 }
+            </div>
 
+        </div>
+        <div class="">
+            @foreach (var item in Model.pretea)
+            {
+                <div>
+                    <div class="singletea">
+                        <div>
+                            <img src="@item.Teacher.Tphoto" />
+                        </div>
+                        <div>
+                            <ul class="ulmp">
+                                <li>@item.Teacher.Tuser_name</li>
+                                <li>@item.Available_subject</li>
+                                <li>@item.Description</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="">
+            @foreach (var item in Model.midtea)
+            {
+                <div>
+                    <div class="singletea">
+                        <div>
+                            <img src="@item.Teacher.Tphoto" />
+                        </div>
+                        <div>
+                            <ul class="ulmp">
+                                <li>@item.Teacher.Tuser_name</li>
+                                <li>@item.Available_subject</li>
+                                <li>@item.Description</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="">
+            @foreach (var item in Model.higtea)
+            {
+                <div>
+                    <div class="singletea">
+                        <div>
+                            <img src="@item.Teacher.Tphoto" />
+                        </div>
+                        <div>
+                            <ul class="ulmp">
+                                <li>@item.Teacher.Tuser_name</li>
+                                <li>@item.Available_subject</li>
+                                <li>@item.Description</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
 <div class="task">
@@ -159,4 +247,26 @@
             }
         })
     })
+
+    //控制推荐家教的展示
+    var tabs = document.querySelectorAll('.grade ul li');
+    var content = document.querySelectorAll('.teadetail>div');
+    for (i = 0; i < tabs.length; i++) {
+        var tab = tabs[i];
+        console.log(tab);
+        settabhand(tab, i);
+    }
+    function settabhand(tab, tabpos) {
+        tab.onmouseover = function () {
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].className = '';
+            }
+            tab.className = 'act';
+            for (i = 0; i < content.length; i++) {
+                content[i].className = '';
+            }
+            content[tabpos].className = 'activedetail';
+        }
+    }
+
 </script>

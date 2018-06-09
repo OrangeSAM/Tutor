@@ -28,5 +28,21 @@ namespace Tutor.UI.ViewModels
         {
             get;set;
         }
+        public IEnumerable<TeacherInfo> kidtea
+        {
+            get;set;
+        }
+        public IEnumerable<TeacherInfo> pretea
+        {
+            get;set;
+        }
+        public IEnumerable<TeacherInfo> midtea
+        {
+            get;set;
+        }
+        public IEnumerable<TeacherInfo> higtea
+        {
+            get;set;
+        }
     }
 }

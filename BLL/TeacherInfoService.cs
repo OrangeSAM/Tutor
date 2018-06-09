@@ -12,6 +12,13 @@ namespace BLL
     public partial class TeacherInfoService : BaseService<TeacherInfo>, ITeacherInfoService
     {
         private ITeacherInfoDAL teacherinfoDAL = DALContainer.Container.Resolve<ITeacherInfoDAL>();
+
+        public IEnumerable<TeacherInfo> getinfobygrade(string grade)
+        {
+            var log = teacherinfoDAL.getinfobygrade(grade);
+            return log;
+        }
+
         public override void SetDal()
         {
             Dal = teacherinfoDAL;
