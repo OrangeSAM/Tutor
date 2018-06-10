@@ -38,7 +38,7 @@
                 </div>
             </li>
             <li>
-                <input type="submit" value="搜索家教">
+                <input type="submit" value="搜索家教" class="search">
             </li>
         </ul>
     </div>
@@ -53,8 +53,15 @@
                 <div><img src="@Session["head"].ToString()" /></div>
                 <div><span>欢迎您，@Session["name"].ToString()</span></div>
                 <div>
-                    <a href="#">个人中心</a>
-                    <button>退出</button>
+                    @if (Session["tflag"] == null)
+                    {
+                        <a href="@Url.Action("Index","Student")">个人中心</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Index","Teacher")">个人中心</a>
+                    }
+                    <a href="@Url.Action("signout","Index")" target="_parent">退出</a>
                 </div>
             </section>
             <div class="after">
@@ -118,7 +125,6 @@
                     </div>
                  }
             </div>
-
         </div>
         <div class="">
             @foreach (var item in Model.pretea)
@@ -202,7 +208,7 @@
 <script>
     //choosegrade
     $("#choosegrade").hover(function () {
-        $("#choosegrade>ul").css({"display":"block","background-color":"white","z-index":"100","cursor":"pointer"});
+        $("#choosegrade>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer" });
     }).click(function (event) {
         var grade = event.target.innerText;
         $("#choosegrade>span:first-child").text(grade);
@@ -212,7 +218,8 @@
 
     //choosesubject
     $("#choosesub").hover(function () {
-        $("#choosesub>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer"});
+        $("#choosesub>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer" });
+        console.log($("#choosesub>ul"));
     }).click(function (event) {
         var subject = event.target.innerText;
         $("#choosesub>span:first-child").text(subject);
@@ -235,25 +242,30 @@
 
     //获取年级和科目的数据
     $("#choosegrade ul li span").click(function (event) {
-        console.log(event);
         var grade_id = event.currentTarget.dataset.id;
+        var grade = event.currentTarget.innerText;
+        //event.currentTarget.addClass("hello");
+        console.log(grade);
         $.get("/Index/getsubject/" + grade_id, function (data) {
             $("#choosesub ul").empty();
             for (var x in data) {
-                var sub  = $("<li></li>").text(data[x].subject1);
-                //var child=$('#choosesub ul').children().length;
-                //console.log(child);
+                var sub = $("<li></li>").text(data[x].subject1);
                 $("#choosesub ul").append(sub);
             }
         })
     })
+    function getgrade(){
 
+    }
+    //搜索功能
+    $(".search").click(function () {
+        $.post("/Index/filter/"+grade)
+    })
     //控制推荐家教的展示
     var tabs = document.querySelectorAll('.grade ul li');
     var content = document.querySelectorAll('.teadetail>div');
     for (i = 0; i < tabs.length; i++) {
         var tab = tabs[i];
-        console.log(tab);
         settabhand(tab, i);
     }
     function settabhand(tab, tabpos) {

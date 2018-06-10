@@ -181,7 +181,7 @@
     background-color:lightblue;
 }
 .grade ul li{
-    padding:20px;
+    padding:15px;
 }
 .grade ul li.act{
     background-color:lightblue;
@@ -198,6 +198,7 @@
     width:100%;
     background-color:lightblue;
 }
+
 .teadetail>div .singletea{
     float:left;
     text-align:center;
@@ -205,9 +206,13 @@
 }
 .singletea div:first-child{
     width:200px;
+    margin:10px 0;
 }
 .singletea div:nth-child(2){
     width:200px;
+}
+.singletea div:nth-child(2) ul li{
+    margin:5px;
 }
 .teadetail .activedetail{
     z-index:1;

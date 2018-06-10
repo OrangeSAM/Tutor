@@ -47,7 +47,10 @@ namespace Tutor.UI.Controllers
                 string name = Session["Tuser_name"].ToString();
                 Teacher teacher = teacherSer.GetModels(b => b.Tuser_name == name).FirstOrDefault();
                 Session["user_id"] = teacher.Teacher_id;
+                var temp = (int)Session["user_id"];
+                TeacherInfo teacherinfo = teacherinfoSer.GetModels(b => b.Teaher_id == temp).FirstOrDefault();
                 Session["head"] = teacher.Tphoto;
+                Session["tflag"] = teacherinfo.Major;
                 return Redirect(Url.Action("index", "index"));
             }
             else
@@ -78,6 +81,14 @@ namespace Tutor.UI.Controllers
             
             var sub= subjectSer.getsubject(id);
             return Json(sub,JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult signout()
+        {
+            Session["name"] = null;
+            Session["user_id"] = null;
+            Session["head"] = null;
+            Session["tflag"] = null;
+            return Content("<script>window.location.href=document.referrer</script>");
         }
     }
 }

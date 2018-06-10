@@ -51,9 +51,27 @@ namespace Tutor.UI.Controllers
             ssearchvm.grade = grade;
             return View(ssearchvm);
         }
-        //public ActionResult filter(string sub,string area,string sex)
-        //{
-
-        //}
+        public ActionResult filter(string sub, string area, string sex,int page=1)
+        {
+            var grade = gradeSer.GetModels(b => b.Grade_id != 0);
+            var teacherinfo = teacherinfoSer.GetModelsBypage(10, page, true,b=>b.Detail_id,b => b.Detail_id != 0);
+            var filter = teacherinfo.Where(t => t.Available_subject.Contains(sub));
+            var filters = filter.Where(t => t.Area.Contains(area));
+            var remind = filters.Count() % 10;
+            var count = filters.Count() / 10;
+            var location = filters.Select(b => b.Area).Distinct();
+            if (remind > 0)
+            {
+                count = count + 1;
+            }
+            TsearchVM tsearchvm = new TsearchVM();
+            tsearchvm.teacherinfo = filters;
+            tsearchvm.grade = grade;
+            tsearchvm.area = location;
+            ViewBag.count = count;
+            return View(tsearchvm);
+            
+        }
+        
     }
 }
