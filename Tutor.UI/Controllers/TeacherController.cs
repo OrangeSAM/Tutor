@@ -43,7 +43,7 @@ namespace Tutor.UI.Controllers
             tshow.teaccherinfo = tea;
             tshow.comment = comt;
             tshow.exhibition = exhi;
-            return View(tea);
+            return View(tshow);
         }
 
     }

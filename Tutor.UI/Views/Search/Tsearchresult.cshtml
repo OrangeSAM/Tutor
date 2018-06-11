@@ -52,7 +52,7 @@
                 <img src="~/Img/登录注册/rg.jpg" style="width:120px;height:120px;" />
             </div>
             <div>
-                <p style="margin-top:0;"><a href="@Url.Action("Index","Teacher",new { id=@item.Teaher_id})">@item.Teacher.Tuser_name</a></p>
+                <p style="margin-top:0;"><a href="@Url.Action("detail","Teacher",new { id=@item.Teaher_id})">@item.Teacher.Tuser_name</a></p>
                 <div>
                     <span>家教经验</span>
                     <strong>@item.Experience</strong><br />

@@ -12,9 +12,9 @@
             <h2>@Model.tuser.Tuser_name</h2>
         </div>
         <ul class="ulmp leftnavbar">
-            <li>教员资料</li>
-            <li>我的家教</li>
-            <li>我的预约</li>
+            <li class="a">教员资料</li>
+            <li class="b">我的家教</li>
+            <li class="c">我的预约</li>
         </ul>
     </div>
     <div class="rightdetail">
@@ -137,23 +137,38 @@
         }
     })
 
-    $(".leftnavbar li").click(function (event) {
-        if (event.target.innerText == '教员资料') {
-            $(".task").css("display", "none");
-            $(".appointment").css("display", "none");
-            $(".account").css("display", "block");
-        }else {
-            if (event.target.innerText == '我的家教') {
-                $(".account").css("display", "none");
-                $(".appointment").css("display", "none");
-                $(".task").css("display", "block");
-            }else{
-                console.log(event.target.innerText);
-                $(".account").css("display", "none");
-                $(".task").css("display", "none");
-                $(".appointment").css("display", "block");
-                console.log($(".appointment"));
-            }
-        }
+    $(".a").click(function () {
+        $(".account").show();
+        $(".task").hide();
+        $(".appointment").hide();
     })
+    $(".b").click(function () {
+        $(".account").hide();
+        $(".task").show();
+        $(".appointment").hide();
+    })
+    $(".c").click(function () {
+        $(".account").hide();
+        $(".task").hide();
+        $(".appointment").show();
+    })
+    //$(".leftnavbar li").click(function (event) {
+    //    if (event.target.innerText == '教员资料') {
+    //        $(".task").css("display", "none");
+    //        $(".appointment").css("display", "none");
+    //        $(".account").css("display", "block");
+    //    }else {
+    //        if (event.target.innerText == '我的家教') {
+    //            $(".account").css("display", "none");
+    //            $(".appointment").css("display", "none");
+    //            $(".task").css("display", "block");
+    //        }else{
+    //            console.log(event.target.innerText);
+    //            $(".account").css("display", "none");
+    //            $(".task").css("display", "none");
+    //            $(".appointment").css("display", "block");
+    //            console.log($(".appointment"));
+    //        }
+    //    }
+    //})
 </script>

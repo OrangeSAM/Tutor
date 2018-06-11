@@ -1,4 +1,4 @@
-﻿@model Model.TeacherInfo
+﻿@model Tutor.UI.ViewModels.Tshow
 @{
     ViewBag.Title = "detail";
     Layout = "~/Views/Shared/_Lauout.cshtml";
@@ -8,8 +8,8 @@
 <div class="wrap">
     <div class="leftnav">
         <div>
-            <img src="@Model.Ident_photo" />
-            <h2>@Model.Teacher.Tuser_name</h2>
+            <img src="@Model.teaccherinfo.Ident_photo" />
+            <h2>@Model.teaccherinfo.Teacher.Tuser_name</h2>
         </div>
         <ul class="ulmp leftnavbar">
             <li>教员资料</li>
@@ -22,76 +22,93 @@
         <div class="account">
             <div class="topbar">账户资料</div>
             <div>
-                <div class="headpor">
-                    <img src="@Model.Ident_photo" />
-                    <ul class="ulmp">
-                        <li>修改头像</li>
-                        <li>上传头像</li>
-                    </ul>
-                </div>
                 <div class="detail">
                     <ul class="ulmp">
                         <li>
                             <strong>邮&nbsp; &nbsp; &nbsp; &nbsp;箱</strong>
-                            <p>@Model.Teacher.Tmail</p>
+                            <p>@Model.teaccherinfo.Teacher.Tmail</p>
                         </li>
                         <li>
                             <strong>电&nbsp; &nbsp; &nbsp; &nbsp;话</strong>
-                            <p>@Model.phone</p>
+                            <p>@Model.teaccherinfo.phone</p>
                         </li>
                         <li>
                             <strong>学&nbsp; &nbsp; &nbsp; &nbsp;校</strong>
-                            <p>@Model.Studyat</p>
+                            <p>@Model.teaccherinfo.Studyat</p>
                         </li>
                         <li>
                             <strong>专&nbsp; &nbsp; &nbsp; &nbsp;业</strong>
-                            <p>@Model.Major</p>
+                            <p>@Model.teaccherinfo.Major</p>
                         </li>
                         <li>
                             <strong>科&nbsp; &nbsp; &nbsp; &nbsp;目</strong>
-                            <p>@Model.Available_subject</p>
+                            <p>@Model.teaccherinfo.Available_subject</p>
                         </li>
                         <li>
                             <strong>家教经验</strong>
-                            <p>@Model.Experience</p>
+                            <p>@Model.teaccherinfo.Experience</p>
                         </li>
                         <li>
                             <strong>薪水要求</strong>
-                            <p>@Model.Salary</p>
+                            <p>@Model.teaccherinfo.Salary</p>
                         </li>
                     </ul>
                     <ul class="ulmp">
                         <li>
                             <strong>授课区域</strong>
-                            <p>@Model.Area</p>
+                            <p>@Model.teaccherinfo.Area</p>
                         </li>
                         <li>
                             <strong>可行时间</strong>
-                            <p>@Model.Available_time</p>
+                            <p>@Model.teaccherinfo.Available_time</p>
                         </li>
                         <li>
                             <strong>获奖情况</strong>
-                            <p>@Model.Award</p>
+                            <p>@Model.teaccherinfo.Award</p>
                         </li>
                         <li>
                             <strong>自我描述</strong>
-                            <p>@Model.Description</p>
+                            <p>@Model.teaccherinfo.Description</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div>
-            <div class="comment">教员评论</div>
-            <div></div>
+            <div class="topbar">教员评论</div>
+            <div>
+                <div>
+                    @foreach(var item in Model.comment)
+                    {
+                        <div>
+                            <span>@item.Student.Suser_name</span>
+                            <span>@item.Detail</span>
+                            <span>@item.Comment_time</span>
+                        </div>
+                    }
+                </div>
+                <div>
+                    此处发表评论
+                </div>
+            </div>
         </div>
         <div>
-            <div class="sample">教学片断</div>
-            <div></div>
+            <div class="topbar">教学片断</div>
+            <div>
+                @foreach(var item in Model.exhibition)
+                {
+                    <div><img src="@item.Photo" style="width:150px;"/></div>
+                }
+            </div>
         </div>
         <div>
-            <div class="exhi">教学视频</div>
-            <div></div>
+            <div class="topbar">教学视频</div>
+            <div>
+                @foreach(var item in Model.sample)
+                {
+                    <div><video src="@item.Videos"></video></div>
+                }
+            </div>
         </div>
     </div>
 </div>
