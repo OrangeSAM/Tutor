@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
 <link href="~/Css/Tsearchresult.css" rel="stylesheet"/>
+<script src="~/scripts/jquery-3.3.1.js"></script>
 <div>
     <div class="searchbar">
         <div class="area">
@@ -69,7 +70,7 @@
                         </li>
                         <li>
                             <strong>预约人数</strong>
-                            <button class="tdbutton">点击应聘</button>
+                            <button class="tdbutton" data-id="@item.Task_id">点击应聘</button>
                         </li>
                     </ul>
                 </div>
@@ -77,6 +78,28 @@
         }
     </div>
     <div class="pagelist">
-
+        @for(int i = 1; i <= ViewBag.count; i++)
+        {
+            <span><a href="Ssearchresult?page=@i">@i</a></span>
+        }
     </div>
+    <div class="hidden" style="display:none">@Session["user_id"]</div>
 </div>
+<script>
+    $(".tdbutton").click(function (event) {
+        var mydate = new Date().toLocaleDateString();
+        var idd = document.getElementsByClassName("hidden");
+        var id = idd[0].innerText;
+        var taskid = event.currentTarget.dataset.id;
+        var state = "预约成功";
+        $.post("/search/makeorder/", {
+            Teacher_id: id,
+            task_id: taskid,
+            atime:mydate,
+            astate:state
+        }),
+        function (status) {
+            alert(status);
+        }
+    })
+</script>

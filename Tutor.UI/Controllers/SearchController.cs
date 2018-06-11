@@ -27,9 +27,9 @@ namespace Tutor.UI.Controllers
             }
             var teacherinfo = teacherinfoSer.GetModelsBypage(10, page, true,b=>b.Detail_id,b => b.Detail_id != 0);
             TsearchVM tsearchvm = new ViewModels.TsearchVM();
+            var area = teacherinfo.Select(b => b.Area).Distinct();
             tsearchvm.grade = grade;
             tsearchvm.teacherinfo = teacherinfo;
-            var area =teacherinfo.Select(b => b.Area).Distinct();
             ViewBag.count = count;
             tsearchvm.area = area;
             return View(tsearchvm);
@@ -49,6 +49,7 @@ namespace Tutor.UI.Controllers
             ssearchvm.area = area;
             ssearchvm.task = task;
             ssearchvm.grade = grade;
+            ViewBag.count = count;
             return View(ssearchvm);
         }
         public ActionResult filter(string sub, string area, string sex,int page=1)
@@ -70,7 +71,12 @@ namespace Tutor.UI.Controllers
             tsearchvm.area = location;
             ViewBag.count = count;
             return View(tsearchvm);
-            
+        }
+        public ActionResult makeorder(appointment appointment)
+        {
+            AppointmentService appointmentSer = new AppointmentService();
+            appointmentSer.Add(appointment);
+            return Content("<script>alert('预约成功！');window.open('" + Url.Content("~/Student/Index") + "', '_blank')</script>");
         }
         
     }

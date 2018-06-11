@@ -27,7 +27,8 @@ namespace Tutor.UI.Controllers
             try
             {
                 StudentService.Add(student);
-                return Content("注册成功");
+                return Content("<script>alert('注册成功！');window.open('" + Url.Content("~/Index/Index") + "', '_self')</script>");
+
             }
             catch (Exception)
             {

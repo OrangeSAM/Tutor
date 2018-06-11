@@ -1,4 +1,4 @@
-﻿@model Model.Tuser
+﻿@model Tutor.UI.ViewModels.TdeatilVM
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Lauout.cshtml";
@@ -8,8 +8,8 @@
 <div class="wrap">
     <div class="leftnav">
         <div>
-            <img src="@Model.Ident_photo" />
-            <h2>@Model.Tuser_name</h2>
+            <img src="@Model.tuser.Ident_photo" />
+            <h2>@Model.tuser.Tuser_name</h2>
         </div>
         <ul class="ulmp leftnavbar">
             <li>教员资料</li>
@@ -33,49 +33,49 @@
                     <ul class="ulmp">
                         <li>
                             <strong>邮&nbsp; &nbsp; &nbsp; &nbsp;箱</strong>
-                            <p>@Model.Tmail</p>
+                            <p>@Model.tuser.Tmail</p>
                         </li>
                         <li>
                             <strong>电&nbsp; &nbsp; &nbsp; &nbsp;话</strong>
-                            <p>@Model.phone</p>
+                            <p>@Model.tuser.phone</p>
                         </li>
                         <li>
                             <strong>学&nbsp; &nbsp; &nbsp; &nbsp;校</strong>
-                            <p>@Model.Studyat</p>
+                            <p>@Model.tuser.Studyat</p>
                         </li>
                         <li>
                             <strong>专&nbsp; &nbsp; &nbsp; &nbsp;业</strong>
-                            <p>@Model.Major</p>
+                            <p>@Model.tuser.Major</p>
                         </li>
                         <li>
                             <strong>科&nbsp; &nbsp; &nbsp; &nbsp;目</strong>
-                            <p>@Model.Available_subject</p>
+                            <p>@Model.tuser.Available_subject</p>
                         </li>
                         <li>
                             <strong>家教经验</strong>
-                            <p>@Model.Experience</p>
+                            <p>@Model.tuser.Experience</p>
                         </li>
                         <li>
                             <strong>薪水要求</strong>
-                            <p>@Model.Salary</p>
+                            <p>@Model.tuser.Salary</p>
                         </li>
                     </ul>
                     <ul class="ulmp">
                         <li>
                             <strong>授课区域</strong>
-                            <p>@Model.Area</p>
+                            <p>@Model.tuser.Area</p>
                         </li>
                         <li>
                             <strong>可行时间</strong>
-                            <p>@Model.Available_time</p>
+                            <p>@Model.tuser.Available_time</p>
                         </li>
                         <li>
                             <strong>获奖情况</strong>
-                            <p>@Model.Award</p>
+                            <p>@Model.tuser.Award</p>
                         </li>
                         <li>
                             <strong>自我描述</strong>
-                            <p>@Model.Description</p>
+                            <p>@Model.tuser.Description</p>
                         </li>
                     </ul>
                 </div>
@@ -96,13 +96,13 @@
                         <th>发布时间</th>
                     </tr>
                     <tr>
-                        <td>这是名称</td>
-                        <td>这是科目</td>
-                        <td>这是时间</td>
-                        <td>这是地点</td>
-                        <td>这是状态</td>
-                        <td>这是电话</td>
-                        <td>发布时间</td>
+                        <td>@Model.task.Task_name.Substring(0,8)...</td>
+                        <td>@Model.task.Subject</td>
+                        <td>@Model.task.Location</td>
+                        <td>@Model.task.Timedemend</td>
+                        <td>@Model.task.State</td>
+                        <td>@Model.task.Tel</td>
+                        <td>@Model.task.Upload_time.ToString("yyyy-MM-dd")</td>
                     </tr>
                 </table>
             </div>
@@ -113,12 +113,14 @@
             <table>
                 <tr class="detailth">
                     <th>家教单名</th>
-                    <th>发布时间</th>
-                    <th>状态</th>
+                    <th>预约时间</th>
+                    <th>状&nbsp;&nbsp;态</th>
                     <th>预约教员</th>
                 </tr>
                 <tr>
-                    <th></th>
+                    <td>@Model.appointment.Task.Task_name</td>
+                    <td>@Model.appointment.Atime</td>
+                    <td>@Model.appointment.Astate</td>
                 </tr>
             </table>
         </div>
@@ -136,21 +138,21 @@
     })
 
     $(".leftnavbar li").click(function (event) {
-        if (event.target.innerText == '账户资料') {
+        if (event.target.innerText == '教员资料') {
             $(".task").css("display", "none");
             $(".appointment").css("display", "none");
             $(".account").css("display", "block");
-        }
-        else {
+        }else {
             if (event.target.innerText == '我的家教') {
                 $(".account").css("display", "none");
                 $(".appointment").css("display", "none");
                 $(".task").css("display", "block");
-            }
-            else {
+            }else{
+                console.log(event.target.innerText);
                 $(".account").css("display", "none");
                 $(".task").css("display", "none");
                 $(".appointment").css("display", "block");
+                console.log($(".appointment"));
             }
         }
     })

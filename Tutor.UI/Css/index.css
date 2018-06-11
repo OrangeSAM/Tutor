@@ -8,6 +8,7 @@
 .firstdiv{
     display:flex;
     justify-content:center;
+    margin-bottom:10px;
 }
 .selectdiv{
     float:left;
@@ -170,6 +171,7 @@
     margin:0 auto;
     background-color:beige;
     display:flex;
+    margin-bottom:10px;
 }
 .grade{
     width:24%;
