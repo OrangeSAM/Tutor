@@ -12,6 +12,13 @@ namespace BLL
     public partial class AppointmentService:BaseService<appointment>,IAppointmentService
     {
         private IAppiontmentDAL appointmentDAL = DALContainer.Container.Resolve<IAppiontmentDAL>();
+
+        public int appocount()
+        {
+            var a = appointmentDAL.appocount();
+            return a;
+        }
+
         public override void SetDal()
         {
             Dal = appointmentDAL;

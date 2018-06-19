@@ -9,6 +9,6 @@ namespace IDAL
 {
     public partial interface IAppiontmentDAL : IBaseDAL<appointment>
     {
-
+        int appocount();
     }
 }

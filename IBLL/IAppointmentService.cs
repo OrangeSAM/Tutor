@@ -9,5 +9,6 @@ namespace IBLL
 {
     public partial interface IAppointmentService:IBaseService<appointment>
     {
+        int appocount();
     }
 }

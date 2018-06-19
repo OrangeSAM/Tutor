@@ -15,6 +15,7 @@ namespace Tutor.UI.Controllers
         GradeService gradeSer = new GradeService();
         TeacherInfoService teacherinfoSer = new TeacherInfoService();
         TaskService taskSer = new TaskService();
+        AppointmentService appoSer = new AppointmentService();
         // GET: Search
         public ActionResult Tsearchresult(int page = 1)
         {
@@ -78,6 +79,5 @@ namespace Tutor.UI.Controllers
             appointmentSer.Add(appointment);
             return Content("<script>alert('预约成功！');window.open('" + Url.Content("~/Student/Index") + "', '_blank')</script>");
         }
-        
     }
 }

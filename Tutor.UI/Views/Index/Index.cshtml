@@ -200,11 +200,12 @@
                 <span class="fa fa-location-arrow"></span>
                 <span>@item.Location</span>
                 <div>等待您来应聘</div>
-                <a href="#">我要应聘</a>
+                <button id="appo" data-id="@item.Task_id">我要应聘</button>
             </div>
         </div>
     }
 </div>
+<div class="hidden" style="display:none">@Session["user_id"]</div>
 <script>
     //choosegrade
     $("#choosegrade").hover(function () {
@@ -281,4 +282,18 @@
         }
     }
 
+    //应聘家教
+    $("#appo").click(function (event) {
+        var mydate = new Date().toLocaleDateString();
+        var idd = document.getElementsByClassName("hidden");
+        var id = idd[0].innerText;
+        var taskid = event.currentTarget.dataset.id;
+        var state = "预约成功";
+        $.post("/search/makeorder/", {
+            Teacher_id: id,
+            task_id: taskid,
+            atime: mydate,
+            astate: state
+        })
+    })
 </script>

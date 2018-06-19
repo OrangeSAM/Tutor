@@ -12,7 +12,7 @@
             <h2>@Model.teaccherinfo.Teacher.Tuser_name</h2>
         </div>
         <ul class="ulmp leftnavbar">
-            <li>教员资料</li>
+            <li>教员简介</li>
             <li>教员评论</li>
             <li>教学片断</li>
             <li>教学视频</li>
@@ -20,7 +20,7 @@
     </div>
     <div class="rightdetail">
         <div class="account">
-            <div class="topbar">账户资料</div>
+            <div class="topbar">教员简介</div>
             <div>
                 <div class="detail">
                     <ul class="ulmp">
@@ -76,19 +76,19 @@
         </div>
         <div>
             <div class="topbar">教员评论</div>
-            <div>
+            <div class="comment">
                 <div>
                     @foreach(var item in Model.comment)
                     {
                         <div>
                             <span>@item.Student.Suser_name</span>
-                            <span>@item.Detail</span>
+                            <span>：@item.Detail</span>
                             <span>@item.Comment_time</span>
                         </div>
                     }
                 </div>
                 <div>
-                    此处发表评论
+                    <input type="text"/>
                 </div>
             </div>
         </div>
