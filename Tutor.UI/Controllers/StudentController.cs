@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL;
+using Tutor.UI.ViewModels;
 
 namespace Tutor.UI.Controllers
 {
@@ -11,13 +12,19 @@ namespace Tutor.UI.Controllers
     {
         StudentService studentSer = new StudentService();
         TaskService taskSer = new TaskService();
-        CoursesService coursesSer = new CoursesService();
+        IndentService indentSer = new IndentService();
         // GET: Student
         public ActionResult Index()
         {
             var sid = (int)Session["user_id"];
             var stu = studentSer.GetModels(b => b.Student_id == sid).FirstOrDefault();
-            return View(stu);
+            var task = taskSer.GetModels(b => b.Student_id == sid);
+            var indent = indentSer.GetModels(b => b.Student_id == sid);
+            SdetailVM sdetailvm = new SdetailVM();
+            sdetailvm.student = stu;
+            sdetailvm.task = task;
+            sdetailvm.indent = indent;
+            return View(sdetailvm);
         }
     }
 }

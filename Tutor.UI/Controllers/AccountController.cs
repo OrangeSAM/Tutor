@@ -36,33 +36,34 @@ namespace Tutor.UI.Controllers
                 throw;
             }
         }
-        //public ActionResult updatephoto()
-        //{
-        //    var u = StudentService.GetModels(b => b.Student_id == int.Parse(Session["Suser_id"].ToString())).FirstOrDefault();
-        //    try
-        //    {
-        //        HttpPostedFileBase postimage = Request.Files["photo"];
-        //        string img = postimage.FileName.ToString();
-        //        if (img == "")
-        //        {
-        //            return Content("<script>;alert('请输入图片');history.go(-1)</script>");
-        //        }
-        //        else
-        //        {
-        //            string filepath = postimage.FileName;
-        //            string filename = filepath.Substring(filepath.LastIndexOf("\\") + 1);
-        //            string serverpath = Server.MapPath(@"\Img\user\") + filename;
-        //            string relativepath = @"/Img/user/" + filename;
-        //            postimage.SaveAs(serverpath);
-        //            u.Sphoto = relativepath;
-        //            StudentService.Update(u);
-        //        }
-        //    }
-        //    catch (Exception error)
-        //    {
+        public ActionResult updatephoto()
+        {
+            var u = StudentService.GetModels(b => b.Student_id == int.Parse(Session["Suser_id"].ToString())).FirstOrDefault();
+            try
+            {
+                HttpPostedFileBase postimage = Request.Files["photo"];
+                string img = postimage.FileName.ToString();
+                if (img == "")
+                {
+                    return Content("<script>;alert('请输入图片');history.go(-1)</script>");
+                }
+                else
+                {
+                    string filepath = postimage.FileName;
+                    string filename = filepath.Substring(filepath.LastIndexOf("\\") + 1);
+                    string serverpath = Server.MapPath(@"\Img\user\") + filename;
+                    string relativepath = @"/Img/user/" + filename;
+                    postimage.SaveAs(serverpath);
+                    u.Sphoto = relativepath;
+                    StudentService.Update(u);
+                }
+            }
+            catch (Exception error)
+            {
 
-        //        throw error;
-        //    }
-        //}
+                throw error;
+            }
+            return View("/Student/Index");
+        }
     }
 }

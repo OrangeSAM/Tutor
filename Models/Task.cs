@@ -55,6 +55,8 @@ public partial class Task
 
     public string Task_name { get; set; }
 
+    public int appo_count { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

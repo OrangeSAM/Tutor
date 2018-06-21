@@ -25,8 +25,8 @@
                 <div class="headpor">
                     <img src="~/Img/登录注册/rg.jpg" />
                     <ul class="ulmp">
-                        <li>修改头像</li>
-                        <li>上传头像</li>
+                        <li><input type="file" value="修改头像"/></li>
+                        <li><button>上传头像</button></li>
                     </ul>
                 </div>
                 <div class="detail">
@@ -118,7 +118,7 @@
                     <th>预约教员</th>
                 </tr>
                 <tr>
-                    <td>@Model.appointment.Task.Task_name</td>
+                    <td>@Model.appointment.Task.Task_name.Substring(0, 8)...</td>
                     <td>@Model.appointment.Atime</td>
                     <td>@Model.appointment.Astate</td>
                 </tr>

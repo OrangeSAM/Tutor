@@ -209,13 +209,17 @@
 }
 .singletea div:first-child{
     width:200px;
-    margin:10px 0;
+    margin:15px auto;
 }
 .singletea div:nth-child(2){
     width:200px;
+    margin:0 auto;
 }
 .singletea div:nth-child(2) ul li{
     margin:5px;
+}
+.singletea div:nth-child(2) ul li:first-child{
+    margin-bottom:16.5%;
 }
 .teadetail .activedetail{
     z-index:1;

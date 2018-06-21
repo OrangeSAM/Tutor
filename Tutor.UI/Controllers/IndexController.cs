@@ -68,6 +68,7 @@ namespace Tutor.UI.Controllers
                 string name = Session["Suser_name"].ToString();
                 Student student = studentSer.GetModels(b => b.Suser_name == name).FirstOrDefault();
                 Session["user_id"] = student.Student_id;
+                Session["suser_id"] = student.Student_id;
                 Session["head"] = student.Sphoto;
                 return Redirect(Url.Action("index", "index"));
             }

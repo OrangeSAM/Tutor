@@ -45,6 +45,11 @@ namespace Tutor.UI.Controllers
             tshow.exhibition = exhi;
             return View(tshow);
         }
+        public ActionResult comment(Comment cm)
+        {
+            commentSer.Add(cm);
+            return Content("<script>window.open('" + Url.Content("~/Teacher/detail") + "', '_blank')</script>");
+        }
 
     }
 }
