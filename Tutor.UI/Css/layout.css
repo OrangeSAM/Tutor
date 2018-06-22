@@ -73,6 +73,7 @@ footer{
     background-color:white;
     display:flex;
     justify-content:center;
+    margin-top:25px;
 }
 .ulmp{
     margin:0;

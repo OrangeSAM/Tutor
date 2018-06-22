@@ -181,13 +181,13 @@
     text-align:center;
 }
 .grade ul li:hover{
-    background-color:lightblue;
+    background:linear-gradient(to right,#dddddd,lightblue);
 }
 .grade ul li{
     padding:15px;
 }
 .grade ul li.act{
-    background-color:lightblue;
+    background:linear-gradient(to right,#dddddd,lightblue);
 }
 .teadetail{
     position:relative;
@@ -199,13 +199,17 @@
     left:0;
     right:0;
     width:100%;
-    background-color:lightblue;
+    background:linear-gradient(#dddddd,lightblue);
 }
 
 .teadetail>div .singletea{
     float:left;
     text-align:center;
-    width:25%;
+    width:24.9%;
+    border-right:1px solid lightblue;
+}
+.teadetail>div>div:last-child .singletea{
+    border:none;
 }
 .singletea div:first-child{
     width:200px;
@@ -223,4 +227,37 @@
 }
 .teadetail .activedetail{
     z-index:1;
+}
+.button {
+    display:inline-block;
+    border-radius:4px;
+    background-color:#f3411e;
+    border:none;
+    color:#FFFFFF;
+    text-align:center;
+    font-size:15px;
+    padding:5px 10px;
+    transition:all 0.5s;
+    cursor:pointer;
+}
+.button span{
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    transition:0.5s;
+}
+.button span:after{
+    content:"»";
+    position:absolute;
+    opacity:0;
+    top:0;
+    right:-20px;
+    transition:0.5s;
+}
+.button:hover span{
+    padding-right:15px;
+}
+.button:hover span::after{
+    opacity:1;
+    right:0;
 }
