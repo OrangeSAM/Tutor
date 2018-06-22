@@ -18,7 +18,7 @@
         <ul>
             <li>
                 <div class="choose" id="choosegrade">
-                    <span>选择年级</span>
+                    <span class="mygrade">选择年级</span>
                     <span class="fa fa-sort-desc fa-2x triangle"></span>
                     <ul>
                         @foreach (var item in Model.grade)
@@ -30,14 +30,14 @@
             </li>
             <li>
                 <div class="choose" id="choosesub">
-                    <span>选择学科</span>
+                    <span class="mysubject">选择学科</span>
                     <span class="fa fa-sort-desc fa-2x triangle"></span>
                     <ul>
                     </ul>
                 </div>
             </li>
             <li>
-                <input type="submit" value="搜索家教" class="search">
+                <button class="search">搜索家教</button>
             </li>
         </ul>
     </div>
@@ -219,13 +219,14 @@
     //choosesubject
     $("#choosesub").hover(function () {
         $("#choosesub>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer" });
-        console.log($("#choosesub>ul"));
+        //console.log($("#choosesub>ul"));
     }).click(function (event) {
         var subject = event.target.innerText;
         $("#choosesub>span:first-child").text(subject);
     }).mouseleave(function () {
         $("#choosesub>ul").css("display", "none");
     })
+
     //loginbox
     $(".choosebar span:nth-child(1)").hover(function () {
         $(".teacherbox").css("display", "block");
@@ -244,8 +245,6 @@
     $("#choosegrade ul li span").click(function (event) {
         var grade_id = event.currentTarget.dataset.id;
         var grade = event.currentTarget.innerText;
-        //event.currentTarget.addClass("hello");
-        console.log(grade);
         $.get("/Index/getsubject/" + grade_id, function (data) {
             $("#choosesub ul").empty();
             for (var x in data) {
@@ -254,13 +253,25 @@
             }
         })
     })
-    function getgrade(){
 
-    }
-    //搜索功能
-    $(".search").click(function () {
-        $.post("/Index/filter/"+grade)
+    //搜索跳转功能
+    var grade1 = '';
+    $("#choosegrade ul li span").click(function(){
+        grade1 = $(".mygrade").text();
+        console.log(grade1);
     })
+    var subject1 = '';
+    $("#choosesub ul li").click(function(){
+        subject1 = $(".mysubject").text();
+        console.log($(".mysubjcet"));
+    })
+    
+    $(".search").click(function () {
+        $.post("/Search/searchredir/", {
+            subject:subject1,
+        })
+    })
+
     //控制推荐家教的展示
     var tabs = document.querySelectorAll('.grade ul li');
     var content = document.querySelectorAll('.teadetail>div');

@@ -79,5 +79,18 @@ namespace Tutor.UI.Controllers
             appointmentSer.Add(appointment);
             return Content("<script>alert('预约成功！');window.open('" + Url.Content("~/Student/Index") + "', '_blank')</script>");
         }
+        public ActionResult searchredir(string subject)
+        {
+            var temp = teacherinfoSer.GetModels(b => b.Detail_id != 0);
+            var info = temp.Where(t => t.Available_subject.Contains(subject));
+            var grade = gradeSer.GetModels(b => b.Grade_id != 0);
+            var location = temp.Select(t => t.Area).Distinct();
+            TsearchVM tsearchvm = new TsearchVM();
+            tsearchvm.teacherinfo = info;
+            tsearchvm.grade = grade;
+            tsearchvm.area = location;
+            return View("Tsearch",tsearchvm);
+
+        }
     }
 }
