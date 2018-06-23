@@ -95,15 +95,19 @@
                         <th>电话</th>
                         <th>发布时间</th>
                     </tr>
-                    <tr>
-                        <td>@Model.task.Task_name.Substring(0,8)...</td>
-                        <td>@Model.task.Subject</td>
-                        <td>@Model.task.Location</td>
-                        <td>@Model.task.Timedemend</td>
-                        <td>@Model.task.State</td>
-                        <td>@Model.task.Tel</td>
-                        <td>@Model.task.Upload_time.ToString("yyyy-MM-dd")</td>
-                    </tr>
+                    @foreach (var item in Model.task)
+                    {
+                        <tr>
+                            <td>@item.Task_name.Substring(0, 6)...</td>
+                            <td>@item.Subject</td>
+                            <td>@item.Location</td>
+                            <td>@item.Timedemend</td>
+                            <td>@item.State</td>
+                            <td>@item.Tel</td>
+                            <td>@item.Upload_time.ToString("yyyy-MM-dd")</td>
+                        </tr>
+                    }
+                    
                 </table>
             </div>
         </div>
@@ -117,11 +121,14 @@
                     <th>状&nbsp;&nbsp;态</th>
                     <th>预约教员</th>
                 </tr>
-                <tr>
-                    <td>@Model.appointment.Task.Task_name.Substring(0, 8)...</td>
-                    <td>@Model.appointment.Atime</td>
-                    <td>@Model.appointment.Astate</td>
-                </tr>
+                @foreach (var item in Model.appointment)
+                {
+                    <tr>
+                        <td>@item.Task.Task_name.Substring(0, 8)...</td>
+                        <td>@item.Atime</td>
+                        <td>@item.Astate</td>
+                    </tr>
+                }
             </table>
         </div>
     </div>

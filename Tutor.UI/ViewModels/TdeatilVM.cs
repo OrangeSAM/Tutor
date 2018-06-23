@@ -12,11 +12,11 @@ namespace Tutor.UI.ViewModels
         {
             get;set;
         }
-        public Task task
+        public IEnumerable<Task> task
         {
             get;set;
         }
-        public appointment appointment
+        public IEnumerable<appointment> appointment
         {
             get;set;
         }

@@ -24,8 +24,8 @@ namespace Tutor.UI.Controllers
             var Tid = !id.HasValue? (int)Session["user_id"] : id.Value;
             var tea = teacherSer.getteacherbyid(Tid);
             //这里本可以查询teacherinfo然后利用导航属性，但这里涉及到不止两个表，所以恐怕不行。
-            var task = taskSer.GetModels(b => b.Teacher_id == Tid).FirstOrDefault();
-            var appo = appointmentSer.GetModels(b => b.Teacher_id == Tid).FirstOrDefault();
+            var task = taskSer.GetModels(b => b.Teacher_id == Tid);
+            var appo = appointmentSer.GetModels(b => b.Teacher_id == Tid);
             TdeatilVM tdetail = new TdeatilVM();
             tdetail.tuser = tea;
             tdetail.task = task;

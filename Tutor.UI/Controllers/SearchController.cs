@@ -89,8 +89,7 @@ namespace Tutor.UI.Controllers
             tsearchvm.teacherinfo = info;
             tsearchvm.grade = grade;
             tsearchvm.area = location;
-            return View("Tsearch",tsearchvm);
-
+            return View("Tsearchresult",tsearchvm);
         }
     }
 }

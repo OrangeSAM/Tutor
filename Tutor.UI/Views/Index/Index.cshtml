@@ -37,7 +37,7 @@
                 </div>
             </li>
             <li>
-                <button class="search">搜索家教</button>
+                <a class="search button" id="mysearch" href="" style="width:80%;">搜索家教</a>
             </li>
         </ul>
     </div>
@@ -206,6 +206,7 @@
 </div>
 <div class="hidden" style="display:none">@Session["user_id"]</div>
 <script>
+    var idd = $(".hidden").text();
     //choosegrade
     $("#choosegrade").hover(function () {
         $("#choosegrade>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer" });
@@ -219,7 +220,6 @@
     //choosesubject
     $("#choosesub").hover(function () {
         $("#choosesub>ul").css({ "display": "block", "background-color": "white", "z-index": "100", "cursor": "pointer" });
-        //console.log($("#choosesub>ul"));
     }).click(function (event) {
         var subject = event.target.innerText;
         $("#choosesub>span:first-child").text(subject);
@@ -255,22 +255,23 @@
     })
 
     //搜索跳转功能
-    var grade1 = '';
-    $("#choosegrade ul li span").click(function(){
-        grade1 = $(".mygrade").text();
-        console.log(grade1);
-    })
     var subject1 = '';
-    $("#choosesub ul li").click(function(){
-        subject1 = $(".mysubject").text();
-        console.log($(".mysubjcet"));
-    })
+    $("#choosesub").hover(function () {
+        $("#choosesub ul li").click(function (event) {
+            subject1 = event.currentTarget.innerText;
+            $("#mysearch").attr("href","/Search/searchredir/?subject="+subject1);
+        });
+    });
+    //$(".appo").click(function () {
+    //    if (idd == '') {
+    //        console.log("1");
+    //        alert("请先登录");
+    //    }
+    //})
+    //    $.post("/Search/searchredir/", {
+    //        subject:subject1,
+    //    })
     
-    $(".search").click(function () {
-        $.post("/Search/searchredir/", {
-            subject:subject1,
-        })
-    })
 
     //控制推荐家教的展示
     var tabs = document.querySelectorAll('.grade ul li');
@@ -294,16 +295,22 @@
 
     //应聘家教
     $("#appo").click(function (event) {
-        var mydate = new Date().toLocaleDateString();
-        var idd = document.getElementsByClassName("hidden");
-        var id = idd[0].innerText;
-        var taskid = event.currentTarget.dataset.id;
-        var state = "预约成功";
-        $.post("/search/makeorder/", {
-            Teacher_id: id,
-            task_id: taskid,
-            atime: mydate,
-            astate: state
-        })
+        if (idd == '') {
+            alert("请先登录");
+        }
+        else {
+            var mydate = new Date().toLocaleDateString();
+            //var id = idd;
+            var taskid = event.currentTarget.dataset.id;
+            var state = "预约成功";
+            $.post("/search/makeorder/", {
+                Teacher_id: idd,
+                task_id: taskid,
+                atime: mydate,
+                astate: state
+            })
+            alert("预约成功，请到个人中心查看");
+        }
+        
     })
 </script>
