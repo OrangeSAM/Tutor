@@ -37,6 +37,8 @@ public partial class Student
 
     public string Spwd { get; set; }
 
+    public string Spwds { get; set; }
+
     public string Sphone { get; set; }
 
     public string Sphoto { get; set; }

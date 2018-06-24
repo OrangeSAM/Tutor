@@ -152,6 +152,7 @@
     <Content Include="Css\font-awesome.min.css" />
     <Content Include="Css\index.css" />
     <Content Include="Css\layout.css" />
+    <Content Include="Css\register.css" />
     <Content Include="Css\Tsearchresult.css" />
     <Content Include="Css\Teauser.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
