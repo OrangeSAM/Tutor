@@ -170,6 +170,7 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\jquery-3.3.1.js" />
     <Content Include="Video\如约而至 - 许嵩.mp4" />
+    <Content Include="Views\Shared\errorpage.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -215,6 +216,7 @@
     <Content Include="Views\Search\Ssearchresult.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Teacher\detail.cshtml" />
+    <None Include="Properties\PublishProfiles\Tutor.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

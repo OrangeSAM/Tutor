@@ -25,8 +25,7 @@
                     <img src="~/Img/登录注册/b.png" />
                 </div>
                 @using (Html.BeginForm("register", "Account", FormMethod.Post, new { @class = "input-box" }))
-            {
-
+                {
                     <div class="user-name">
                         @Html.TextBoxFor(Student=>Student.Suser_name, new { placeholder = "请输入用户名，注册后不可更改" })
                         <span class="fa fa-user"></span>
@@ -50,7 +49,7 @@
                     <div class="submit">
                         <button>立即注册</button>
                     </div>
-            }
+                }
             </div>
     </div>
 </body>
