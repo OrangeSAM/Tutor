@@ -9,5 +9,6 @@ namespace IBLL
 {
     public partial interface ITaskService:IBaseService<Model.Task>
     {
+       void updateappo(int task_id);
     }
 }

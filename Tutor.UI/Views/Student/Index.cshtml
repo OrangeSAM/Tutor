@@ -31,9 +31,22 @@
                     { 
                         <tr>
                             <td>@item.Task_name.Substring(0, 8)...</td>
-                            <td>@item.Upload_time</td>
+                            <td>@item.Upload_time.ToString("yyyy-MM-dd")</td>
                             <td>@item.State</td>
                             <td>@item.appo_count</td>
+                        </tr>
+                    }
+                </table>
+                <table>
+                    <tr>
+                        <th>序号</th>
+                        <th>教员</th>
+                    </tr>
+                    @foreach(var item in ViewBag.infodata)
+                    {
+                        <tr>
+                            <td>@item.Teaher_id</td>
+                            <td>@item.Teacher.Tuser_name</td>
                         </tr>
                     }
                 </table>

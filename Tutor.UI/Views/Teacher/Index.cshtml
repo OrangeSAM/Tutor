@@ -107,7 +107,6 @@
                             <td>@item.Upload_time.ToString("yyyy-MM-dd")</td>
                         </tr>
                     }
-                    
                 </table>
             </div>
         </div>
@@ -124,8 +123,8 @@
                 @foreach (var item in Model.appointment)
                 {
                     <tr>
-                        <td>@item.Task.Task_name.Substring(0, 8)...</td>
-                        <td>@item.Atime</td>
+                        <td>@item.Task.Task_name.Substring(0, 6)...</td>
+                        <td>@item.Atime.ToString("yyyy-MM-dd")</td>
                         <td>@item.Astate</td>
                     </tr>
                 }
@@ -148,16 +147,16 @@
         $(".account").show();
         $(".task").hide();
         $(".appointment").hide();
-    })
+    });
     $(".b").click(function () {
         $(".account").hide();
         $(".task").show();
         $(".appointment").hide();
-    })
+    });
     $(".c").click(function () {
         $(".account").hide();
         $(".task").hide();
-        $(".appointment").show();
+        $(".appiontment").show();
     })
     //$(".leftnavbar li").click(function (event) {
     //    if (event.target.innerText == '教员资料') {

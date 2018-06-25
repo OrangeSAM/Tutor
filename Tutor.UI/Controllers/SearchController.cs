@@ -77,6 +77,8 @@ namespace Tutor.UI.Controllers
         {
             AppointmentService appointmentSer = new AppointmentService();
             appointmentSer.Add(appointment);
+            var u = appointment.Task_id;
+            taskSer.updateappo(u);
             return Content("<script>alert('预约成功！');window.open('" + Url.Content("~/Student/Index") + "', '_blank')</script>");
         }
         public ActionResult searchredir(string subject)

@@ -16,5 +16,10 @@ namespace BLL
         {
             Dal = taskDAL;
         }
+
+        public void updateappo(int task_id)
+        {
+            taskDAL.updateappo(task_id);
+        }
     }
 }
