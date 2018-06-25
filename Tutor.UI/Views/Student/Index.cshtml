@@ -18,7 +18,7 @@
     </div>
     <div class="rightdetail">
         <div>
-            <div class="topbar">家教订单</div>
+            <div class="topbar">家教订单<span>发布家教</span></div>
             <div>
                 <table>
                     <tr>
@@ -39,14 +39,12 @@
                 </table>
                 <table>
                     <tr>
-                        <th>序号</th>
                         <th>教员</th>
                     </tr>
                     @foreach(var item in ViewBag.infodata)
                     {
                         <tr>
-                            <td>@item.Teaher_id</td>
-                            <td>@item.Teacher.Tuser_name</td>
+                            <td><a href="@Url.Action("detail","Teacher",new { id=@item.Teaher_id})" >@item.Teacher.Tuser_name</a></td>
                         </tr>
                     }
                 </table>
