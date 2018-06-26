@@ -49,7 +49,7 @@
         {
         <div class="singleresult">
             <div>
-                <img src="~/Img/登录注册/rg.jpg" style="width:120px;height:120px;" />
+                <img src="@item.Ident_photo" style="width:120px;height:120px;" />
             </div>
             <div>
                 <p style="margin-top:0;"><a href="@Url.Action("detail","Teacher",new { id=@item.Teaher_id})">@item.Teacher.Tuser_name</a></p>
@@ -103,7 +103,6 @@
                 //$(".subject").html(detail);
                 //$(".subject").html('<li><a href="/Search/filter?sub=' + data[x].subject1 + '">' + data[x].subject1 + '</a></li>');
             }
-            
         })
     })
 </script>

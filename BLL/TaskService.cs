@@ -21,5 +21,10 @@ namespace BLL
         {
             taskDAL.updateappo(task_id);
         }
+
+        public void updateteaid(int task_id, int teaid, string state)
+        {
+            taskDAL.updateteacher_id(task_id, teaid, state);
+        }
     }
 }

@@ -19,5 +19,14 @@ namespace DAL
             task.appo_count += 1;
             db.SaveChanges();
         }
+        public void updateteacher_id(int task_id, int teaid, string state)
+        {
+            Model.Task task= (from p in db.Task
+                              where p.Task_id == task_id
+                              select p).FirstOrDefault();
+            task.State = state;
+            task.Teacher_id = teaid;
+            db.SaveChanges();
+        }
     }
 }

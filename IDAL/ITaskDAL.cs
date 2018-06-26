@@ -10,5 +10,6 @@ namespace IDAL
     public partial interface ITaskDAL:IBaseDAL<Model.Task>
     {
        void updateappo(int task_id);
+       void updateteacher_id(int task_id,int teaid, string state);
     }
 }

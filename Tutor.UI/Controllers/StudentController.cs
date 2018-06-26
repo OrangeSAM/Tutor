@@ -30,7 +30,6 @@ namespace Tutor.UI.Controllers
                 var appoinfo = appoSer.GetModels(b => b.Task_id == item);
                 var teacher_id = appoinfo.Select(b => b.Teacher_id).FirstOrDefault();
                 var info = teacSer.GetModels(b => b.Teaher_id==teacher_id).FirstOrDefault();
-                
                 tea.Add(info);
             }
             var indent = indentSer.GetModels(b => b.Student_id == sid);
@@ -39,6 +38,12 @@ namespace Tutor.UI.Controllers
             sdetailvm.indent = indent;
             ViewBag.infodata = tea;
             return View(sdetailvm);
+        }
+        [HttpPost]
+        public void updatetea(int task_id, int teaid)
+        {
+            string state = "已完成";
+            taskSer.updateteaid(task_id, teaid, state);
         }
     }
 }

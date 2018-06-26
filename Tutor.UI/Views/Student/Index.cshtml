@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
 <link href="~/Css/Teauser.css" rel="stylesheet"/>
+<script src="~/scripts/jquery-3.3.1.js"></script>
 <div class="wrap">
     <div class="leftnav">
         <div>
@@ -19,7 +20,7 @@
     <div class="rightdetail">
         <div>
             <div class="topbar">家教订单<span>发布家教</span></div>
-            <div>
+            <div style="display:flex">
                 <table>
                     <tr>
                         <th>订单名称</th>
@@ -30,6 +31,7 @@
                     @foreach (var item in Model.task)
                     { 
                         <tr>
+                            <td style="display:none;" class="task_id">@item.Task_id</td>
                             <td>@item.Task_name.Substring(0, 8)...</td>
                             <td>@item.Upload_time.ToString("yyyy-MM-dd")</td>
                             <td>@item.State</td>
@@ -39,15 +41,17 @@
                 </table>
                 <table>
                     <tr>
-                        <th>教员</th>
+                        <th>预约教员</th>
                     </tr>
                     @foreach(var item in ViewBag.infodata)
                     {
                         <tr>
-                            <td><a href="@Url.Action("detail","Teacher",new { id=@item.Teaher_id})" >@item.Teacher.Tuser_name</a></td>
+                            <td><a href="@Url.Action("detail","Teacher",new { id=@item.Teaher_id})" >@item.Teacher.Tuser_name @item.Teaher_id</a></td>
                         </tr>
                     }
                 </table>
+                <input type="text" placeholder="请输入确定教员ID" class="idcontent"/>
+                <button class="confirm">确定</button>
             </div>
         </div>
         <div>
@@ -76,3 +80,17 @@
         </div>
     </div>
 </div>
+<script>
+    $(".confirm").click(function () {
+        var id = $(".idcontent").val();
+        var taskid = $(".task_id").text();
+        console.log(id);
+        console.log("a");
+        console.log(taskid);
+        $.post("/Student/updatetea/", {
+            task_id:taskid,
+            teaid:id,
+        })
+        alert("选择成功");
+    })
+</script>
