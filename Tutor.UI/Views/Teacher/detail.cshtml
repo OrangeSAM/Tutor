@@ -8,7 +8,7 @@
 <div class="wrap">
     <div class="leftnav">
         <div>
-            <img src="@Model.teaccherinfo.Ident_photo" />
+            <img src="@Model.teaccherinfo.Ident_photo" style="width:166px;"/>
             <h2>@Model.teaccherinfo.Teacher.Tuser_name</h2>
         </div>
         <ul class="ulmp leftnavbar">
@@ -116,22 +116,30 @@
 <div id="hidden" style="display:none">@Session["suser_id"]</div>
 <script>
     $(".publish").click(function () {
-        var id = document.getElementById("hidden");
-        var idd = id.innerText;
-        var cont = $(".cont").val();
-        var date = new Date().toLocaleDateString();
-        var url = window.location.href;
-        var id = url.charAt(url.length - 1);
-        console.log(idd);
-        console.log(cont);
-        console.log(date);
-        console.log(id);
-        $.post("/Teacher/comment/", {
-            Student_id: idd,
-            Detail:cont,
-            Comment_time: date,
-            Teacher_id:id,
-        })
+        var a = $("#hidden").text();
+        if (a == '') {
+            alert("请先登录");
+        }
+        else {
+            var id = document.getElementById("hidden");
+            var idd = id.innerText;
+            var cont = $(".cont").val();
+            var date = new Date().toLocaleDateString();
+            var url = window.location.href;
+            var id = url.charAt(url.length - 1);
+            console.log(idd);
+            console.log(cont);
+            console.log(date);
+            console.log(id);
+            $.post("/Teacher/comment/", {
+                cm: {
+                    Student_id: idd,
+                    Detail: cont,
+                    Comment_time: date,
+                    Teacher_id: id
+                },
+            })
+        }
     })
 </script>
 
