@@ -299,7 +299,6 @@
         }
         else {
             var mydate = new Date().toLocaleDateString();
-            //var id = idd;
             var taskid = event.currentTarget.dataset.id;
             var state = "预约成功";
             $.post("/search/makeorder/", {
@@ -307,8 +306,9 @@
                 task_id: taskid,
                 atime: mydate,
                 astate: state
+            }, function (data) {
+                alert(data);
             })
-            alert("预约成功，请到个人中心查看");
         }
         
     })

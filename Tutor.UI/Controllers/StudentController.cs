@@ -25,12 +25,16 @@ namespace Tutor.UI.Controllers
             var task_id = task.Select(b => b.Task_id);
             SdetailVM sdetailvm = new SdetailVM();
             List<TeacherInfo> tea = new List<TeacherInfo>();
+            //SelectList s = new SelectList();
             foreach (var item in task_id)
             {
                 var appoinfo = appoSer.GetModels(b => b.Task_id == item);
-                var teacher_id = appoinfo.Select(b => b.Teacher_id).FirstOrDefault();
-                var info = teacSer.GetModels(b => b.Teaher_id==teacher_id).FirstOrDefault();
-                tea.Add(info);
+                var teacher_id = appoinfo.Select(b => b.Teacher_id).ToList();
+                foreach(var items in teacher_id)
+                {
+                    var info = teacSer.GetModels(b => b.Teaher_id == items).FirstOrDefault();
+                    tea.Add(info);
+                }
             }
             var indent = indentSer.GetModels(b => b.Student_id == sid);
             sdetailvm.student = stu;

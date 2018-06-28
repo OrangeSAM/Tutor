@@ -73,13 +73,28 @@ namespace Tutor.UI.Controllers
             ViewBag.count = count;
             return View(tsearchvm);
         }
-        public ActionResult makeorder(appointment appointment)
+        public String makeorder(appointment appointment)
         {
             AppointmentService appointmentSer = new AppointmentService();
-            appointmentSer.Add(appointment);
-            var u = appointment.Task_id;
-            taskSer.updateappo(u);
-            return Content("<script>alert('预约成功！');window.open('" + Url.Content("~/Student/Index") + "', '_blank')</script>");
+            var taskid = appointment.Task_id;
+            var teacid = appointment.Teacher_id;
+            var temp = appointmentSer.GetModels(b => b.Task_id == taskid).FirstOrDefault();
+            if (temp == null)
+            {
+                appointmentSer.Add(appointment);
+                var u = appointment.Task_id;
+                taskSer.updateappo(u);
+                return "预约成功";
+            }
+            else //if (temp.Teacher_id == teacid)
+            {
+                return "请勿重复预约";
+            }
+            //还有个null怎么判断
+            //if (temp.Teacher_id == teacid)
+            //{
+            //    return "请勿重复预约";
+            //}
         }
         public ActionResult searchredir(string subject)
         {
