@@ -32,12 +32,12 @@
                         @Html.ValidationMessageFor(Student => Student.Suser_name, "")
                     </div>
                     <div class="pwd">
-                        @Html.TextBoxFor(Student=>Student.Spwd, new { placeholder = "请输入密码" })
+                        @Html.PasswordFor(Student=>Student.Spwd, new { placeholder = "请输入密码" })
                         <span class="fa fa-key"></span>
                         @Html.ValidationMessageFor(Student => Student.Spwd, "")
                     </div>
                     <div class="confirmpwd">
-                        @Html.TextBoxFor(Student =>Student.Spwds, new { placeholder = "请再次输入密码" })
+                        @Html.PasswordFor(Student =>Student.Spwds, new { placeholder = "请再次输入密码" })
                         <span class="fa fa-key"></span>
                         @Html.ValidationMessageFor(Student =>Student.Spwds, "")
                     </div>
