@@ -123,7 +123,7 @@
                 @foreach (var item in Model.appointment)
                 {
                     <tr>
-                        <td>@item.Task.Task_name.Substring(0, 6)...</td>
+                        <td>@item.Task.Task_name.Substring(0, 4)...</td>
                         <td>@item.Atime.ToString("yyyy-MM-dd")</td>
                         <td>@item.Astate</td>
                     </tr>
