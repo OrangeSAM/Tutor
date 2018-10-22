@@ -113,15 +113,16 @@
             }
         })
     })
-    //去除已完成家教订单
+    //去除已完成家教订单,以一种很不优雅的方式...
     window.onload = function () {
         var resultarr=document.getElementsByClassName('Ssingleresult');
-        console.log(resultarr);
         for(var i=0;i<resultarr.length;i++){
-            var j = resultarr[i].innerHTML;
-            console.log(j);
+            var j = resultarr[i].innerText;
             //继续判断每个innerhtml中是否有已完成，如果有，则删除。
+            if (j.indexOf('已完成') > -1) {
+                resultarr[i].classList.add("deleteaim");
+                $(".deleteaim").remove();
+            }
         }
-       
     }
 </script>
