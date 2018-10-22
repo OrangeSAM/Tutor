@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
 <link href="~/Css/Tsearchresult.css" rel="stylesheet"/>
-<script src="~/scripts/jquery-3.3.1.js"></script>
 <div>
     <div class="searchbar">
         <div class="area" id="grades">
@@ -68,7 +67,7 @@
                         </li>
                         <li>
                             <strong>订单状态</strong>
-                            <span>@item.State</span>
+                            <span class="indstate">@item.State</span>
                         </li>
                         <li>
                             <strong>预约人数</strong>
@@ -87,6 +86,7 @@
     </div>
     <div class="hidden" style="display:none">@Session["user_id"]</div>
 </div>
+<script src="~/scripts/jquery-3.3.1.js"></script>
 <script>
     $(".tdbutton").click(function (event) {
         var mydate = new Date().toLocaleDateString();
@@ -101,24 +101,27 @@
             astate:state
         })
     })
+    //鼠标hover获取年级对应科目
     $("#grades>div ul li").hover(function (event) {
-        console.log(event);
         var grade_id = event.target.dataset.grade_id;
-        console.log(grade_id);
         $.get("/Index/getsubject/" + grade_id, function (data) {
             $(".subject").empty();
             var detail = '';
             for (var x in data) {
                 var sub = $('<li><a href=' + data[x].subject1 + '></li>').text(data[x].subject1);
                 $(".subject").append(sub);
-                //var a = $(".subject li a").attr("href", "/Search/filter" + data[x].subject1);
-                //var con =
-                //$(".subject").html('<li><a href="/Search/filter?sub=' + data[x].subject1 + '">' + data[x].subject1 + '</a></li>');
-                //detail += con;
-                //console.log(detail);
-                //$(".subject").html(detail);
-                //$(".subject").html('<li><a href="/Search/filter?sub=' + data[x].subject1 + '">' + data[x].subject1 + '</a></li>');
             }
         })
     })
+    //去除已完成家教订单
+    window.onload = function () {
+        var resultarr=document.getElementsByClassName('Ssingleresult');
+        console.log(resultarr);
+        for(var i=0;i<resultarr.length;i++){
+            var j = resultarr[i].innerHTML;
+            console.log(j);
+            //继续判断每个innerhtml中是否有已完成，如果有，则删除。
+        }
+       
+    }
 </script>

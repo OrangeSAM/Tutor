@@ -195,7 +195,7 @@
                 <span class="fa fa-location-arrow"></span>
                 <span>@item.Location</span>
                 <div>等待您来应聘</div>
-                <button id="appo" data-id="@item.Task_id" class="button"><span>我要应聘</span></button>
+                <button id="appo" data-id="@item.Task_id" class="button ypbutton"><span>我要应聘</span></button>
             </div>
         </div>
     }
@@ -290,7 +290,7 @@
     }
 
     //应聘家教
-    $(".button").click(function (event) {
+    $(".ypbutton").click(function (event) {
         if (idd == '') {
             alert("请先登录");
         }
