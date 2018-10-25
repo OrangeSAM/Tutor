@@ -17,10 +17,10 @@
     max-height:400px;
 }
 .leftnav>ul{
-    margin-top:16px;
+    margin-top:3.2rem;
 }
 .leftnav>div>img{
-    width:200px;
+    width:70%;
 }
 .leftnav div:first-child{
     padding:8px;
@@ -99,4 +99,10 @@
 .comment>div:nth-child(2){
     margin-top:10px;
     width:50%;
+}
+.activerg{
+    display:block;
+}
+.unactive{
+    display:none;
 }

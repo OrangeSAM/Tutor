@@ -49,32 +49,35 @@
         {
         <div class="singleresult">
             <div>
-                <img src="@item.Ident_photo" style="width:120px;height:120px;" />
+                <img src="@item.Ident_photo" />
             </div>
             <div>
                 <p style="margin-top:0;"><a href="@Url.Action("detail","Teacher",new { id=@item.Teaher_id})">@item.Teacher.Tuser_name</a></p>
                 <div>
                     <span>家教经验</span>
-                    <strong>@item.Experience</strong><br />
+                    <span>@item.Experience</span><br />
                     <span>课&nbsp; 时&nbsp;费</span>
-                    <strong>@item.Salary</strong>
+                    <span>@item.Salary</span>
                 </div>
                 <div>
                     <span>学校专业</span>
-                    <strong>@item.Studyat @item.Major</strong>
+                    <span>@item.Studyat @item.Major</span>
                 </div>
                 <div>
                     <span>教授科目</span>
-                    <strong>@item.Available_subject</strong>
+                    <span>@item.Available_subject</span>
                 </div>
                 <div>
                     <span>接受区域</span>
-                    <strong>@item.Area</strong>
+                    <span>@item.Area</span>
                 </div>
                 <div>
                     <span>个人简介</span>
-                    <strong>@item.Description</strong>
+                    <span>@item.Description</span>
                 </div>
+            </div>
+            <div class="introcover">
+                
             </div>
         </div>
         }

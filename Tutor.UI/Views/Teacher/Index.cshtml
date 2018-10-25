@@ -9,7 +9,7 @@
     <div class="leftnav">
         <div>
             <img src="@Model.tuser.Ident_photo" />
-            <h2>@Model.tuser.Tuser_name</h2>
+            <h3>@Model.tuser.Tuser_name</h3>
         </div>
         <ul class="ulmp leftnavbar">
             <li class="a">我的资料</li>
@@ -20,115 +20,123 @@
     <div class="rightdetail">
         @*账户资料*@
         <div class="account">
-            <div class="topbar">账户资料</div>
-            <div>
-                <div class="headpor">
-                    <img src="@Model.tuser.Ident_photo" style="width:100px;"/>
-                    <ul class="ulmp">
-                        <li><input type="file" value="修改头像"/></li>
-                        <li><button>上传头像</button></li>
-                    </ul>
-                </div>
-                <div class="detail">
-                    <ul class="ulmp">
-                        <li>
-                            <strong>邮&nbsp; &nbsp; &nbsp; &nbsp;箱</strong>
-                            <p>@Model.tuser.Tmail</p>
-                        </li>
-                        <li>
-                            <strong>电&nbsp; &nbsp; &nbsp; &nbsp;话</strong>
-                            <p>@Model.tuser.phone</p>
-                        </li>
-                        <li>
-                            <strong>学&nbsp; &nbsp; &nbsp; &nbsp;校</strong>
-                            <p>@Model.tuser.Studyat</p>
-                        </li>
-                        <li>
-                            <strong>专&nbsp; &nbsp; &nbsp; &nbsp;业</strong>
-                            <p>@Model.tuser.Major</p>
-                        </li>
-                        <li>
-                            <strong>科&nbsp; &nbsp; &nbsp; &nbsp;目</strong>
-                            <p>@Model.tuser.Available_subject</p>
-                        </li>
-                        <li>
-                            <strong>家教经验</strong>
-                            <p>@Model.tuser.Experience</p>
-                        </li>
-                        <li>
-                            <strong>薪水要求</strong>
-                            <p>@Model.tuser.Salary</p>
-                        </li>
-                    </ul>
-                    <ul class="ulmp">
-                        <li>
-                            <strong>授课区域</strong>
-                            <p>@Model.tuser.Area</p>
-                        </li>
-                        <li>
-                            <strong>可行时间</strong>
-                            <p>@Model.tuser.Available_time</p>
-                        </li>
-                        <li>
-                            <strong>获奖情况</strong>
-                            <p>@Model.tuser.Award</p>
-                        </li>
-                        <li>
-                            <strong>自我描述</strong>
-                            <p>@Model.tuser.Description</p>
-                        </li>
-                    </ul>
+            <div class="activerg">
+                <div>
+                    <div class="topbar">账户资料</div>
+                    <div>
+                        <div class="headpor">
+                            <img src="@Model.tuser.Ident_photo" style="width:100px;" />
+                            <ul class="ulmp">
+                                <li><input type="file" value="修改头像" /></li>
+                                <li><button>上传头像</button></li>
+                            </ul>
+                        </div>
+                        <div class="detail">
+                            <ul class="ulmp">
+                                <li>
+                                    <strong>邮&nbsp; &nbsp; &nbsp; &nbsp;箱</strong>
+                                    <p>@Model.tuser.Tmail</p>
+                                </li>
+                                <li>
+                                    <strong>电&nbsp; &nbsp; &nbsp; &nbsp;话</strong>
+                                    <p>@Model.tuser.phone</p>
+                                </li>
+                                <li>
+                                    <strong>学&nbsp; &nbsp; &nbsp; &nbsp;校</strong>
+                                    <p>@Model.tuser.Studyat</p>
+                                </li>
+                                <li>
+                                    <strong>专&nbsp; &nbsp; &nbsp; &nbsp;业</strong>
+                                    <p>@Model.tuser.Major</p>
+                                </li>
+                                <li>
+                                    <strong>科&nbsp; &nbsp; &nbsp; &nbsp;目</strong>
+                                    <p>@Model.tuser.Available_subject</p>
+                                </li>
+                                <li>
+                                    <strong>家教经验</strong>
+                                    <p>@Model.tuser.Experience</p>
+                                </li>
+                                <li>
+                                    <strong>薪水要求</strong>
+                                    <p>@Model.tuser.Salary</p>
+                                </li>
+                            </ul>
+                            <ul class="ulmp">
+                                <li>
+                                    <strong>授课区域</strong>
+                                    <p>@Model.tuser.Area</p>
+                                </li>
+                                <li>
+                                    <strong>可行时间</strong>
+                                    <p>@Model.tuser.Available_time</p>
+                                </li>
+                                <li>
+                                    <strong>获奖情况</strong>
+                                    <p>@Model.tuser.Award</p>
+                                </li>
+                                <li>
+                                    <strong>自我描述</strong>
+                                    <p>@Model.tuser.Description</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         @*家教单*@
-        <div class="task" style="display:none;">
-            <div class="topbar">我的家教</div>
-            <div>
-                <table>
-                    <tr class=".detailth">
-                        <th>名称</th>
-                        <th>科目</th>
-                        <th>地点</th>
-                        <th>时间</th>
-                        <th>状态</th>
-                        <th>电话</th>
-                        <th>发布时间</th>
-                    </tr>
-                    @foreach (var item in Model.task)
-                    {
-                        <tr>
-                            <td>@item.Task_name.Substring(0, 4)...</td>
-                            <td>@item.Subject</td>
-                            <td>@item.Location</td>
-                            <td>@item.Timedemend</td>
-                            <td>@item.State</td>
-                            <td>@item.Tel</td>
-                            <td>@item.Upload_time.ToString("yyyy-MM-dd")</td>
+        <div class="task" >
+            <div class="unactive">
+                <div class="topbar">我的家教</div>
+                <div>
+                    <table>
+                        <tr class=".detailth">
+                            <th>名称</th>
+                            <th>科目</th>
+                            <th>地点</th>
+                            <th>时间</th>
+                            <th>状态</th>
+                            <th>电话</th>
+                            <th>发布时间</th>
                         </tr>
+                        @foreach (var item in Model.task)
+                    {
+                            <tr>
+                                <td>@item.Task_name.Substring(0, 4)...</td>
+                                <td>@item.Subject</td>
+                                <td>@item.Location</td>
+                                <td>@item.Timedemend</td>
+                                <td>@item.State</td>
+                                <td>@item.Tel</td>
+                                <td>@item.Upload_time.ToString("yyyy-MM-dd")</td>
+                            </tr>
                     }
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
         @*预约*@
-        <div class="appiontment" style="display:none;">
-            <div class="topbar">我的预约</div>
-            <table>
-                <tr class="detailth">
-                    <th>家教单名</th>
-                    <th>预约时间</th>
-                    <th>状&nbsp;&nbsp;态</th>
-                    <th>预约教员</th>
-                </tr>
-                @foreach (var item in Model.appointment)
-                {
-                    <tr>
-                        <td>@item.Task.Task_name.Substring(0, 4)...</td>
-                        <td>@item.Atime.ToString("yyyy-MM-dd")</td>
-                        <td>@item.Astate</td>
+        <div class="appiontment">
+            <div class="unactive">
+                <div class="topbar">我的预约</div>
+                <table>
+                    <tr class="detailth">
+                        <th>家教单名</th>
+                        <th>预约时间</th>
+                        <th>状&nbsp;&nbsp;态</th>
+                        <th>预约教员</th>
                     </tr>
+                    @foreach (var item in Model.appointment)
+                {
+                        <tr>
+                            <td>@item.Task.Task_name.Substring(0, 4)...</td>
+                            <td>@item.Atime.ToString("yyyy-MM-dd")</td>
+                            <td>@item.Astate</td>
+                        </tr>
                 }
-            </table>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -142,39 +150,33 @@
             $(event.target).css("background-color", "lightblue");
         }
     })
-
-    $(".a").click(function () {
-        $(".account").show();
-        $(".task").hide();
-        $(".appointment").hide();
-    });
-    $(".b").click(function () {
-        $(".account").hide();
-        $(".task").show();
-        $(".appointment").hide();
-    });
-    $(".c").click(function () {
-        $(".account").hide();
-        $(".task").hide();
-        $(".appiontment").show();
-    })
-    //$(".leftnavbar li").click(function (event) {
-    //    if (event.target.innerText == '教员资料') {
-    //        $(".task").css("display", "none");
-    //        $(".appointment").css("display", "none");
-    //        $(".account").css("display", "block");
-    //    }else {
-    //        if (event.target.innerText == '我的家教') {
-    //            $(".account").css("display", "none");
-    //            $(".appointment").css("display", "none");
-    //            $(".task").css("display", "block");
-    //        }else{
-    //            console.log(event.target.innerText);
-    //            $(".account").css("display", "none");
-    //            $(".task").css("display", "none");
-    //            $(".appointment").css("display", "block");
-    //            console.log($(".appointment"));
-    //        }
-    //    }
+    var tabs = $(".leftnavbar li");
+    var rightbox = $(".rightdetail>div>div");
+    for (i = 0; i < tabs.length; i++) {
+        var tab = tabs[i];
+        setTabHander(tab, i);
+    }
+    function setTabHander(tab, tabpos) {
+        tab.onclick = function () {
+            for (i = 0; i < rightbox.length; i++) {
+                rightbox[i].className = 'unactive';
+            }
+            rightbox[tabpos].className = 'activerg';
+        }
+    }
+    //$(".a").click(function () {
+    //    $(".account").show();
+    //    $(".task").hide();
+    //    $(".appointment").hide();
+    //});
+    //$(".b").click(function () {
+    //    $(".account").hide();
+    //    $(".task").show();
+    //    $(".appointment").hide();
+    //});
+    //$(".c").click(function () {
+    //    $(".account").hide();
+    //    $(".task").hide();
+    //    $(".appiontment").show();
     //})
 </script>
