@@ -275,6 +275,7 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\jquery-3.3.1.js" />
+    <Content Include="scripts\teatab.js" />
     <Content Include="Video\如约而至 - 许嵩.mp4" />
     <Content Include="Views\Shared\errorpage.html" />
     <Content Include="Web.config">

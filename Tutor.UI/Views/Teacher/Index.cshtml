@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Lauout.cshtml";
 }
 <link href="~/Css/Teauser.css" rel="stylesheet"/>
-<script src="~/scripts/jquery-3.3.1.js"></script>
 <div class="wrap">
     <div class="leftnav">
         <div>
@@ -12,9 +11,9 @@
             <h3>@Model.tuser.Tuser_name</h3>
         </div>
         <ul class="ulmp leftnavbar">
-            <li class="a">我的资料</li>
-            <li class="b">我的家教</li>
-            <li class="c">我的预约</li>
+            <li>我的资料</li>
+            <li>我的家教</li>
+            <li>我的预约</li>
         </ul>
     </div>
     <div class="rightdetail">
@@ -140,6 +139,8 @@
         </div>
     </div>
 </div>
+<script src="~/scripts/jquery-3.3.1.js"></script>
+<script src="~/scripts/teatab.js"></script>
 <script>
     $(".leftnav>ul li").click(function (event) {
         if ($(".leftnav>ul li .libackground") == undefined) {
@@ -150,20 +151,7 @@
             $(event.target).css("background-color", "lightblue");
         }
     })
-    var tabs = $(".leftnavbar li");
-    var rightbox = $(".rightdetail>div>div");
-    for (i = 0; i < tabs.length; i++) {
-        var tab = tabs[i];
-        setTabHander(tab, i);
-    }
-    function setTabHander(tab, tabpos) {
-        tab.onclick = function () {
-            for (i = 0; i < rightbox.length; i++) {
-                rightbox[i].className = 'unactive';
-            }
-            rightbox[tabpos].className = 'activerg';
-        }
-    }
+    
     //$(".a").click(function () {
     //    $(".account").show();
     //    $(".task").hide();
