@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Lauout.cshtml";
+}
+<div>
+    <form method="post" action="">
+        <input name="Task_name" placeholder="请输入家教单名称"/>
+        <select>
+            <option>小学</option>
+            <option>中学</option>
+            <option>高中</option>
+        </select>
+        <select>
+            <option>一年级</option>
+            <option>二年级</option>
+            <option>三年级</option>
+            <option>四年级</option>
+            <option>五年级</option>
+            <option>六年级</option>
+        </select>
+        <input type="checkbox" value="男" />
+        <input type="checkbox" value="女" />
+        <input type="text" name="Subject" placeholder="请输入科目名称" />
+        <input type="text" name="Demand" placeholder="请填写要求(可空)"/>
+        <input type="text" name="Location" placeholder="请输入您所在的区域" />
+        <input type="submit"  value="提交"/>
+    </form>
+</div>
+    

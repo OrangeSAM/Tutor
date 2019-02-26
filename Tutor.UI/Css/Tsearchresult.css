@@ -22,6 +22,11 @@
 }
 .subject{
     margin-left:61px;
+    transition:all .3s;
+
+}
+.subject li{
+    transition:all .3s;
 }
 .area>div ul:first-child li:first-child{
     background-color:beige;

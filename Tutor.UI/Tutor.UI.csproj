@@ -340,6 +340,7 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tutor.UI.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\PublishProfiles\Tutor.pubxml" />
+    <Content Include="Views\Student\publish.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
