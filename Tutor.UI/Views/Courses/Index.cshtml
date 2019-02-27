@@ -1,0 +1,35 @@
+﻿@model  Tutor.UI.ViewModels.CoursesVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Lauout.cshtml";
+}
+
+<link href="~/Css/courses.css" rel="stylesheet" />
+<div class="courswrap">
+    <div class="allcourse">
+        @foreach (var item in Model.courses)
+        {
+            <div class="singlecourse">
+                <div class="coursetop">
+                    <span class="jian">荐</span><span>@item.Cname — 正在报名</span>
+                </div>
+                <div class="coursedate">3月1日-6月 @item.Course_id 日 · 七年级</div>
+                <div class="coursephoto">
+                    <img src="~/Img/t1.jpg"/>
+                    <img src="~/Img/t2.jpg" />
+                    <img src="~/Img/t3.jpg" />
+                </div>
+                <div class="coursebotm">
+                    <div>
+                        <span>每30人分小班</span><br />
+                        <span>4月10日报名结束</span>
+                    </div>
+                    <div class="price">
+                       ￥ @item.price
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
