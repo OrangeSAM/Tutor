@@ -5,6 +5,7 @@
 .allcourse{
     display:flex;
     justify-content:space-between;
+    flex-wrap:wrap;
 }
 .allcourse .singlecourse{
     border:1px solid #e5e5e5;

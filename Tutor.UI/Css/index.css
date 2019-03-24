@@ -46,6 +46,7 @@
     top:30px;
     left:-1px;
     padding:0 19px;
+    transition:all .3s;
 }
 .choose>span:first-child{
     border:1px solid;
@@ -133,12 +134,14 @@
     border:1px solid lightgray;
     text-align:center;
     width:19%;
+    border-radius:10px;
 }
 .task .singlecase .Ttop{
     background:linear-gradient(to right,#dddddd,lightblue);
     position:relative;
     padding-bottom:35px;   
     padding-top:10px;
+    border-radius:8px;
 }
 .task .singlecase .Ttop div:nth-child(3){
     position:absolute;
@@ -161,6 +164,11 @@
 }
 .task .singlecase .Tbottom div{
     margin:6px 0;
+}
+.task .singlecase .Tbottom #appo{
+    border:none;
+    border-radius:5px;
+    padding:3px;
 }
 .rectea{
     width:81%;
@@ -201,6 +209,7 @@
     right:0;
     width:100%;
     background:linear-gradient(#dddddd,lightblue);
+    border-radius:10px;
 }
 
 .teadetail>div .singletea{

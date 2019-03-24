@@ -20,5 +20,20 @@ namespace Tutor.UI.Controllers
             coursesvm.courses = course;
             return View(coursesvm);
         }
+        public String buycourse(courses course)
+        {
+            var courseid = course.Course_id;
+            var temp = courSer.GetModels(b => b.Course_id == courseid).FirstOrDefault();
+            if (temp == null)
+            {
+                courSer.Add(course);
+                return "购买成功";
+            }
+            else
+            {
+                return "请勿重复购买";
+            }
+        }
     }
+    
 }

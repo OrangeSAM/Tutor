@@ -10,10 +10,10 @@
         @foreach (var item in Model.courses)
         {
             <div class="singlecourse">
-                <div class="coursetop">
+                <div class="coursetop" data-x="@item.Course_id">
                     <span class="jian">荐</span><span>@item.Cname — 正在报名</span>
                 </div>
-                <div class="coursedate">3月1日-6月 @item.Course_id 日 · 七年级</div>
+                <div class="coursedate">3月1日-6月1日 · 120课时 </div>
                 <div class="coursephoto">
                     <img src="~/Img/t1.jpg"/>
                     <img src="~/Img/t2.jpg" />
@@ -22,14 +22,39 @@
                 <div class="coursebotm">
                     <div>
                         <span>每30人分小班</span><br />
-                        <span>4月10日报名结束</span>
+                        <span>4月1 @item.Grade_id 日报名结束</span>
                     </div>
                     <div class="price">
-                       ￥ @item.price
+                        <span>￥</span><span class="courseprice"> @item.price</span><br>
+                        <span class="buybtn"  data-id="@item.Course_id"> 购买 </span>
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+<div class="hidden" style="display:none">@Session["user_id"]</div>
+<script src="~/scripts/jquery-3.3.1.js"></script>
+<script>
+    var idd = $(".hidden").text();
+    $(".buybtn").click(function (event) {
+        if (idd == '') {
+            alert("请先登录");
+        }
+        else {
+            var mydate = new Date().toLocaleDateString();
+            var courseid = event.currentTarget.dataset.id;
+            var price = $('courseprice').text();
+            $.post("/Courses/buycourse/", {
+                Student_id: idd,
+                Course_id: courseid,
+                Buy_time: mydate,
+                Price: price
+            }, function (data) {
+                alert(data);
+            })
+        }
+
+    })
+</script>
 
